@@ -1,2 +1,2 @@
-import { loadExample } from './modules/visualizations/example';
-loadExample();
+import { loadSlides } from './modules/utilities/slides';
+loadSlides();
