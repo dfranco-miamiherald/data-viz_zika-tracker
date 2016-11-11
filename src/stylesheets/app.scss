@@ -2,10 +2,14 @@
 @import 'bourbon';
 @import 'neat';
 
+@import 'vendor/examples';
+@import 'vendor/style';
+
 @import 'base/grid-settings';
 @import 'base/fonts';
 @import 'base/variables';
 @import 'base/typography';
+@import 'base/layout';
 
 @import 'atoms/container';
 @import 'atoms/row';
