@@ -2,6 +2,10 @@
   @include size(25% 100%); /* relative to parent -> 25% of 400% = 100% of window width */
   float: left;
   background-image: url("/images/example_bg_spacer_h.gif");
+  &--blue { background-color: $blue; }
+  &--silver { background-color: $silver; }
+  &--cyan { background-color: $cyan; }
+  &--steel-blue { background-color: $steel-blue; }
 
   &__wrapper {
     @include size(100%);
@@ -26,9 +30,4 @@
   	height: 0;
   	overflow: visible;
   }
-
-  &--blue { background-color: $blue; }
-  &--silver { background-color: $silver; }
-  &--cyan { background-color: $cyan; }
-  &--steel-blue { background-color: $steel-blue; }
 }

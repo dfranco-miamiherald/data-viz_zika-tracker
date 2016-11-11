@@ -8,7 +8,7 @@ class SlideAnimation {
   constructor() {
     this.slideContainerEl = '#slideContainer';
     this.pinContainerEl = '#pinContainer';
-    this.duration = '500%';
+    this.duration = '1000%';
 
     this.controller = new ScrollMagic.Controller();
     this.wipeAnimation = new TimelineMax()
