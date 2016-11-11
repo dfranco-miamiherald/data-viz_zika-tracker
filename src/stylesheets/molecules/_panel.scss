@@ -22,7 +22,7 @@
     @include size(400% 100%); /* to contain 4 panels, each with 100% of window width */
   }
 
-  b {
+  &__description {
     font-size: 15px;
   	color: $white;
   	@include position (relative, 50% null null null);
