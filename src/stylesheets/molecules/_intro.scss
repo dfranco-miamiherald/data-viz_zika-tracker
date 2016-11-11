@@ -1,0 +1,14 @@
+.intro {
+  text-align: center;
+  position: relative;
+  height: 100%;
+  min-height: 500px;
+  min-width: 100%;
+  height: 100vh;
+
+  &__description {
+    @include position(absolute, 50% null null 50%);
+    @include size(600px 300px);
+    margin: -150px auto auto -300px;
+  }
+}

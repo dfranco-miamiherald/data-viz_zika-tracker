@@ -1,5 +1,4 @@
 {#
-  Nunjucks Templating!
   Homepage: https://mozilla.github.io/nunjucks/
   Docs: https://mozilla.github.io/nunjucks/api.html
 #}
@@ -9,8 +8,8 @@
 {% block content %}
   <div class="content__wrapper">
     <div class="content__scroll">
-      <section id="titlechart">
-        <div id="description">
+      <section class="intro">
+        <div class="intro__description">
           <h1>Section Slides</h1>
           <h2>Slide in your content with custom movements</h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris dapibus sem vel porttitor viverra. Nulla iaculis nibh tincidunt sem pharetra, nec vehicula nulla faucibus.</p>
@@ -18,19 +17,19 @@
           <p>Phasellus sed nulla urna. Mauris sit amet elit orci. Aliquam ullamcorper felis sit amet justo maximus pretium at ut orci.</p>
         </div>
       </section>
-      <section class="demo" id="section-slides">
-        <div id="pinContainer">
-          <div id="slideContainer">
-            <section class="panel blue">
+      <section class="panel__wrapper">
+        <div class="panel__pin-container" id="pinContainer">
+          <div class="panel__slide-container" id="slideContainer">
+            <section class="panel panel--blue">
               <b>ONE</b>
             </section>
-            <section class="panel turqoise">
+            <section class="panel panel--cyan">
               <b>TWO</b>
             </section>
-            <section class="panel green">
+            <section class="panel panel--steel-blue">
               <b>THREE</b>
             </section>
-            <section class="panel bordeaux">
+            <section class="panel panel--silver">
               <b>FOUR</b>
             </section>
           </div>

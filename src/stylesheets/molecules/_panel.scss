@@ -1,0 +1,34 @@
+.panel {
+  @include size(25% 100%); /* relative to parent -> 25% of 400% = 100% of window width */
+  float: left;
+  background-image: url("/images/example_bg_spacer_h.gif");
+
+  &__wrapper {
+    @include size(100%);
+    text-align: center;
+  }
+
+  &__pin-container {
+    @include size(100%);
+    overflow: hidden;
+    perspective: 1000px;
+  }
+
+  &__slide-container {
+    @include size(400% 100%); /* to contain 4 panels, each with 100% of window width */
+  }
+
+  b {
+    font-size: 15px;
+  	color: $white;
+  	@include position (relative, 50% null null null);
+  	display: block;
+  	height: 0;
+  	overflow: visible;
+  }
+
+  &--blue { background-color: $blue; }
+  &--silver { background-color: $silver; }
+  &--cyan { background-color: $cyan; }
+  &--steel-blue { background-color: $steel-blue; }
+}

@@ -2,8 +2,6 @@
 @import 'bourbon';
 @import 'neat';
 
-// @import 'vendor/examples';
-
 @import 'base/grid-settings';
 @import 'base/fonts';
 @import 'base/variables';
@@ -13,4 +11,5 @@
 @import 'atoms/container';
 @import 'atoms/row';
 
-@import 'modules/panel';
+@import 'molecules/intro';
+@import 'molecules/panel';
