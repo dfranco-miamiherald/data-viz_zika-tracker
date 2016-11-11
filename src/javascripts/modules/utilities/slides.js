@@ -4,37 +4,40 @@ import ScrollMagic from 'scrollmagic';
 import 'imports?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap';
 import 'imports?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators';
 
-const loadSlides = () => {
-  $(function () { // wait for document ready
-    // init
-    var controller = new ScrollMagic.Controller();
+class SlideAnimation {
+  constructor() {
+    this.slideContainerEl = '#slideContainer';
+    this.pinContainerEl = '#pinContainer';
+    this.duration = '500%';
 
-    // define movement of panels
-    var wipeAnimation = new TimelineMax()
-      // animate to second panel
-      .to("#slideContainer", 0.5, {z: -150})		// move back in 3D space
-      .to("#slideContainer", 1,   {x: "-25%"})	// move in to first panel
-      .to("#slideContainer", 0.5, {z: 0})				// move back to origin in 3D space
-      // animate to third panel
-      .to("#slideContainer", 0.5, {z: -150, delay: 1})
-      .to("#slideContainer", 1,   {x: "-50%"})
-      .to("#slideContainer", 0.5, {z: 0})
-      // animate to forth panel
-      .to("#slideContainer", 0.5, {z: -150, delay: 1})
-      .to("#slideContainer", 1,   {x: "-75%"})
-      .to("#slideContainer", 0.5, {z: 0});
+    this.controller = new ScrollMagic.Controller();
+    this.wipeAnimation = new TimelineMax()
+        .to(this.slideContainerEl, 0.5, {z: -150})
+        .to(this.slideContainerEl, 1,   {x: "-25%"})
+        .to(this.slideContainerEl, 0.5, {z: 0})
+        .to(this.slideContainerEl, 0.5, {z: -150, delay: 1})
+        .to(this.slideContainerEl, 1,   {x: "-50%"})
+        .to(this.slideContainerEl, 0.5, {z: 0})
+        .to(this.slideContainerEl, 0.5, {z: -150, delay: 1})
+        .to(this.slideContainerEl, 1,   {x: "-75%"})
+        .to(this.slideContainerEl, 0.5, {z: 0});
+  }
 
-    // create scene to pin and link animation
+  render() {
     new ScrollMagic.Scene({
-        triggerElement: "#pinContainer",
-        triggerHook: "onLeave",
-        duration: "500%"
+        triggerElement: this.pinContainerEl,
+        triggerHook: 'onLeave',
+        duration: this.duration
       })
-      .setPin("#pinContainer")
-      .setTween(wipeAnimation)
-      .addIndicators() // add indicators (requires plugin)
-      .addTo(controller);
-  });
+      .setPin(this.pinContainerEl)
+      .setTween(this.wipeAnimation)
+      .addIndicators() // remove for production
+      .addTo(this.controller);
+  }
+}
+
+const loadSlides = () => {
+  new SlideAnimation().render();
 }
 
 export { loadSlides };
