@@ -51,7 +51,7 @@
       "dest": "./",
       "dataFile": "data/global.json",
       "htmlmin": {
-        "collapseWhitespace": true
+        "collapseWhitespace": false
       },
       "extensions": ["html", "json"],
       "excludeFolders": ["layouts", "shared", "macros", "data"]
@@ -83,7 +83,7 @@
     },
 
     "production" : {
-      "rev": true
+      "rev": false
     }
   }
 }
