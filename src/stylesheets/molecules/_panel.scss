@@ -1,6 +1,6 @@
 .panel {
-  @include size(25% 100%); /* relative to parent -> 25% of 400% = 100% of window width */
-  float: left;
+  @include size(100%);
+  position: absolute;
   background-image: url("/images/example_bg_spacer_h.gif");
   &--blue { background-color: $blue; }
   &--silver { background-color: $silver; }
@@ -18,16 +18,16 @@
     perspective: 1000px;
   }
 
-  &__slide-container {
-    @include size(400% 100%); /* to contain 4 panels, each with 100% of window width */
-  }
-
   &__description {
     font-size: 15px;
   	color: $white;
-  	@include position (relative, 50% null null null);
+  	@include position (relative, 50% null null 50%);
   	display: block;
   	height: 0;
   	overflow: visible;
+
+    a {
+      display: block;
+    }
   }
 }
