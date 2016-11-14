@@ -1,0 +1,66 @@
+.bubble-map {
+  width: 900px;
+  
+  &__county {
+    fill: transparentize($grey, 0.7);
+    stroke: $white;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    stroke-width: 3px;
+  }
+
+  &__bubble {
+    fill-opacity: 0.5;
+    stroke: $white;
+    stroke-width: 1.5px;
+
+    & :hover {
+      stroke: $black;
+    }
+  }
+
+  &__tooltip {
+    position: absolute;
+    transform: translateY(-100%);
+    pointer-events: none;
+    padding: 0.5em 1em;
+    font-size: rem(16);
+    color: $white;
+    background-color: rgba($black, 0.8);
+    border: em(1) solid $black;
+    border-radius: rem(5);
+    opacity: 0;
+    transition: opacity 0.3s linear;
+    font-family: $heading-font-family-script;
+    border: 1.5px solid $white;
+    max-width: em(300);
+    text-align: center;
+
+    &.is-active {
+      opacity: 1;
+    }
+  }
+
+  &__stat {
+    font-size: em(50);
+    font-family: $heading-font-family-script;
+    font-weight: bold;
+    color: $white;
+    margin-bottom: 2rem;
+    opacity: 0;
+    transform: translateY(-40px);
+    transition: transform 0.5s ease-in-out;
+
+    &.is-animating {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  &__controls {
+    position: absolute;
+    bottom: 2em;
+    left: 2em;
+    max-width: em(500);
+  }
+}
