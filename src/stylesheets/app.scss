@@ -1,5 +1,8 @@
 @import 'bourbon';
 @import 'neat';
+@import 'nouislider';
+@import 'nouislider.pips';
+@import 'nouislider.tooltips';
 
 @import 'atoms/neat-container';
 @import 'atoms/neat-row';
@@ -10,5 +13,8 @@
 
 @import 'molecules/intro';
 @import 'molecules/panel';
+
+@import 'organisms/slider';
+@import 'organisms/tabs';
 
 @import 'visualizations/bubble-map';
