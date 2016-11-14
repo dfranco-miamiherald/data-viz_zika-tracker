@@ -81,7 +81,6 @@
     "scrollmagic": "^2.0.5",
     "sinon": "1.17.3",
     "sinon-chai": "2.8.0",
-    "sticky-js": "^1.1.4",
     "topojson": "^1.6.27",
     "webpack": "1.12.14",
     "webpack-dev-middleware": "1.5.1",
