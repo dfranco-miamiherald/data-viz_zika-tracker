@@ -1,5 +1,15 @@
 .bubble-map {
-  width: 900px;
+  position: relative;
+
+  &__wrapper {
+    &--interactive {
+      @include span-columns(7 of 12);
+    }
+
+    &--stats {
+      @include span-columns(5 of 12);
+    }
+  }
 
   &__county {
     fill: transparentize($grey, 0.7);
@@ -21,7 +31,6 @@
 
   &__tooltip {
     position: absolute;
-    transform: translateY(-100%);
     pointer-events: none;
     padding: 0.5em 1em;
     font-size: rem(16);
@@ -45,7 +54,7 @@
     font-size: em(50);
     font-family: $heading-font-family-script;
     font-weight: bold;
-    color: $white;
+    color: $black;
     margin-bottom: 2rem;
     opacity: 0;
     transform: translateY(-40px);
@@ -58,9 +67,5 @@
   }
 
   &__controls {
-    position: absolute;
-    bottom: 2em;
-    left: 2em;
-    max-width: em(500);
   }
 }

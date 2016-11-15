@@ -10,13 +10,13 @@ class BubbleMap {
   constructor(el, dataUrl) {
     this.el = el;
     this.dataUrl = dataUrl;
-    this.aspectRatio = 1;
-    this.margin = {top: 20, right: 10, bottom: 20, left: 10};
+    this.aspectRatio = 0.6667;
+    this.margin = {top: 0, right: 0, bottom: 0, left: 0};
     this.width = $(this.el).width() - this.margin.left - this.margin.right;
     this.height = Math.ceil(this.aspectRatio * (this.width - this.margin.top - this.margin.bottom));
     this.mapWidth = this.width;
-    // this.shapeUrl = 'data/florida-counties.json';
-    this.shapeUrl = 'http://pubsys.miamiherald.com/static/media/projects/2016/zika-interactive-v2/site/data/florida-counties.json';
+    this.shapeUrl = 'data/florida-counties.json';
+    // this.shapeUrl = 'http://pubsys.miamiherald.com/static/media/projects/2016/zika-interactive-v2/site/data/florida-counties.json';
     this.dataColumn = 'total'
     this.totals = ['.bubble-map__stat--local', '.bubble-map__stat--travel', '.bubble-map__stat--total']
   }
@@ -202,27 +202,24 @@ class BubbleMap {
   }
 
   setTotals(el) {
-    var counterStart = {var:$(el).text().replace(/(?:\D)+/, +'')};
+    var counterStart = {var: $(el).text()};
     if (el === '.bubble-map__stat--local') {
       var counterEnd = {var: this.caseData[this.unformatSlider()].totalLocal};
-      var text = 'Local';
     } else if (el === '.bubble-map__stat--travel') {
       var counterEnd = {var: this.caseData[this.unformatSlider()].totalTravel};
-      var text = 'Travel';
     } else if (el === '.bubble-map__stat--total') {
       var counterEnd = {var: +this.caseData[this.unformatSlider()].totalLocal + +this.caseData[this.unformatSlider()].totalTravel};
-      var text = 'Total';
     }
 
     TweenMax.to(counterStart, 1.5, {var: counterEnd.var, onUpdate: () => {
-        $(el).html(`${text}: ${Math.ceil(counterStart.var)}`);
+        $(el).html(Math.ceil(counterStart.var));
       },
       ease:Circ.easeOut
     });
   }
 
   unformatSlider() {
-    return numeral().unformat(this.stepSlider.noUiSlider.get())
+    return numeral().unformat(this.stepSlider.noUiSlider.get());
   }
 
   setDate() {
