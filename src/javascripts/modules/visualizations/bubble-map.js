@@ -15,8 +15,8 @@ class BubbleMap {
     this.width = $(this.el).width() - this.margin.left - this.margin.right;
     this.height = Math.ceil(this.aspectRatio * (this.width - this.margin.top - this.margin.bottom));
     this.mapWidth = this.width;
-    this.shapeUrl = 'data/florida-counties.json';
-    // this.shapeUrl = 'http://pubsys.miamiherald.com/static/media/projects/2016/zika-interactive-v2/site/data/florida-counties.json';
+    // this.shapeUrl = 'data/florida-counties.json';
+    this.shapeUrl = 'http://media.miamiherald.com/static/media/projects/2016/zika-interactive-v2/site/data/florida-counties.json';
     this.dataColumn = 'total'
     this.totals = ['.bubble-map__stat--local', '.bubble-map__stat--travel', '.bubble-map__stat--total', '.bubble-map__stat--pregnant', '.bubble-map__stat--non-resident', '.bubble-map__stat--unknown']
   }
