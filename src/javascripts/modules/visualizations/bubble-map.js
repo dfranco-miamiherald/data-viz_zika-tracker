@@ -195,6 +195,8 @@ class BubbleMap {
 
   switchTabs() {
     $('.tabs__link').click(() => {
+      event.preventDefault();
+
       $('.tabs__link').removeClass('is-active');
       $(event.currentTarget).addClass('is-active');
 
