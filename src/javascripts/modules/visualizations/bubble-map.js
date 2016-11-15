@@ -10,7 +10,7 @@ class BubbleMap {
   constructor(el, dataUrl, shapeUrl) {
     this.el = el;
     this.dataUrl = dataUrl;
-    this.aspectRatio = 0.6667;
+    this.aspectRatio = 0.75;
     this.margin = {top: 0, right: 0, bottom: 0, left: 0};
     this.width = $(this.el).width() - this.margin.left - this.margin.right;
     this.height = Math.ceil(this.aspectRatio * (this.width - this.margin.top - this.margin.bottom));
@@ -25,29 +25,6 @@ class BubbleMap {
         .attr('width', '100%')
         .attr('class', 'bubble-map__svg')
         .append('g');
-
-    this.filter = this.svg.append('defs')
-        .append('filter')
-        .attr('id', 'drop-shadow')
-        .attr('height', '130%');
-
-    this.filter.append('feGaussianBlur')
-        .attr('in', 'SourceAlpha')
-        .attr('stdDeviation', 5)
-        .attr('result', 'blur');
-
-    this.filter.append('feOffset')
-        .attr('in', 'blur')
-        .attr('dx', 5)
-        .attr('dy', 5)
-        .attr('result', 'offsetBlur');
-
-    this.feMerge = this.filter.append('feMerge');
-
-    this.feMerge.append('feMergeNode')
-        .attr('in', 'offsetBlur')
-    this.feMerge.append('feMergeNode')
-        .attr('in', 'SourceGraphic');
 
     this.loadData();
     this.resizeBubbleMap();
@@ -96,7 +73,6 @@ class BubbleMap {
 
     this.svg.append('g')
         .attr('class', 'bubble-map__counties')
-        .style('filter', 'url(#drop-shadow)')
       .selectAll('path')
         .data(counties)
       .enter().append('path')

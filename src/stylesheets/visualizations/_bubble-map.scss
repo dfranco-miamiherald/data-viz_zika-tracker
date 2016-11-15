@@ -3,7 +3,7 @@
 
   &__wrapper {
     &--top {
-      @include span-columns(7 of 12);  
+      @include span-columns(7 of 12);
     }
 
     &--interactive {
@@ -16,7 +16,7 @@
   }
 
   &__county {
-    fill: transparentize($grey, 0.7);
+    fill: transparentize($black, 0.8);
     stroke: $white;
     stroke-linejoin: round;
     stroke-linecap: round;
@@ -80,8 +80,5 @@
         transform: translateY(0);
       }
     }
-  }
-
-  &__controls {
   }
 }

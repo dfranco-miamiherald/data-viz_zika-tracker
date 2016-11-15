@@ -1,7 +1,6 @@
 .tabs {
   padding-left: 0;
   @include fill-parent();
-  @include row(table);
 	margin: 0 0 1rem;
 
   li {
@@ -16,19 +15,21 @@
 	}
 
   a {
+    font-size: em(18);
     background-color: #eff0f2;
-    border-bottom: 1px solid #fff;
-    color: #888;
-    font-weight: 500;
+    color: $black;
+    font-weight: bold;
     display: block;
     letter-spacing: 0;
     outline: none;
     padding: 1rem;
     text-decoration: none;
     transition: all 0.2s ease-in-out;
-    border-bottom: 2px solid $blue;
+    border: solid 3px transparentize($black, 0.8);
+    text-transform: uppercase;
 
-    &.is-active {
+    &.is-active,
+    &:hover {
       color: $white;
       background: $blue;
     }
