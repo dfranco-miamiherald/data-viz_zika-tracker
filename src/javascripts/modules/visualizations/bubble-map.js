@@ -18,7 +18,7 @@ class BubbleMap {
     this.shapeUrl = 'data/florida-counties.json';
     // this.shapeUrl = 'http://pubsys.miamiherald.com/static/media/projects/2016/zika-interactive-v2/site/data/florida-counties.json';
     this.dataColumn = 'total'
-    this.totals = ['.bubble-map__stat--local', '.bubble-map__stat--travel', '.bubble-map__stat--total']
+    this.totals = ['.bubble-map__stat--local', '.bubble-map__stat--travel', '.bubble-map__stat--total', '.bubble-map__stat--pregnant', '.bubble-map__stat--non-resident', '.bubble-map__stat--unknown']
   }
 
   render() {
@@ -82,7 +82,7 @@ class BubbleMap {
     this.caseData = caseData;
     const counties = topojson.feature(this.shapeData, this.shapeData.objects['florida-counties']).features
 
-    $('.bubble-map__stat').addClass('is-animating');
+    $('.bubble-map__stat--wrapper').addClass('is-animating');
     this.drawSlider();
     this.drawTooltip();
     this.totals.forEach(i => {
@@ -209,6 +209,12 @@ class BubbleMap {
       var counterEnd = {var: this.caseData[this.unformatSlider()].totalTravel};
     } else if (el === '.bubble-map__stat--total') {
       var counterEnd = {var: +this.caseData[this.unformatSlider()].totalLocal + +this.caseData[this.unformatSlider()].totalTravel};
+    } else if (el === '.bubble-map__stat--pregnant') {
+      var counterEnd = {var: this.caseData[this.unformatSlider()].pregnant};
+    } else if (el === '.bubble-map__stat--non-resident') {
+      var counterEnd = {var: this.caseData[this.unformatSlider()]['non-resident']};
+    } else if (el === '.bubble-map__stat--unknown') {
+      var counterEnd = {var: this.caseData[this.unformatSlider()].undetermined ? this.caseData[this.unformatSlider()].undetermined : 0};
     }
 
     TweenMax.to(counterStart, 1.5, {var: counterEnd.var, onUpdate: () => {

@@ -51,18 +51,30 @@
   }
 
   &__stat {
-    font-size: em(50);
+    font-size: em(60);
     font-family: $heading-font-family-script;
     font-weight: bold;
     color: $black;
-    margin-bottom: 2rem;
-    opacity: 0;
-    transform: translateY(-40px);
-    transition: transform 0.5s ease-in-out;
 
-    &.is-animating {
-      opacity: 1;
-      transform: translateY(0);
+    &--heading {
+      font-family: $heading-font-family-script;
+      font-weight: bold;
+      font-size: em(22);
+      color: $black;
+    }
+
+    &--wrapper {
+      @include span-columns(6 of 12);
+      @include omega(2n);
+      margin-bottom: 2rem;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: transform 0.5s ease-in-out;
+
+      &.is-animating {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   }
 
