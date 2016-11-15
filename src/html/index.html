@@ -7,6 +7,14 @@
 
 {% block content %}
   <section class="intro neat-container">
+    <div class="bubble-map__wrapper--top">
+      <div class="neat-row">
+        <h1 class="slider__date" id="js-date"></h1>
+      </div>
+      <div class="neat-row">
+        <div class="slider" id="js-slider"></div>
+      </div>
+    </div>
     <div class="bubble-map__wrapper--interactive">
       <div class="neat-row">
         <div class="bubble-map__controls">
@@ -14,12 +22,6 @@
             <li><a class="tabs__link is-active" data-case="total" href="#">All cases</a></li>
             <li><a class="tabs__link" data-case="travel" href="#">Travel-related</a></li>
             <li><a class="tabs__link" data-case="local" href="#">Locally-aquired</a></li>
-          </div>
-          <div class="neat-row">
-            <div class="slider" id="js-slider"></div>
-          </div>
-          <div class="neat-row">
-            <h1 class="slider__date" id="js-date"></h1>
           </div>
         </div>
       </div>

@@ -1,5 +1,16 @@
 .slider {
+  margin-bottom: 1rem;
+  
   .noUi-base {
     z-index: 0;
+  }
+
+  &__date {
+    font-family: $heading-font-family-sans;
+    font-size: em(46);
+    font-weight: bold;
+    margin: 0;
+    margin-bottom: 1rem;
+    text-align: left;
   }
 }

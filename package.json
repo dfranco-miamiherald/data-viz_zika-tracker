@@ -76,6 +76,7 @@
     "moment": "^2.16.0",
     "morgan": "1.7.0",
     "no-ui-slider": "^1.2.0",
+    "normalize.css": "^5.0.0",
     "numeral": "^1.5.3",
     "object-assign": "4.0.1",
     "open": "0.0.5",

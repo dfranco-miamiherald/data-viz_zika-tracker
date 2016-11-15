@@ -2,6 +2,10 @@
   position: relative;
 
   &__wrapper {
+    &--top {
+      @include span-columns(7 of 12);  
+    }
+
     &--interactive {
       @include span-columns(7 of 12);
     }
@@ -51,7 +55,7 @@
   }
 
   &__stat {
-    font-size: em(60);
+    font-size: em(100);
     font-family: $heading-font-family-script;
     font-weight: bold;
     color: $black;
@@ -59,7 +63,7 @@
     &--heading {
       font-family: $heading-font-family-script;
       font-weight: bold;
-      font-size: em(22);
+      font-size: em(23);
       color: $black;
     }
 
