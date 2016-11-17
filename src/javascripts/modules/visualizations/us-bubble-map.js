@@ -23,7 +23,8 @@ class BubbleMapUS {
       '.bubble-map__stat--total-us',
       '.bubble-map__stat--pregnant-us',
       '.bubble-map__stat--non-resident-us',
-      '.bubble-map__stat--unknown-us']
+      '.bubble-map__stat--unknown-us'
+    ]
   }
 
   render() {
