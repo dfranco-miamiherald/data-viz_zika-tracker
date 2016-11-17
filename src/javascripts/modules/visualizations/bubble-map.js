@@ -56,7 +56,7 @@ class BubbleMap {
 
     this.shapeData = shapeData;
     this.caseData = caseData;
-    const counties = topojson.feature(this.shapeData, this.shapeData.objects['florida-counties']).features
+    const counties = topojson.feature(this.shapeData, this.shapeData.objects['places']).features
 
     $('.bubble-map__stat--wrapper').addClass('is-animating');
     this.drawSlider();
@@ -66,7 +66,7 @@ class BubbleMap {
     });
 
     this.projection = d3.geoEquirectangular()
-      .fitSize([this.width, this.height], topojson.feature(this.shapeData, this.shapeData.objects['florida-counties']));
+      .fitSize([this.width, this.height], topojson.feature(this.shapeData, this.shapeData.objects['places']));
 
     this.path = d3.geoPath()
       .projection(this.projection);
@@ -87,7 +87,7 @@ class BubbleMap {
     this.svg.append('g')
         .attr('class', 'bubble-map__bubble')
       .selectAll('circle')
-        .data(topojson.feature(this.shapeData, this.shapeData.objects['florida-counties']).features
+        .data(topojson.feature(this.shapeData, this.shapeData.objects['places']).features
           .sort((a, b) => {
             if (this.caseData[this.caseData.length - 1].counties[b.id] && this.caseData[this.caseData.length - 1].counties[a.id]) {
               return this.caseData[this.caseData.length - 1].counties[b.id][this.dataColumn] - this.caseData[this.caseData.length - 1].counties[a.id][this.dataColumn]
