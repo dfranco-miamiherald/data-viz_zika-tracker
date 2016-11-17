@@ -1,6 +1,14 @@
 .slider {
+  @include span-columns(6 of 8);
   margin-bottom: 1rem;
-  
+
+  &__controls {
+    @include span-columns(2 of 8);
+    text-align: left;
+    padding-left: 1rem;
+    margin-bottom: 1rem;
+  }
+
   .noUi-base {
     z-index: 0;
   }

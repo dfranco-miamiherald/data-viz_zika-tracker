@@ -1,0 +1,61 @@
+<section class="intro neat-container">
+  <div class="bubble-map__wrapper--top">
+    <div class="neat-row">
+      <h1 class="slider__date" id="js-date"></h1>
+    </div>
+    <div class="neat-row">
+      <div class="slider" id="js-slider"></div>
+      <div class="slider__controls">
+        <i class="fa fa-play-circle fa-2x" aria-hidden="true"></i>
+        <i class="fa fa-chevron-circle-left fa-2x" aria-hidden="true"></i>
+        <i class="fa fa-chevron-circle-right fa-2x" aria-hidden="true"></i>
+      </div>
+    </div>
+  </div>
+  <div class="bubble-map__wrapper--interactive">
+    <div class="neat-row">
+      <div class="bubble-map__controls">
+        <div class="neat-row tabs">
+          <li><a class="tabs__link is-active" data-case="total" href="#">Travel + Local</a></li>
+          <li><a class="tabs__link" data-case="local" href="#">Local Only</a></li>
+          <li><a class="tabs__link" data-case="travel" href="#">Travel Only</a></li>
+        </div>
+      </div>
+    </div>
+    <div class="neat-row">
+      <div id="bubbleMap" class="bubble-map js-bubble-map"
+        data-url="http://media.miamiherald.com/static/media/projects/2016/zika-interactive-v2/data/zika.json"
+        data-shape="http://media.miamiherald.com/static/media/projects/2016/zika-interactive-v2/data/florida-counties.json">
+      </div>
+    </div>
+  </div>
+  <div class="bubble-map__wrapper--stats neat-container">
+    <div class="bubble-map__stat--wrapper">
+      <div class="bubble-map__stat--heading">All Zika cases</div>
+      <div class="bubble-map__stat bubble-map__stat--total">0</div>
+    </div>
+    <div class="bubble-map__stat--wrapper">
+      <div class="bubble-map__stat--heading">Locally-aquired</div>
+      <div class="bubble-map__stat bubble-map__stat--local">0</div>
+    </div>
+    <div class="bubble-map__stat--wrapper">
+      <div class="bubble-map__stat--heading">Travel-related</div>
+      <div class="bubble-map__stat bubble-map__stat--travel">0</div>
+    </div>
+    <div class="bubble-map__stat--wrapper">
+      <div class="bubble-map__stat--heading">Pregnant women</div>
+      <div class="bubble-map__stat bubble-map__stat--pregnant">0</div>
+    </div>
+    <div class="bubble-map__stat--wrapper">
+      <div class="bubble-map__stat--heading">Non-resident</div>
+      <div class="bubble-map__stat bubble-map__stat--non-resident">0</div>
+    </div>
+    <div class="bubble-map__stat--wrapper">
+      <div class="bubble-map__stat--heading">Unknown ??</div>
+      <div class="bubble-map__stat bubble-map__stat--unknown">0</div>
+    </div>
+  </div>
+  <!-- <div class="intro__description">
+    <a href="#panel-1" class="js-scrollTo">¿que mas?</a>
+  </div> -->
+</section>
