@@ -6,7 +6,7 @@ import numeral from 'numeral';
 import noUiSlider from 'no-ui-slider';
 import moment from 'moment';
 
-class BubbleMap {
+class BubbleMapFl {
   constructor(el, dataUrl, shapeUrl) {
     this.el = el;
     this.dataUrl = dataUrl;
@@ -17,13 +17,19 @@ class BubbleMap {
     this.mapWidth = this.width;
     this.shapeUrl = shapeUrl;
     this.dataColumn = 'total'
-    this.totals = ['.bubble-map__stat--local', '.bubble-map__stat--travel', '.bubble-map__stat--total', '.bubble-map__stat--pregnant', '.bubble-map__stat--non-resident', '.bubble-map__stat--unknown']
+    this.totals = [
+      '.bubble-map__stat--local-fl',
+      '.bubble-map__stat--travel-fl',
+      '.bubble-map__stat--total-fl',
+      '.bubble-map__stat--pregnant-fl',
+      '.bubble-map__stat--non-resident-fl',
+      '.bubble-map__stat--unknown-fl']
   }
 
   render() {
     this.svg = d3.select(this.el).append('svg')
         .attr('width', '100%')
-        .attr('class', 'bubble-map__svg')
+        .attr('class', 'bubble-map__svg-fl')
         .append('g');
 
     this.loadData();
@@ -40,7 +46,7 @@ class BubbleMap {
       this.height = Math.ceil(this.aspectRatio * (this.width - this.margin.top - this.margin.bottom));
 
       TweenLite.set(chart, { scale: this.width / this.mapWidth });
-      d3.select('.bubble-map__svg').attr('height', this.height);
+      d3.select('.bubble-map__svg-fl').attr('height', this.height);
     });
   }
 
@@ -58,7 +64,7 @@ class BubbleMap {
     this.caseData = caseData;
     const counties = topojson.feature(this.shapeData, this.shapeData.objects['places']).features
 
-    $('.bubble-map__stat--wrapper').addClass('is-animating');
+    $('.bubble-map__stat--wrapper--fl').addClass('is-animating');
     this.drawSlider();
     this.drawTooltip();
     this.totals.forEach(i => {
@@ -137,8 +143,8 @@ class BubbleMap {
   }
 
   drawSlider () {
-    this.stepSlider = $('#js-slider')[0];
-    noUiSlider.create(this.stepSlider, {
+    this.stepSlider = $('#js-slider-fl')[0];
+    let slider = noUiSlider .create(this.stepSlider, {
       animate: true,
       animationDuration: 3000,
       start: 0,
@@ -151,19 +157,19 @@ class BubbleMap {
 
     $(() => this.stepSlider.noUiSlider.set(this.caseData.length - 1));
 
-    $('.js-play').click(() => {
+    $('.js-play--fl').click(() => {
       this.stepSlider.noUiSlider.set(this.caseData.length - 1);
     });
-    $('.js-step-down').click(() => {
+    $('.js-step-down--fl').click(() => {
       this.stepSlider.noUiSlider.set(this.unformatSlider() - 1);
     });
-    $('.js-step-up').click(() => {
+    $('.js-step-up--fl').click(() => {
       this.stepSlider.noUiSlider.set(this.unformatSlider() + 1);
     });
   }
 
   resizeBubbles() {
-    this.dataColumn = $('.tabs__link.is-active').data('case');
+    this.dataColumn = $('.tabs__link--fl.is-active').data('case');
 
     this.svg
       .selectAll('circle')
@@ -178,10 +184,10 @@ class BubbleMap {
   }
 
   switchTabs() {
-    $('.tabs__link').click(() => {
+    $('.tabs__link--fl').click(() => {
       event.preventDefault();
 
-      $('.tabs__link').removeClass('is-active');
+      $('.tabs__link--fl').removeClass('is-active');
       $(event.currentTarget).addClass('is-active');
 
       this.resizeBubbles();
@@ -190,17 +196,17 @@ class BubbleMap {
 
   setTotals(el) {
     var counterStart = {var: $(el).text()};
-    if (el === '.bubble-map__stat--local') {
+    if (el === '.bubble-map__stat--local-fl') {
       var counterEnd = {var: this.caseData[this.unformatSlider()].totalLocal};
-    } else if (el === '.bubble-map__stat--travel') {
+    } else if (el === '.bubble-map__stat--travel-fl') {
       var counterEnd = {var: this.caseData[this.unformatSlider()].totalTravel};
-    } else if (el === '.bubble-map__stat--total') {
+    } else if (el === '.bubble-map__stat--total-fl') {
       var counterEnd = {var: +this.caseData[this.unformatSlider()].totalLocal + +this.caseData[this.unformatSlider()].totalTravel};
-    } else if (el === '.bubble-map__stat--pregnant') {
+    } else if (el === '.bubble-map__stat--pregnant-fl') {
       var counterEnd = {var: this.caseData[this.unformatSlider()].pregnant};
-    } else if (el === '.bubble-map__stat--non-resident') {
-      var counterEnd = {var: this.caseData[this.unformatSlider()]['non-resident']};
-    } else if (el === '.bubble-map__stat--unknown') {
+    } else if (el === '.bubble-map__stat--non-resident-fl') {
+      var counterEnd = {var: this.caseData[this.unformatSlider()]['non-resident-fl']};
+    } else if (el === '.bubble-map__stat--unknown-fl') {
       var counterEnd = {var: this.caseData[this.unformatSlider()].undetermined ? this.caseData[this.unformatSlider()].undetermined : 0};
     }
 
@@ -216,13 +222,13 @@ class BubbleMap {
   }
 
   setDate() {
-    $('#js-date').html(moment(this.caseData[this.unformatSlider()].date).format('MMM. D, YYYY'));
+    $('#js-date-fl').html(moment(this.caseData[this.unformatSlider()].date).format('MMM. D, YYYY'));
   }
 
 }
 
-const loadBubbleMap = () => {
-  const $bubbleMap = $('.js-bubble-map');
+const loadBubbleMapFl = () => {
+  const $bubbleMap = $('.js-bubble-map-fl');
 
   $bubbleMap.each((index) => {
     const $this = $bubbleMap.eq(index);
@@ -230,8 +236,8 @@ const loadBubbleMap = () => {
     const dataUrl = $this.data('url');
     const shapeUrl = $this.data('shape');
 
-    new BubbleMap(`#${id}`, dataUrl, shapeUrl).render();
+    new BubbleMapFl(`#${id}`, dataUrl, shapeUrl).render();
   });
 }
 
-export { loadBubbleMap };
+export { loadBubbleMapFl };

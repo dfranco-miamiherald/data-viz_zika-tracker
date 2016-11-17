@@ -1,5 +1,8 @@
-import { loadBubbleMap } from './modules/visualizations/bubble-map';
-loadBubbleMap();
+import { loadBubbleMapFl } from './modules/visualizations/fl-bubble-map';
+loadBubbleMapFl();
+
+import { loadBubbleMapUS } from './modules/visualizations/us-bubble-map';
+loadBubbleMapUS();
 
 import { loadSlides } from './modules/utilities/slides';
 loadSlides();
