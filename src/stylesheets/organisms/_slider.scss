@@ -7,6 +7,17 @@
     text-align: left;
     padding-left: 1rem;
     margin-bottom: 1rem;
+
+    .js-play,
+    .js-step-down,
+    .js-step-up {
+      cursor: pointer;
+      transition: color 0.3s linear;
+
+      &:hover {
+        color: $blue;
+      }
+    }
   }
 
   .noUi-base {

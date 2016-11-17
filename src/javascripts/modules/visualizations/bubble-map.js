@@ -150,6 +150,16 @@ class BubbleMap {
     });
 
     $(() => this.stepSlider.noUiSlider.set(this.caseData.length - 1));
+
+    $('.js-play').click(() => {
+      this.stepSlider.noUiSlider.set(this.caseData.length - 1);
+    });
+    $('.js-step-down').click(() => {
+      this.stepSlider.noUiSlider.set(this.unformatSlider() - 1);
+    });
+    $('.js-step-up').click(() => {
+      this.stepSlider.noUiSlider.set(this.unformatSlider() + 1);
+    });
   }
 
   resizeBubbles() {
