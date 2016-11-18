@@ -175,7 +175,7 @@ class BubbleMapFl {
     this.svg
       .selectAll('circle')
         .transition()
-        .duration(750)
+        .duration(250)
         .attr('r', (d) => {
           if (this.caseData[this.unformatSlider()].counties[d.id]) {
             return this.radius(this.caseData[this.unformatSlider()].counties[d.id][this.dataColumn]);
