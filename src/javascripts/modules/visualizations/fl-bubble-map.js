@@ -211,10 +211,10 @@ class BubbleMapFl {
       var counterEnd = {var: this.caseData[this.unformatSlider()].undetermined ? this.caseData[this.unformatSlider()].undetermined : 0};
     }
 
-    TweenMax.to(counterStart, 1.5, {var: counterEnd.var, onUpdate: () => {
+    TweenMax.to(counterStart, 0.3, {var: counterEnd.var, onUpdate: () => {
         $(el).html(Math.ceil(counterStart.var));
       },
-      ease:Circ.easeOut
+      ease: Circ.easeOut
     });
   }
 

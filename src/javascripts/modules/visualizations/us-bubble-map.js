@@ -17,12 +17,12 @@ class BubbleMapUS {
     this.height = Math.ceil(this.aspectRatio * (this.width - this.margin.top - this.margin.bottom));
     this.mapWidth = this.width;
     this.shapeUrl = shapeUrl;
-    this.dataColumn = 'total'
+    this.dataColumn = 'total';
     this.totals = [
       '.bubble-map__stat--local-us',
       '.bubble-map__stat--travel-us',
       '.bubble-map__stat--total-us'
-    ]
+    ];
   }
 
   render() {
@@ -180,7 +180,8 @@ class BubbleMapUS {
             return this.radius(this.caseData[this.unformatSlider()].places[d.id][this.dataColumn]);
           }
         });
-    this.max = this.caseData[this.unformatSlider()].totalTravel
+
+    this.max = this.caseData[this.unformatSlider()].totalTravel;
   }
 
   switchTabs() {
@@ -200,7 +201,7 @@ class BubbleMapUS {
     if (el === '.bubble-map__stat--local-us') {
       var counterEnd = {var: this.caseData[this.unformatSlider()].totalLocal};
     } else if (el === '.bubble-map__stat--travel-us') {
-      var counterEnd = {var: this.caseData[this.unformatSlider()].totalTravel};
+      var counterEnd = {var: this.caseData[this.unformatSlider()].totalTravel.toLocaleString()};
     } else if (el === '.bubble-map__stat--total-us') {
       var counterEnd = {var: +this.caseData[this.unformatSlider()].totalLocal + +this.caseData[this.unformatSlider()].totalTravel};
     }
