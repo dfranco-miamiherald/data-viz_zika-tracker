@@ -20,10 +20,7 @@ class BubbleMapUS {
     this.totals = [
       '.bubble-map__stat--local-us',
       '.bubble-map__stat--travel-us',
-      '.bubble-map__stat--total-us',
-      '.bubble-map__stat--pregnant-us',
-      '.bubble-map__stat--non-resident-us',
-      '.bubble-map__stat--unknown-us'
+      '.bubble-map__stat--total-us'
     ]
   }
 
@@ -204,12 +201,6 @@ class BubbleMapUS {
       var counterEnd = {var: this.caseData[this.unformatSlider()].totalTravel};
     } else if (el === '.bubble-map__stat--total-us') {
       var counterEnd = {var: +this.caseData[this.unformatSlider()].totalLocal + +this.caseData[this.unformatSlider()].totalTravel};
-    } else if (el === '.bubble-map__stat--pregnant-us') {
-      var counterEnd = {var: this.caseData[this.unformatSlider()].pregnant};
-    } else if (el === '.bubble-map__stat--non-resident-us') {
-      var counterEnd = {var: this.caseData[this.unformatSlider()]['non-resident-us']};
-    } else if (el === '.bubble-map__stat--unknown-us') {
-      var counterEnd = {var: this.caseData[this.unformatSlider()].undetermined ? this.caseData[this.unformatSlider()].undetermined : 0};
     }
 
     TweenMax.to(counterStart, 1.5, {var: counterEnd.var, onUpdate: () => {
