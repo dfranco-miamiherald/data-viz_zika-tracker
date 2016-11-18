@@ -206,7 +206,7 @@ class BubbleMapUS {
       var counterEnd = {var: +this.caseData[this.unformatSlider()].totalLocal + +this.caseData[this.unformatSlider()].totalTravel};
     }
 
-    TweenMax.to(counterStart, 1.5, {var: counterEnd.var, onUpdate: () => {
+    TweenMax.to(counterStart, 0.3, {var: counterEnd.var, onUpdate: () => {
         $(el).html(Math.ceil(counterStart.var));
       },
       ease:Circ.easeOut
