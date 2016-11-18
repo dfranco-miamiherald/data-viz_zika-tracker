@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import * as d3 from 'd3';
+import * as d3_composite from 'd3-composite-projections';
 import * as topojson from 'topojson';
-import { albersUsaPr } from '../vendor/albers-usa-pr';
 import { TweenLite } from 'gsap';
 import numeral from 'numeral';
 import noUiSlider from 'no-ui-slider';
@@ -70,9 +70,7 @@ class BubbleMapUS {
       this.setTotals(i);
     });
 
-    this.projection = albersUsaPr()
-        .scale(1070)
-        .translate([this.width / 2, this.height / 2]);
+    this.projection = d3_composite.geoAlbersUsaTerritories();
 
     this.path = d3.geoPath()
       .projection(this.projection);
@@ -196,7 +194,6 @@ class BubbleMapUS {
   }
 
   setTotals(el) {
-    console.log(this.caseData[this.caseData.length - 1])
     var counterStart = {var: $(el).text()};
     if (el === '.bubble-map__stat--local-us') {
       var counterEnd = {var: this.caseData[this.unformatSlider()].totalLocal};
