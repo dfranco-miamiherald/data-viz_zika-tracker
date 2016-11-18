@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import * as d3 from 'd3';
 import * as topojson from 'topojson';
+import { albersUsaPr } from '../vendor/albers-usa-pr';
 import { TweenLite } from 'gsap';
 import numeral from 'numeral';
 import noUiSlider from 'no-ui-slider';
@@ -69,8 +70,9 @@ class BubbleMapUS {
       this.setTotals(i);
     });
 
-    this.projection = d3.geoAlbersUsa()
-      .fitSize([this.width, this.height], topojson.feature(this.shapeData, this.shapeData.objects['places']));
+    this.projection = albersUsaPr()
+        .scale(1070)
+        .translate([this.width / 2, this.height / 2]);
 
     this.path = d3.geoPath()
       .projection(this.projection);
@@ -86,7 +88,7 @@ class BubbleMapUS {
     this.max = this.caseData[0].totalTravel;
     this.radius = d3.scaleSqrt()
         .domain([0, this.max])
-        .range([0, 5]);
+        .range([0, 3.5]);
 
     this.svg.append('g')
         .attr('class', 'bubble-map__bubble')

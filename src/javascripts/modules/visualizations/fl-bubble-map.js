@@ -16,14 +16,15 @@ class BubbleMapFl {
     this.height = Math.ceil(this.aspectRatio * (this.width - this.margin.top - this.margin.bottom));
     this.mapWidth = this.width;
     this.shapeUrl = shapeUrl;
-    this.dataColumn = 'total'
+    this.dataColumn = 'total';
     this.totals = [
       '.bubble-map__stat--local-fl',
       '.bubble-map__stat--travel-fl',
       '.bubble-map__stat--total-fl',
       '.bubble-map__stat--pregnant-fl',
       '.bubble-map__stat--non-resident-fl',
-      '.bubble-map__stat--unknown-fl']
+      '.bubble-map__stat--unknown-fl'
+    ];
   }
 
   render() {
