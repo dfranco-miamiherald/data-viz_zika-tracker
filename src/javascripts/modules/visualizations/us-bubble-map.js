@@ -83,6 +83,11 @@ class BubbleMapUS {
         .attr('class', 'bubble-map__county')
         .attr('d', this.path);
 
+    this.svg.append('path')
+        .style('fill','none')
+        .style('stroke','#000')
+        .attr('d', this.projection.getCompositionBorders());
+
     this.max = this.caseData[0].totalTravel;
     this.radius = d3.scaleSqrt()
         .domain([0, this.max])
