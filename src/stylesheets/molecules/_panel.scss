@@ -1,7 +1,13 @@
 .panel {
   @include size(100%);
-  position: absolute;
+
+  @include media($medium-screen-up) {
+    position: absolute;
+    padding: 2em;
+  }
+
   background-image: url("/images/example_bg_spacer_h.gif");
+
   &--blue { background-color: $blue; }
   &--silver { background-color: $silver; }
   &--cyan { background-color: $cyan; }
@@ -14,22 +20,9 @@
 
   &__pin-container {
     @include size(100%);
-    overflow: hidden;
-    perspective: 1000px;
-  }
 
-  &__description {
-    font-size: 15px;
-  	color: $white;
-  	@include position(absolute, 50% null null 50%);
-    transform: translateX(-50%);
-  	display: block;
-  	height: 0;
-  	overflow: visible;
-    text-align: center;
-
-    a {
-      display: block;
+    @include media($medium-screen-up) {
+      overflow: hidden;  
     }
   }
 }

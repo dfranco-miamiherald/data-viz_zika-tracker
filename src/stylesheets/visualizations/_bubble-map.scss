@@ -2,25 +2,28 @@
   position: relative;
 
   &__wrapper {
-    &--top {
-      @include span-columns(7 of 12);
-    }
+    @include media($medium-screen-up) {
+      &--top {
+        @include span-columns(7 of 12);
+      }
 
-    &--interactive {
-      @include span-columns(7 of 12);
-    }
+      &--interactive {
+        @include span-columns(8 of 12);
+      }
 
-    &--stats {
-      @include span-columns(5 of 12);
+      &--stats {
+        @include span-columns(4 of 12);
+      }  
     }
   }
 
-  &__county {
+  &__county,
+  &__state {
     fill: transparentize($black, 0.8);
     stroke: $white;
     stroke-linejoin: round;
     stroke-linecap: round;
-    stroke-width: 3px;
+    stroke-width: 1px;
   }
 
   &__bubble {
