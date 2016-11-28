@@ -28,11 +28,11 @@ class BubbleMapUS {
   render() {
     this.svg = d3.select(this.el).append('svg')
         .attr('width', '100%')
+        .attr('height', this.height)
         .attr('class', 'bubble-map__svg-us')
         .append('g');
 
     this.loadData();
-    this.resizeBubbleMap();
     $(window).on('resize', this.resizeBubbleMap.bind(this));
   }
 
@@ -234,7 +234,9 @@ const loadBubbleMapUS = () => {
     const dataUrl = $this.data('url');
     const shapeUrl = $this.data('shape');
 
-    new BubbleMapUS(`#${id}`, dataUrl, shapeUrl).render();
+    $(function() {
+      new BubbleMapUS(`#${id}`, dataUrl, shapeUrl).render();
+    });
   });
 }
 

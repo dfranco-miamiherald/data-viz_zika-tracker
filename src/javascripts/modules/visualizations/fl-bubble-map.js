@@ -30,6 +30,7 @@ class BubbleMapFl {
   render() {
     this.svg = d3.select(this.el).append('svg')
         .attr('width', '100%')
+        .attr('height', this.height)
         .attr('class', 'bubble-map__svg-fl')
         .append('g');
 
