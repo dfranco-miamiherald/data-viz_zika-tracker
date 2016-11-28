@@ -35,7 +35,7 @@ class BubbleMapFl {
         .append('g');
 
     this.loadData();
-    this.resizeBubbleMap();
+    // this.resizeBubbleMap();
     $(window).on('resize', this.resizeBubbleMap.bind(this));
   }
 

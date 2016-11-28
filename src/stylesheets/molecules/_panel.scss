@@ -2,10 +2,6 @@
   @include size(100%);
   position: absolute;
 
-  @include media($medium-screen-up) {
-    padding: 2em;
-  }
-
   background-image: url("/images/example_bg_spacer_h.gif");
 
   &--blue { background-color: $blue; }

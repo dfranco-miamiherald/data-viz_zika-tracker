@@ -1,65 +1,67 @@
 <section id="panel-1" class="panel">
-  <video id="vid" loop muted autoplay controls="false" class="fullscreen-bg__video">
-      <source src="video/timelapse.webm" type="video/webm">
-      <source src="video/timelapse.mp4" type="video/mp4">
-  </video>
-  <div class="bubble-map__wrapper--top">
-    <div class="neat-row">
-      <h1 class="slider__date" id="js-date-fl"></h1>
-    </div>
-    <div class="neat-row">
-      <div class="slider" id="js-slider-fl"></div>
-      <div class="slider__controls">
-        <i class="fa fa-play-circle fa-2x js-play js-play--fl" aria-hidden="true"></i>
-        <i class="fa fa-chevron-circle-left fa-2x js-step-down js-step-down--fl" aria-hidden="true"></i>
-        <i class="fa fa-chevron-circle-right fa-2x js-step-up js-step-up--fl" aria-hidden="true"></i>
+  <div class="neat-container">
+    <!-- <video id="vid" loop muted autoplay controls="false" class="fullscreen-bg__video">
+        <source src="video/timelapse.webm" type="video/webm">
+        <source src="video/timelapse.mp4" type="video/mp4">
+    </video> -->
+    <div class="bubble-map__wrapper--top">
+      <div class="neat-row">
+        <h1 class="slider__date" id="js-date-fl"></h1>
       </div>
-    </div>
-  </div>
-  <div class="bubble-map__wrapper--interactive">
-    <div class="neat-row">
-      <div class="bubble-map__controls">
-        <div class="neat-row tabs">
-          <li><a class="tabs__link tabs__link--fl is-active" data-case="total" href="#">Travel + Local</a></li>
-          <li><a class="tabs__link tabs__link--fl" data-case="local" href="#">Local Only</a></li>
-          <li><a class="tabs__link tabs__link--fl" data-case="travel" href="#">Travel Only</a></li>
+      <div class="neat-row">
+        <div class="slider" id="js-slider-fl"></div>
+        <div class="slider__controls">
+          <i class="fa fa-play-circle fa-2x js-play js-play--fl" aria-hidden="true"></i>
+          <i class="fa fa-chevron-circle-left fa-2x js-step-down js-step-down--fl" aria-hidden="true"></i>
+          <i class="fa fa-chevron-circle-right fa-2x js-step-up js-step-up--fl" aria-hidden="true"></i>
         </div>
       </div>
     </div>
-    <div class="neat-row">
-      <div id="bubbleMap1" class="bubble-map js-bubble-map-fl"
-        data-url="http://media.miamiherald.com/static/media/projects/2016/zika-interactive-v2/data/zika.json"
-        data-shape="http://media.miamiherald.com/static/media/projects/2016/zika-interactive-v2/data/florida-counties.json">
+    <div class="bubble-map__wrapper--interactive">
+      <div class="neat-row">
+        <div class="bubble-map__controls">
+          <div class="neat-row tabs">
+            <li><a class="tabs__link tabs__link--fl is-active" data-case="total" href="#">Travel + Local</a></li>
+            <li><a class="tabs__link tabs__link--fl" data-case="local" href="#">Local Only</a></li>
+            <li><a class="tabs__link tabs__link--fl" data-case="travel" href="#">Travel Only</a></li>
+          </div>
+        </div>
+      </div>
+      <div class="neat-row">
+        <div id="bubbleMap1" class="bubble-map js-bubble-map-fl"
+          data-url="http://media.miamiherald.com/static/media/projects/2016/zika-interactive-v2/data/zika.json"
+          data-shape="http://media.miamiherald.com/static/media/projects/2016/zika-interactive-v2/data/florida-counties.json">
+        </div>
       </div>
     </div>
+    <div class="bubble-map__wrapper--stats neat-container">
+      <div class="bubble-map__stat--wrapper bubble-map__stat--wrapper--fl">
+        <div class="bubble-map__stat--heading">All Zika cases</div>
+        <div class="bubble-map__stat bubble-map__stat--total-fl">0</div>
+      </div>
+      <div class="bubble-map__stat--wrapper bubble-map__stat--wrapper--fl">
+        <div class="bubble-map__stat--heading">Locally-aquired</div>
+        <div class="bubble-map__stat bubble-map__stat--local-fl">0</div>
+      </div>
+      <div class="bubble-map__stat--wrapper bubble-map__stat--wrapper--fl">
+        <div class="bubble-map__stat--heading">Travel-related</div>
+        <div class="bubble-map__stat bubble-map__stat--travel-fl">0</div>
+      </div>
+      <div class="bubble-map__stat--wrapper bubble-map__stat--wrapper--fl">
+        <div class="bubble-map__stat--heading">Pregnant women</div>
+        <div class="bubble-map__stat bubble-map__stat--pregnant-fl">0</div>
+      </div>
+      <div class="bubble-map__stat--wrapper bubble-map__stat--wrapper--fl">
+        <div class="bubble-map__stat--heading">Non-resident</div>
+        <div class="bubble-map__stat bubble-map__stat--non-resident-fl">0</div>
+      </div>
+      <div class="bubble-map__stat--wrapper bubble-map__stat--wrapper--fl">
+        <div class="bubble-map__stat--heading">Unknown ??</div>
+        <div class="bubble-map__stat bubble-map__stat--unknown-fl">0</div>
+      </div>
+      <!-- <div class="next-section">
+        <a href="#panel-2" class="js-scrollTo">¿que mas?</a>
+      </div> -->
+    </div>
   </div>
-  <div class="bubble-map__wrapper--stats neat-container">
-    <div class="bubble-map__stat--wrapper bubble-map__stat--wrapper--fl">
-      <div class="bubble-map__stat--heading">All Zika cases</div>
-      <div class="bubble-map__stat bubble-map__stat--total-fl">0</div>
-    </div>
-    <div class="bubble-map__stat--wrapper bubble-map__stat--wrapper--fl">
-      <div class="bubble-map__stat--heading">Locally-aquired</div>
-      <div class="bubble-map__stat bubble-map__stat--local-fl">0</div>
-    </div>
-    <div class="bubble-map__stat--wrapper bubble-map__stat--wrapper--fl">
-      <div class="bubble-map__stat--heading">Travel-related</div>
-      <div class="bubble-map__stat bubble-map__stat--travel-fl">0</div>
-    </div>
-    <div class="bubble-map__stat--wrapper bubble-map__stat--wrapper--fl">
-      <div class="bubble-map__stat--heading">Pregnant women</div>
-      <div class="bubble-map__stat bubble-map__stat--pregnant-fl">0</div>
-    </div>
-    <div class="bubble-map__stat--wrapper bubble-map__stat--wrapper--fl">
-      <div class="bubble-map__stat--heading">Non-resident</div>
-      <div class="bubble-map__stat bubble-map__stat--non-resident-fl">0</div>
-    </div>
-    <div class="bubble-map__stat--wrapper bubble-map__stat--wrapper--fl">
-      <div class="bubble-map__stat--heading">Unknown ??</div>
-      <div class="bubble-map__stat bubble-map__stat--unknown-fl">0</div>
-    </div>
-  </div>
-  <!-- <div class="next-section">
-    <a href="#panel-2" class="js-scrollTo">¿que mas?</a>
-  </div> -->
 </section>

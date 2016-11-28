@@ -1,6 +1,13 @@
 .bubble-map {
   position: relative;
 
+  &__svg {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
   &__wrapper {
     @include media($medium-screen-up) {
       &--top {
@@ -13,7 +20,7 @@
 
       &--stats {
         @include span-columns(4 of 12);
-      }  
+      }
     }
   }
 
