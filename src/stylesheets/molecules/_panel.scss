@@ -1,8 +1,8 @@
 .panel {
   @include size(100%);
+  position: absolute;
 
   @include media($medium-screen-up) {
-    position: absolute;
     padding: 2em;
   }
 
@@ -20,9 +20,6 @@
 
   &__pin-container {
     @include size(100%);
-
-    @include media($medium-screen-up) {
-      overflow: hidden;  
-    }
+    overflow: hidden;
   }
 }
