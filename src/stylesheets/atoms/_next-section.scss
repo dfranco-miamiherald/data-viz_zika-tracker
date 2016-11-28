@@ -1,0 +1,4 @@
+.next-section {
+  @include position(absolute, null null 2em 50%);
+  transform: translateX(-50%);
+}

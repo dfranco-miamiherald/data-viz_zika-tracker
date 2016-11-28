@@ -6,25 +6,8 @@
 {% extends 'layouts/application.html' %}
 
 {% block content %}
-  {% include 'partials/intro.html' %}
   <div class="panel__pin-container" id="pinContainer">
     {% include 'partials/section-1.html' %}
-    <section id="panel-2" class="panel panel--cyan">
-      <div class="panel__description">
-        <b>TWO</b>
-        <a href="#panel-3" class="js-scrollTo">rien d'autre?</a>
-      </div>
-    </section>
-    <section id="panel-3"class="panel panel--steel-blue">
-      <div class="panel__description">
-        <b>THREE</b>
-        <a href="#panel-4" class="js-scrollTo">seriously?</a>
-      </div>
-    </section>
-    <section id="panel-4" class="panel panel--silver">
-      <div class="panel__description">
-        <b>THE END</b>
-      </div>
-    </section>
+    {% include 'partials/section-2.html' %}
   </div>
 {% endblock %}
