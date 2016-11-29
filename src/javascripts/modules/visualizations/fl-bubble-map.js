@@ -28,6 +28,7 @@ class BubbleMapFl {
   }
 
   render() {
+    console.log(this.el);
     this.svg = d3.select(this.el).append('svg')
         .attr('width', '100%')
         .attr('height', this.height)
@@ -35,7 +36,7 @@ class BubbleMapFl {
         .append('g');
 
     this.loadData();
-    // this.resizeBubbleMap();
+    this.resizeBubbleMap();
     $(window).on('resize', this.resizeBubbleMap.bind(this));
   }
 

@@ -1,6 +1,5 @@
 import $ from 'jquery';
 import * as d3 from 'd3';
-import * as d3_composite from 'd3-composite-projections';
 import * as topojson from 'topojson';
 import { TweenLite } from 'gsap';
 import numeral from 'numeral';
@@ -26,6 +25,7 @@ class BubbleMapUS {
   }
 
   render() {
+    console.log(this.el);
     this.svg = d3.select(this.el).append('svg')
         .attr('width', '100%')
         .attr('height', this.height)
@@ -33,6 +33,7 @@ class BubbleMapUS {
         .append('g');
 
     this.loadData();
+    this.resizeBubbleMap();
     $(window).on('resize', this.resizeBubbleMap.bind(this));
   }
 
@@ -61,7 +62,7 @@ class BubbleMapUS {
 
     this.shapeData = shapeData;
     this.caseData = caseData;
-    const counties = topojson.feature(this.shapeData, this.shapeData.objects['places']).features
+    const states = topojson.feature(this.shapeData, this.shapeData.objects['places']).features
 
     $('.bubble-map__stat--wrapper--us').addClass('is-animating');
     this.drawSlider();
@@ -70,7 +71,8 @@ class BubbleMapUS {
       this.setTotals(i);
     });
 
-    this.projection = d3_composite.geoAlbersUsaTerritories();
+    this.projection = d3.geoAlbersUsa()
+      .fitSize([this.width, this.height], topojson.feature(this.shapeData, this.shapeData.objects['places']));
 
     this.path = d3.geoPath()
       .projection(this.projection);
@@ -78,15 +80,10 @@ class BubbleMapUS {
     this.svg.append('g')
         .attr('class', 'bubble-map__states')
       .selectAll('path')
-        .data(counties)
+        .data(states)
       .enter().append('path')
         .attr('class', 'bubble-map__state')
         .attr('d', this.path);
-
-    this.svg.append('path')
-        .style('fill','none')
-        .style('stroke','#000')
-        .attr('d', this.projection.getCompositionBorders());
 
     this.max = this.caseData[0].totalTravel;
     this.radius = d3.scaleSqrt()
@@ -234,9 +231,7 @@ const loadBubbleMapUS = () => {
     const dataUrl = $this.data('url');
     const shapeUrl = $this.data('shape');
 
-    $(function() {
-      new BubbleMapUS(`#${id}`, dataUrl, shapeUrl).render();
-    });
+    new BubbleMapUS(`#${id}`, dataUrl, shapeUrl).render();
   });
 }
 
