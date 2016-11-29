@@ -4,9 +4,38 @@
       &--top {
         @include span-columns(7 of 12);
       }
-      &--stats {
-        @include span-columns(4 of 12);
+    }
+  }
+
+  &__territory {
+    @include media($medium-screen-up) {
+      @include span-columns(3 of 12);
+      border-right: solid 2px black;
+      &:last-child {
+        border-right: none;
       }
+    }
+
+    &--heading {
+      font-size: em(30);
+      text-transform: uppercase;
+      font-weight: bold;
+      margin-bottom: 3.5rem;
+      font-family: $heading-font-family-sans;
+    }
+  }
+
+  &__stat {
+    font-size: em(100);
+    font-family: $heading-font-family-script;
+    font-weight: bold;
+    color: $black;
+
+    &--heading {
+      font-family: $heading-font-family-script;
+      font-weight: bold;
+      font-size: em(23);
+      color: $black;
     }
   }
 }
