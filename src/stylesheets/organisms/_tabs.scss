@@ -4,14 +4,42 @@
 	margin: 0 0 1rem;
 
   li {
-    cursor: pointer;
-    display: inline-block;
     @include media($medium-screen-up) {
       @include span-columns(4 of 12);
       &:last-child {
         @include reset-display;
       }
     }
+  }
+
+  &--per-million-us {
+    @include media($medium-screen-up) {
+      li {
+        @include span-columns(4 of 8);
+        &:last-child {
+          @include reset-display;
+          margin-bottom: 3rem;
+        }
+      }
+    }
+  }
+
+  &--per-million-territories {
+    @include span-columns(4 of 12);
+    @include media($medium-screen-up) {
+      li {
+        @include span-columns(4 of 8);
+        &:last-child {
+          @include reset-display;
+          margin-bottom: 3rem;
+        }
+      }
+    }
+  }
+
+  li {
+    cursor: pointer;
+    display: inline-block;
 	}
 
   a {

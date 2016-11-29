@@ -1,10 +1,5 @@
 .territories {
   &__wrapper{
-    @include media($medium-screen-up) {
-      &--top {
-        @include span-columns(7 of 12);
-      }
-    }
   }
 
   &__territory {

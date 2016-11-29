@@ -5,8 +5,8 @@
         <h1 class="slider__date" id="js-date-us"></h1>
       </div>
       <div class="neat-row">
-        <div class="slider" id="js-slider-us"></div>
-        <div class="slider__controls">
+        <div class="slider slider--maps" id="js-slider-us"></div>
+        <div class="slider__controls slider__controls--maps">
           <i class="fa fa-play-circle fa-2x js-play js-play--us" aria-hidden="true"></i>
           <i class="fa fa-chevron-circle-left fa-2x js-step-down js-step-down--us" aria-hidden="true"></i>
           <i class="fa fa-chevron-circle-right fa-2x js-step-up js-step-up--us" aria-hidden="true"></i>
@@ -31,6 +31,10 @@
       </div>
     </div>
     <div class="bubble-map__wrapper--stats neat-container">
+      <div class="tabs tabs--per-million-us">
+        <li><a class="tabs__link tabs__link--us is-active" data-case="total" href="#">Travel</a></li>
+        <li><a class="tabs__link tabs__link--us" data-case="local" href="#">Per Million</a></li>
+      </div>
       <div class="bubble-map__stat--wrapper bubble-map__stat--wrapper--us">
         <div class="bubble-map__stat--heading">All Zika cases</div>
         <div class="bubble-map__stat bubble-map__stat--total-us">0</div>
