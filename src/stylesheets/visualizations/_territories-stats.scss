@@ -17,11 +17,14 @@
     }
 
     &--heading {
-      font-size: em(30);
       text-transform: uppercase;
       font-weight: bold;
       margin-bottom: 3.5rem;
       font-family: $heading-font-family-sans;
+
+      @include media($medium-screen-up) {
+        font-size: em(30);
+      }
     }
   }
 

@@ -18,7 +18,10 @@ class USTerritoriesStats {
       '.territories__stat--total-pr',
       '.territories__stat--local-usvi',
       '.territories__stat--travel-usvi',
-      '.territories__stat--total-usvi'
+      '.territories__stat--total-usvi',
+      '.territories__stat--local-totals',
+      '.territories__stat--travel-totals',
+      '.territories__stat--total-totals'
     ];
   }
 
@@ -68,6 +71,12 @@ class USTerritoriesStats {
       var counterEnd = {var: this.caseData[this.unformatSlider()].territories['United States Virgin Islands'].travel};
     } else if (el === '.territories__stat--total-usvi') {
       var counterEnd = {var: this.caseData[this.unformatSlider()].territories['United States Virgin Islands'].total};
+    } else if (el === '.territories__stat--local-totals') {
+      var counterEnd = {var: this.caseData[this.unformatSlider()].territoryTotalLocal};
+    } else if (el === '.territories__stat--travel-totals') {
+      var counterEnd = {var: this.caseData[this.unformatSlider()].territoryTotalTravel};
+    } else if (el === '.territories__stat--total-totals') {
+      var counterEnd = {var: +this.caseData[this.unformatSlider()].territoryTotalLocal + +this.caseData[this.unformatSlider()].territoryTotalTravel};
     }
 
     TweenMax.to(counterStart, 0.3, {var: counterEnd.var, onUpdate: () => {

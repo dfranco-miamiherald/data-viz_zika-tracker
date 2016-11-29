@@ -84,7 +84,7 @@ class BubbleMapUS {
         .attr('class', 'bubble-map__state')
         .attr('d', this.path);
 
-    this.max = this.caseData[0].totalTravel;
+    this.max = this.caseData[0].stateTotalTravel;
     this.radius = d3.scaleSqrt()
         .domain([0, this.max])
         .range([0, 3.5]);
@@ -180,7 +180,7 @@ class BubbleMapUS {
           }
         });
 
-    this.max = this.caseData[this.unformatSlider()].totalTravel;
+    this.max = this.caseData[this.unformatSlider()].stateTotalTravel;
   }
 
   switchTabs() {
@@ -197,11 +197,11 @@ class BubbleMapUS {
   setTotals(el) {
     var counterStart = {var: $(el).text()};
     if (el === '.bubble-map__stat--local-us') {
-      var counterEnd = {var: this.caseData[this.unformatSlider()].totalLocal};
+      var counterEnd = {var: this.caseData[this.unformatSlider()].stateTotalLocal};
     } else if (el === '.bubble-map__stat--travel-us') {
-      var counterEnd = {var: this.caseData[this.unformatSlider()].totalTravel.toLocaleString()};
+      var counterEnd = {var: this.caseData[this.unformatSlider()].stateTotalTravel};
     } else if (el === '.bubble-map__stat--total-us') {
-      var counterEnd = {var: +this.caseData[this.unformatSlider()].totalLocal + +this.caseData[this.unformatSlider()].totalTravel};
+      var counterEnd = {var: +this.caseData[this.unformatSlider()].stateTotalLocal + +this.caseData[this.unformatSlider()].stateTotalTravel};
     }
 
     TweenMax.to(counterStart, 0.3, {var: counterEnd.var, onUpdate: () => {
