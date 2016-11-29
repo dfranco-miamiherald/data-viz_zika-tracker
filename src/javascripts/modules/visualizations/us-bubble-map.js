@@ -25,7 +25,6 @@ class BubbleMapUS {
   }
 
   render() {
-    console.log(this.el);
     this.svg = d3.select(this.el).append('svg')
         .attr('width', '100%')
         .attr('height', this.height)
@@ -62,7 +61,7 @@ class BubbleMapUS {
 
     this.shapeData = shapeData;
     this.caseData = caseData;
-    const states = topojson.feature(this.shapeData, this.shapeData.objects['places']).features
+    const states = topojson.feature(this.shapeData, this.shapeData.objects['states']).features
 
     $('.bubble-map__stat--wrapper--us').addClass('is-animating');
     this.drawSlider();
@@ -72,7 +71,7 @@ class BubbleMapUS {
     });
 
     this.projection = d3.geoAlbersUsa()
-      .fitSize([this.width, this.height], topojson.feature(this.shapeData, this.shapeData.objects['places']));
+      .fitSize([this.width, this.height], topojson.feature(this.shapeData, this.shapeData.objects['states']));
 
     this.path = d3.geoPath()
       .projection(this.projection);
@@ -93,17 +92,17 @@ class BubbleMapUS {
     this.svg.append('g')
         .attr('class', 'bubble-map__bubble')
       .selectAll('circle')
-        .data(topojson.feature(this.shapeData, this.shapeData.objects['places']).features
+        .data(topojson.feature(this.shapeData, this.shapeData.objects['states']).features
           .sort((a, b) => {
-            if (this.caseData[this.caseData.length - 1].places[b.id] && this.caseData[this.caseData.length - 1].places[a.id]) {
-              return this.caseData[this.caseData.length - 1].places[b.id][this.dataColumn] - this.caseData[this.caseData.length - 1].places[a.id][this.dataColumn]
+            if (this.caseData[this.caseData.length - 1].states[b.id] && this.caseData[this.caseData.length - 1].states[a.id]) {
+              return this.caseData[this.caseData.length - 1].states[b.id][this.dataColumn] - this.caseData[this.caseData.length - 1].states[a.id][this.dataColumn]
             }
           }))
       .enter().append('circle')
         .attr('transform', (d) => `translate(${this.path.centroid(d)})`)
         .attr('r', (d) => {
-          if (this.caseData[this.unformatSlider()].places[d.id]) {
-            return this.radius(this.caseData[this.unformatSlider()].places[d.id][this.dataColumn]);
+          if (this.caseData[this.unformatSlider()].states[d.id]) {
+            return this.radius(this.caseData[this.unformatSlider()].states[d.id][this.dataColumn]);
           }
         })
         .on('mouseover', (d) => {
@@ -113,10 +112,10 @@ class BubbleMapUS {
             .style('left', `${this.mouse[0]}px`)
             .style('top', `${this.mouse[1]}px`)
             .html(() => {
-              if (this.caseData[this.unformatSlider()].places[d.id][this.dataColumn] > 1) {
-                return `${d.properties.name}: ${this.caseData[this.unformatSlider()].places[d.id][this.dataColumn]} cases`
+              if (this.caseData[this.unformatSlider()].states[d.id][this.dataColumn] > 1) {
+                return `${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id][this.dataColumn]} cases`
               } else {
-                return `${d.properties.name}: ${this.caseData[this.unformatSlider()].places[d.id][this.dataColumn]} case`
+                return `${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id][this.dataColumn]} case`
               }
             });
         })
@@ -132,7 +131,7 @@ class BubbleMapUS {
         this.setTotals(i);
         this.setDate();
       });
-    })
+    });
     this.switchTabs();
   }
 
@@ -176,8 +175,8 @@ class BubbleMapUS {
         .transition()
         .duration(750)
         .attr('r', (d) => {
-          if (this.caseData[this.unformatSlider()].places[d.id]) {
-            return this.radius(this.caseData[this.unformatSlider()].places[d.id][this.dataColumn]);
+          if (this.caseData[this.unformatSlider()].states[d.id]) {
+            return this.radius(this.caseData[this.unformatSlider()].states[d.id][this.dataColumn]);
           }
         });
 

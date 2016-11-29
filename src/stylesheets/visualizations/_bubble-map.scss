@@ -1,14 +1,6 @@
 .bubble-map {
   position: relative;
 
-  // &__svg-us,
-  // &__svg-fl {
-  //   display: block;
-  //   position: absolute;
-  //   top: 0;
-  //   left: 0;
-  // }
-
   &__wrapper {
     @include media($medium-screen-up) {
       &--top {

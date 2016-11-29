@@ -4,8 +4,8 @@ loadBubbleMapFl();
 import { loadBubbleMapUS } from './modules/visualizations/us-bubble-map';
 loadBubbleMapUS();
 
-// import { loadSlides } from './modules/utilities/slides';
-// loadSlides();
+import { loadUSTerritoriesStats } from './modules/visualizations/us-territories-stats';
+loadUSTerritoriesStats();
 
 import { loadAnchors } from './modules/utilities/anchors';
 loadAnchors();

@@ -28,7 +28,6 @@ class BubbleMapFl {
   }
 
   render() {
-    console.log(this.el);
     this.svg = d3.select(this.el).append('svg')
         .attr('width', '100%')
         .attr('height', this.height)
@@ -214,9 +213,9 @@ class BubbleMapFl {
     }
 
     TweenMax.to(counterStart, 0.3, {var: counterEnd.var, onUpdate: () => {
-        $(el).html(Math.ceil(counterStart.var));
+        $(el).text(Math.ceil(counterStart.var));
       },
-      ease: Circ.easeOut
+      ease:Circ.easeOut
     });
   }
 
