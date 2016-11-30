@@ -2,6 +2,9 @@
   position: relative;
 
   &__wrapper {
+    &--interactive {
+      position: relative;
+    }
     @include media($medium-screen-up) {
       &--top {
         @include span-columns(7 of 12);

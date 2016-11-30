@@ -1,0 +1,15 @@
+.legend {
+  display: inline-block;
+
+  &--bubbles {
+    @include position(absolute, null null 5% 5%);
+  }
+
+  &--select {
+    @include position(absolute, 42% null null 44%);
+  }
+
+  &--filter {
+    @include position(absolute, 10% 7% null null);
+  }
+}
