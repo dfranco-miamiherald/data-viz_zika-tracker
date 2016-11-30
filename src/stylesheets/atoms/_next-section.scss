@@ -1,4 +1,12 @@
 .next-section {
-  @include position(absolute, null null 2em 50%);
-  transform: translateX(-50%);
+  text-align: center;
+
+  a {
+    color: $black;
+    transition: color 0.3s linear;
+
+    &:hover {
+      color: $blue;
+    }
+  }
 }

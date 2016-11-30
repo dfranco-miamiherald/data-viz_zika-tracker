@@ -191,10 +191,23 @@ class BubbleMapUS {
       $(event.currentTarget).addClass('is-active');
 
       this.resizeBubbles();
-    })
+    });
+
+    $('.tabs__link--us-ppm').click(() => {
+      event.preventDefault();
+
+      $('.tabs__link--us-ppm').removeClass('is-active');
+      $(event.currentTarget).addClass('is-active');
+
+      this.totals.forEach(i => {
+        this.setTotals(i);
+      });
+    });
   }
 
   setTotals(el) {
+    this.dataColumn = $('.tabs__link--us-ppm.is-active').data('number');
+
     var counterStart = {var: $(el).text()};
     if (el === '.bubble-map__stat--local-us') {
       var counterEnd = {var: this.caseData[this.unformatSlider()].stateTotalLocal};
