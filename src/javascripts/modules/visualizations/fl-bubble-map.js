@@ -10,12 +10,13 @@ class BubbleMapFl {
   constructor(el, dataUrl, shapeUrl) {
     this.el = el;
     this.dataUrl = dataUrl;
+    this.shapeUrl = shapeUrl;
+    this.newsUrl = 'data/zika-newsfeed.csv';
     this.aspectRatio = 0.6667;
     this.margin = {top: 0, right: 0, bottom: 0, left: 0};
     this.width = $(this.el).width() - this.margin.left - this.margin.right;
     this.height = Math.ceil(this.aspectRatio * (this.width - this.margin.top - this.margin.bottom));
     this.mapWidth = this.width;
-    this.shapeUrl = shapeUrl;
     this.dataColumn = 'total';
     this.totals = [
       '.bubble-map__stat--local-fl',
@@ -56,14 +57,16 @@ class BubbleMapFl {
     d3.queue()
       .defer(d3.json, this.shapeUrl)
       .defer(d3.json, this.dataUrl)
+      .defer(d3.csv, this.newsUrl)
       .await(this.drawMap.bind(this));
   }
 
-  drawMap(error, shapeData, caseData) {
+  drawMap(error, shapeData, caseData, newsData) {
     if (error) throw error;
 
     this.shapeData = shapeData;
     this.caseData = caseData;
+    this.newsData = newsData
     const counties = topojson.feature(this.shapeData, this.shapeData.objects['places']).features
 
     $('.bubble-map__stat--wrapper--fl').addClass('is-animating');
@@ -72,6 +75,7 @@ class BubbleMapFl {
     this.totals.forEach(i => {
       this.setTotals(i);
     });
+    this.setNewsFeed();
 
     this.projection = d3.geoEquirectangular()
       .fitSize([this.width, this.height], topojson.feature(this.shapeData, this.shapeData.objects['places']));
@@ -132,8 +136,9 @@ class BubbleMapFl {
     this.stepSlider.noUiSlider.on('update', () => {
       this.totals.forEach(i => {
         this.setTotals(i);
-        this.setDate();
       });
+      this.setDate();
+      this.setNewsFeed();
     })
     this.switchTabs();
   }
@@ -227,6 +232,13 @@ class BubbleMapFl {
     $('#js-date-fl').html(moment(this.caseData[this.unformatSlider()].date).format('MMM. D, YYYY'));
   }
 
+  setNewsFeed() {
+    this.newsData.forEach(v => {
+      if (moment(v.datePublished).format('YYYYMMDD') === this.caseData[this.unformatSlider()].date) {
+        console.log(v);
+      }
+    });
+  }
 }
 
 const loadBubbleMapFl = () => {

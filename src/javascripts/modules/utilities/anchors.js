@@ -2,7 +2,6 @@ import $ from 'jquery';
 import TweenLite from 'gsap';
 import 'imports?define=>false!gsap/src/uncompressed/plugins/ScrollToPlugin';
 
-
 const loadAnchors = () => {
   const $scrollToAnchors = $('.js-scrollTo');
 
