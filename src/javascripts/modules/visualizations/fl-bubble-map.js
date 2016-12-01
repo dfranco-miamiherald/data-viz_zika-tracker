@@ -266,7 +266,7 @@ const loadBubbleMapFl = () => {
     const shapeUrl = $this.data('shape');
     const feedUrl = $this.data('feed');
 
-    new BubbleMapFl(`#${id}`, dataUrl, shapeUrl).render();
+    new BubbleMapFl(`#${id}`, dataUrl, shapeUrl, feedUrl).render();
   });
 }
 
