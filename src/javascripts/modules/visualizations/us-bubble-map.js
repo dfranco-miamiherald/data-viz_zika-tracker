@@ -208,13 +208,24 @@ class BubbleMapUS {
   setTotals(el) {
     this.dataColumn = $('.tabs__link--us-ppm.is-active').data('number');
 
-    var counterStart = {var: $(el).text()};
-    if (el === '.bubble-map__stat--local-us') {
-      var counterEnd = {var: this.caseData[this.unformatSlider()].stateTotalLocal};
-    } else if (el === '.bubble-map__stat--travel-us') {
-      var counterEnd = {var: this.caseData[this.unformatSlider()].stateTotalTravel};
-    } else if (el === '.bubble-map__stat--total-us') {
-      var counterEnd = {var: +this.caseData[this.unformatSlider()].stateTotalLocal + +this.caseData[this.unformatSlider()].stateTotalTravel};
+    if (this.dataColumn === 'total') {
+      var counterStart = {var: $(el).text()};
+      if (el === '.bubble-map__stat--local-us') {
+        var counterEnd = {var: this.caseData[this.unformatSlider()].stateTotalLocal};
+      } else if (el === '.bubble-map__stat--travel-us') {
+        var counterEnd = {var: this.caseData[this.unformatSlider()].stateTotalTravel};
+      } else if (el === '.bubble-map__stat--total-us') {
+        var counterEnd = {var: +this.caseData[this.unformatSlider()].stateTotalLocal + +this.caseData[this.unformatSlider()].stateTotalTravel};
+      }
+    } else if (this.dataColumn === 'perMillion') {
+      var counterStart = {var: $(el).text()};
+      if (el === '.bubble-map__stat--local-us') {
+        var counterEnd = {var: this.caseData[this.unformatSlider()].perMillionStatesTotalLocal};
+      } else if (el === '.bubble-map__stat--travel-us') {
+        var counterEnd = {var: this.caseData[this.unformatSlider()].perMillionStatesTotalTravel};
+      } else if (el === '.bubble-map__stat--total-us') {
+        var counterEnd = {var: +this.caseData[this.unformatSlider()].perMillionStatesTotalLocal + +this.caseData[this.unformatSlider()].perMillionStatesTotalTravel};
+      }
     }
 
     TweenMax.to(counterStart, 0.3, {var: counterEnd.var, onUpdate: () => {
