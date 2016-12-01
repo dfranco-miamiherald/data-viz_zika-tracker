@@ -26,6 +26,8 @@ class BubbleMapFl {
       '.bubble-map__stat--non-resident-fl',
       '.bubble-map__stat--unknown-fl'
     ];
+    this.newsFeedWrapper = $('#newsFeedOuter');
+    this.articleFound = false;
   }
 
   render() {
@@ -75,7 +77,6 @@ class BubbleMapFl {
     this.totals.forEach(i => {
       this.setTotals(i);
     });
-    this.setNewsFeed();
 
     this.projection = d3.geoEquirectangular()
       .fitSize([this.width, this.height], topojson.feature(this.shapeData, this.shapeData.objects['places']));
@@ -138,7 +139,7 @@ class BubbleMapFl {
         this.setTotals(i);
       });
       this.setDate();
-      this.setNewsFeed();
+      this.updateNewsFeed();
     })
     this.switchTabs();
   }
@@ -151,10 +152,8 @@ class BubbleMapFl {
 
   drawSlider () {
     this.stepSlider = $('#js-slider-fl')[0];
-    let slider = noUiSlider .create(this.stepSlider, {
-      animate: true,
-      animationDuration: 3000,
-      start: 0,
+    let slider = noUiSlider.create(this.stepSlider, {
+      start: this.caseData.length - 1,
       step: 1,
       range: {
         'min': [ 0 ],
@@ -162,7 +161,7 @@ class BubbleMapFl {
       }
     });
 
-    $(() => this.stepSlider.noUiSlider.set(this.caseData.length - 1));
+    // $(() => this.stepSlider.noUiSlider.set(this.caseData.length - 1));
 
     $('.js-play--fl').click(() => {
       this.stepSlider.noUiSlider.set(this.caseData.length - 1);
@@ -173,6 +172,8 @@ class BubbleMapFl {
     $('.js-step-up--fl').click(() => {
       this.stepSlider.noUiSlider.set(this.unformatSlider() + 1);
     });
+
+    this.setNewsFeed();
   }
 
   resizeBubbles() {
@@ -234,10 +235,26 @@ class BubbleMapFl {
 
   setNewsFeed() {
     this.newsData.forEach(v => {
-      if (moment(v.datePublished).format('YYYYMMDD') === this.caseData[this.unformatSlider()].date) {
-        console.log(v);
+      this.newsFeedWrapper.append(
+        `<a href="${v.articleUrl}">${moment(v.datePublished).format('MMM. D, YYYY')}: ${v.articleHeadline}</a>`
+      )
+    });
+  }
+
+  updateNewsFeed() {
+    this.articleFound = false;
+    this.newsData.forEach(v => {
+      if (!this.articleFound && moment(v.datePublished, 'MM/DD/YYYY').isSame(moment(this.caseData[this.unformatSlider()].date, 'YYYYMMDD')) || moment(v.datePublished, 'MM/DD/YYYY').isBefore(moment(this.caseData[this.unformatSlider()].date, 'YYYYMMDD'))) {
+        $('#newsFeedOuter a').removeClass('is-active');
+        $(`#newsFeedOuter a:contains('${v.articleHeadline}')`).addClass('is-active');
+        this.articleFound = true;
       }
     });
+
+    if (!this.articleFound) {
+      $('#newsFeedOuter a').removeClass('is-active');
+      $(`#newsFeedOuter a:contains('${this.newsData[this.newsData.length - 1].articleHeadline}')`).addClass('is-active');
+    }
   }
 }
 

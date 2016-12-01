@@ -1,0 +1,20 @@
+.newsfeed {
+  &__wrapper {
+    a {
+      display: none;
+      text-decoration: none;
+      color: $black;
+      font-size: em(40);
+      font-family: $heading-font-family-script;
+      font-weight: bold;
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      &.is-active {
+        display: block;
+      }
+    }
+  }
+}
