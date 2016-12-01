@@ -161,8 +161,6 @@ class BubbleMapFl {
       }
     });
 
-    // $(() => this.stepSlider.noUiSlider.set(this.caseData.length - 1));
-
     $('.js-play--fl').click(() => {
       this.stepSlider.noUiSlider.set(this.caseData.length - 1);
     });
