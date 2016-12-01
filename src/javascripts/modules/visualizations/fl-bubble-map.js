@@ -7,11 +7,11 @@ import noUiSlider from 'no-ui-slider';
 import moment from 'moment';
 
 class BubbleMapFl {
-  constructor(el, dataUrl, shapeUrl) {
+  constructor(el, dataUrl, shapeUrl, feedUrl) {
     this.el = el;
     this.dataUrl = dataUrl;
     this.shapeUrl = shapeUrl;
-    this.newsUrl = 'data/zika-newsfeed.csv';
+    this.newsUrl = feedUrl;
     this.aspectRatio = 0.6667;
     this.margin = {top: 0, right: 0, bottom: 0, left: 0};
     this.width = $(this.el).width() - this.margin.left - this.margin.right;
@@ -264,6 +264,7 @@ const loadBubbleMapFl = () => {
     const id = $this.attr('id');
     const dataUrl = $this.data('url');
     const shapeUrl = $this.data('shape');
+    const feedUrl = $this.data('feed');
 
     new BubbleMapFl(`#${id}`, dataUrl, shapeUrl).render();
   });
