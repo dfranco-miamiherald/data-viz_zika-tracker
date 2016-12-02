@@ -240,19 +240,15 @@ class BubbleMapFl {
   }
 
   updateNewsFeed() {
-    this.articleFound = false;
-    this.newsData.forEach(v => {
-      if (!this.articleFound && moment(v.datePublished, 'MM/DD/YYYY').isSame(moment(this.caseData[this.unformatSlider()].date, 'YYYYMMDD')) || moment(v.datePublished, 'MM/DD/YYYY').isBefore(moment(this.caseData[this.unformatSlider()].date, 'YYYYMMDD'))) {
-        $('#newsFeedOuter a').removeClass('is-active');
-        $(`#newsFeedOuter a:contains('${v.articleHeadline}')`).addClass('is-active');
-        this.articleFound = true;
+    let articlePosition = 0;
+    let sliderDate = moment(this.caseData[this.unformatSlider()].date).format('YYYY-M-D');
+    this.newsData.forEach((article, index) => {
+      if (moment(article.datePublished, 'M/D/YYYY').isSameOrBefore(sliderDate)) {
+        articlePosition = index;
       }
     });
-
-    if (!this.articleFound) {
-      $('#newsFeedOuter a').removeClass('is-active');
-      $(`#newsFeedOuter a:contains('${this.newsData[this.newsData.length - 1].articleHeadline}')`).addClass('is-active');
-    }
+    $('#newsFeedOuter a').removeClass('is-active');
+    $(`#newsFeedOuter a:contains('${this.newsData[articlePosition].articleHeadline}')`).addClass('is-active');
   }
 }
 
