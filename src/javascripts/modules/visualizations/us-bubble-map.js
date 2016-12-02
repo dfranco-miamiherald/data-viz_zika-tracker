@@ -206,9 +206,9 @@ class BubbleMapUS {
   }
 
   setTotals(el) {
-    this.dataColumn = $('.tabs__link--us-ppm.is-active').data('number');
+    this.dataColumnPpm = $('.tabs__link--us-ppm.is-active').data('number');
 
-    if (this.dataColumn === 'total') {
+    if (this.dataColumnPpm === 'total') {
       var counterStart = {var: $(el).text()};
       if (el === '.bubble-map__stat--local-us') {
         var counterEnd = {var: this.caseData[this.unformatSlider()].stateTotalLocal};
@@ -217,7 +217,7 @@ class BubbleMapUS {
       } else if (el === '.bubble-map__stat--total-us') {
         var counterEnd = {var: +this.caseData[this.unformatSlider()].stateTotalLocal + +this.caseData[this.unformatSlider()].stateTotalTravel};
       }
-    } else if (this.dataColumn === 'perMillion') {
+    } else if (this.dataColumnPpm === 'perMillion') {
       var counterStart = {var: $(el).text()};
       if (el === '.bubble-map__stat--local-us') {
         var counterEnd = {var: this.caseData[this.unformatSlider()].perMillionStatesTotalLocal};
