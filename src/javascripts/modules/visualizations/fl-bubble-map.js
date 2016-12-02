@@ -232,23 +232,25 @@ class BubbleMapFl {
   }
 
   setNewsFeed() {
-    this.newsData.forEach(v => {
+    this.newsData.forEach((article, index) => {
       this.newsFeedWrapper.append(
-        `<a href="${v.articleUrl}">${moment(v.datePublished).format('MMM. D, YYYY')}: ${v.articleHeadline}</a>`
+        `<a href="${article.articleUrl}" class="newsfeed__article">${moment(article.datePublished).format('MMM. D, YYYY')}: ${article.articleHeadline}</a>`
       )
     });
   }
 
   updateNewsFeed() {
     let articlePosition = 0;
-    let sliderDate = moment(this.caseData[this.unformatSlider()].date).format('YYYY-M-D');
+    let sliderDate = moment(this.caseData[this.unformatSlider()].date, 'YYYY-M-D');
     this.newsData.forEach((article, index) => {
       if (moment(article.datePublished, 'M/D/YYYY').isSameOrBefore(sliderDate)) {
         articlePosition = index;
       }
     });
-    $('#newsFeedOuter a').removeClass('is-active');
-    $(`#newsFeedOuter a:contains('${this.newsData[articlePosition].articleHeadline}')`).addClass('is-active');
+    $('.newsfeed__article').removeClass('is-active');
+    let article = $('.newsfeed__article')[articlePosition];
+    $(article).addClass('is-active');
+
   }
 }
 
