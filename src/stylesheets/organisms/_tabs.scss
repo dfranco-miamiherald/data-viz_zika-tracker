@@ -1,4 +1,10 @@
 .tabs {
+  display: none;
+
+  &.is-animating {
+    display: block;
+  }
+
   text-align: center;
   padding-left: 0;
   @include fill-parent();

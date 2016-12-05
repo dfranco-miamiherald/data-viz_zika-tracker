@@ -64,6 +64,8 @@ class BubbleMapUS {
     const states = topojson.feature(this.shapeData, this.shapeData.objects['states']).features
 
     $('.bubble-map__stat--wrapper--us').addClass('is-animating');
+    $('#section-2 .tabs').addClass('is-animating');
+    $('#section-2 .slider__outer').addClass('is-animating');
     this.drawSlider();
     this.drawTooltip();
     this.totals.forEach(i => {

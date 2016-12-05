@@ -1,8 +1,4 @@
 .territories {
-  &__wrapper{
-
-  }
-
   &__territory {
     margin-bottom: 2rem;
     text-align: center;
@@ -31,7 +27,7 @@
     font-size: em(32);
     margin-bottom: 0.5rem;
     @include media($large-screen-up) {
-      font-size: em(100);
+      font-size: em(80);
     }
     font-family: $heading-font-family-script;
     font-weight: bold;

@@ -64,7 +64,7 @@
     font-size: em(32);
     text-align: center;
     @include media($large-screen-up) {
-      font-size: em(100);
+      font-size: em(80);
     }
     font-family: $heading-font-family-script;
     font-weight: bold;
