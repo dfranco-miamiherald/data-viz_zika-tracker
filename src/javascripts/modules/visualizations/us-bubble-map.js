@@ -114,10 +114,18 @@ class BubbleMapUS {
             .style('left', `${this.mouse[0]}px`)
             .style('top', `${this.mouse[1]}px`)
             .html(() => {
-              if (this.caseData[this.unformatSlider()].states[d.id][this.dataColumn] > 1) {
-                return `${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id][this.dataColumn]} cases`
+              if (this.dataColumnPpm === 'perMillion') {
+                if (this.caseData[this.unformatSlider()].states[d.id][this.dataColumn] > 1) {
+                  return `${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id].perMillionTotal} cases per million`
+                } else {
+                  return `${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id].perMillionTotal} case per million`
+                }
               } else {
-                return `${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id][this.dataColumn]} case`
+                if (this.caseData[this.unformatSlider()].states[d.id][this.dataColumn] > 1) {
+                  return `${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id][this.dataColumn]} cases`
+                } else {
+                  return `${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id][this.dataColumn]} case`
+                }
               }
             });
         })
