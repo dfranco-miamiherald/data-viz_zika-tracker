@@ -17,8 +17,9 @@
   &--filter {
     @include position(absolute, 10% 7% null null);
   }
-  
+
   @include media($medium-screen-up) {
+    @include size(150px);
     &--bubbles {
       @include position(absolute, null null 5% 5%);
     }
