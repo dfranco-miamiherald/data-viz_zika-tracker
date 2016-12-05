@@ -1,10 +1,14 @@
 .newsfeed {
   &__wrapper {
     a {
+      font-size: em(23);
+      text-align: center;
+      @include media($large-screen-up) {
+        font-size: em(40);
+      };
       display: none;
       text-decoration: none;
       color: $black;
-      font-size: em(40);
       font-family: $heading-font-family-script;
       font-weight: bold;
 

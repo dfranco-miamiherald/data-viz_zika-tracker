@@ -1,5 +1,10 @@
 .legend {
   display: inline-block;
+  @include size(75px);
+
+  img {
+    max-width: 100%;
+  }
 
   &--bubbles {
     @include position(absolute, null null 5% 5%);
@@ -11,5 +16,19 @@
 
   &--filter {
     @include position(absolute, 10% 7% null null);
+  }
+  
+  @include media($medium-screen-up) {
+    &--bubbles {
+      @include position(absolute, null null 5% 5%);
+    }
+
+    &--select {
+      @include position(absolute, 42% null null 44%);
+    }
+
+    &--filter {
+      @include position(absolute, 10% 7% null null);
+    }
   }
 }

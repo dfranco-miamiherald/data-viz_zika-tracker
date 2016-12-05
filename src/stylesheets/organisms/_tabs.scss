@@ -1,4 +1,5 @@
 .tabs {
+  text-align: center;
   padding-left: 0;
   @include fill-parent();
 	margin: 0 0 1rem;
@@ -43,14 +44,18 @@
 	}
 
   a {
-    font-size: em(18);
+    font-size: em(12);
+    padding: 0.75rem;
+    @include media($large-screen-up) {
+      font-size: em(18);
+      padding: 1rem;
+    }
     background-color: #eff0f2;
     color: $black;
     font-weight: bold;
     display: block;
     letter-spacing: 0;
     outline: none;
-    padding: 1rem;
     text-decoration: none;
     transition: all 0.2s ease-in-out;
     border: solid 3px transparentize($black, 0.8);

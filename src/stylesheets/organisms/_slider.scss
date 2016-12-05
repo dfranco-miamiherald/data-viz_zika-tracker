@@ -1,25 +1,32 @@
 .slider {
-  &--territories {
-    @include span-columns(6 of 12);
-  }
+  @include media($medium-screen-up) {
+    &--territories {
+      @include span-columns(6 of 12);
+    }
 
-  &--maps {
-    @include span-columns(6 of 8);
+    &--maps {
+      @include span-columns(6 of 8);
+    }
   }
 
   margin-bottom: 1rem;
 
   &__controls {
-    &--territories {
-      @include span-columns(2 of 12);
+    @include media($medium-screen-up) {
+      &--territories {
+        @include span-columns(2 of 12);
+      }
+
+      &--maps {
+        @include span-columns(2 of 8);
+      }
+
+      text-align: left;
+      padding-left: 1rem;
     }
 
-    &--maps {
-      @include span-columns(2 of 8);
-    }
-    
-    text-align: left;
-    padding-left: 1rem;
+    text-align: center;
+    padding-left: 0;
     margin-bottom: 1rem;
 
     .js-play,
@@ -39,8 +46,11 @@
   }
 
   &__date {
+    font-size: em(24);
+    @include media($medium-screen-up) {
+      font-size: em(46);
+    }
     font-family: $heading-font-family-sans;
-    font-size: em(46);
     font-weight: bold;
     margin: 0;
     margin-bottom: 1rem;

@@ -1,9 +1,13 @@
 .territories {
   &__wrapper{
+
   }
 
   &__territory {
+    margin-bottom: 2rem;
+    text-align: center;
     @include media($medium-screen-up) {
+      text-align: left;
       @include span-columns(3 of 12);
       border-right: solid 2px black;
       &:last-child {
@@ -12,19 +16,23 @@
     }
 
     &--heading {
+      font-size: em(21);
+      margin-bottom: 1rem;
+      @include media($medium-screen-up) {
+        font-size: em(24);
+      }
       text-transform: uppercase;
       font-weight: bold;
-      margin-bottom: 3.5rem;
       font-family: $heading-font-family-sans;
-
-      @include media($medium-screen-up) {
-        font-size: em(30);
-      }
     }
   }
 
   &__stat {
-    font-size: em(100);
+    font-size: em(32);
+    margin-bottom: 0.5rem;
+    @include media($large-screen-up) {
+      font-size: em(100);
+    }
     font-family: $heading-font-family-script;
     font-weight: bold;
     color: $black;

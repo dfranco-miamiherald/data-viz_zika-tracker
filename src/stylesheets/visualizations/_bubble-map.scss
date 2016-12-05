@@ -61,15 +61,23 @@
   }
 
   &__stat {
-    font-size: em(100);
+    font-size: em(32);
+    text-align: center;
+    @include media($large-screen-up) {
+      font-size: em(100);
+    }
     font-family: $heading-font-family-script;
     font-weight: bold;
     color: $black;
 
     &--heading {
+      font-size: em(21);
+      text-align: center;
+      @include media($medium-screen-up) {
+        font-size: em(24);
+      }
       font-family: $heading-font-family-script;
       font-weight: bold;
-      font-size: em(23);
       color: $black;
     }
 
