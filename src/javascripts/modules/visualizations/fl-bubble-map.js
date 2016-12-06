@@ -211,7 +211,7 @@ class BubbleMapFl {
     } else if (el === '.bubble-map__stat--pregnant-fl') {
       var counterEnd = {var: this.caseData[this.unformatSlider()].pregnant};
     } else if (el === '.bubble-map__stat--non-resident-fl') {
-      var counterEnd = {var: this.caseData[this.unformatSlider()]['non-resident-fl']};
+      var counterEnd = {var: this.caseData[this.unformatSlider()]['non-resident']};
     } else if (el === '.bubble-map__stat--unknown-fl') {
       var counterEnd = {var: this.caseData[this.unformatSlider()].undetermined ? this.caseData[this.unformatSlider()].undetermined : 0};
     }
