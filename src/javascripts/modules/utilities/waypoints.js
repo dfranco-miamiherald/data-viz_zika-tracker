@@ -9,13 +9,10 @@ import { loadBubbleMapUS } from '../visualizations/us-bubble-map';
 const loadWaypoints = () => {
   let controller = new ScrollMagic.Controller();
 
-  let tween = TweenLite.to('#section-2', 0.5, {autoAlpha: 1, display: 'block'});
-
   new ScrollMagic.Scene({ triggerElement: '#section-2', reverse: false})
     .on('start', () => {
       loadBubbleMapUS();
     })
-    .setTween(tween)
     .addTo(controller)
     .addIndicators();
 }
