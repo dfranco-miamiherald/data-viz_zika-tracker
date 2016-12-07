@@ -115,10 +115,24 @@ class BubbleMapUS {
             .style('top', `${this.mouse[1]}px`)
             .html(() => {
               if (this.dataColumnPpm === 'perMillion') {
-                if (this.caseData[this.unformatSlider()].states[d.id][this.dataColumn] > 1) {
-                  return `${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id].perMillionTotal} cases per million`
-                } else {
-                  return `${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id].perMillionTotal} case per million`
+                if (this.dataColumn === 'total') {
+                  if (this.caseData[this.unformatSlider()].states[d.id][this.dataColumn] > 1) {
+                    return `${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id].perMillionTotal} cases per million`
+                  } else {
+                    return `${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id].perMillionTotal} case per million`
+                  }
+                } else if (this.dataColumn === 'local') {
+                  if (this.caseData[this.unformatSlider()].states[d.id][this.dataColumn] > 1) {
+                    return `${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id].perMillionLocal} cases per million`
+                  } else {
+                    return `${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id].perMillionLocal} case per million`
+                  }
+                } else if (this.dataColumn === 'travel') {
+                  if (this.caseData[this.unformatSlider()].states[d.id][this.dataColumn] > 1) {
+                    return `${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id].perMillionTravel} cases per million`
+                  } else {
+                    return `${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id].perMillionTravel} case per million`
+                  }
                 }
               } else {
                 if (this.caseData[this.unformatSlider()].states[d.id][this.dataColumn] > 1) {

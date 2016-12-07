@@ -69,6 +69,7 @@ class BubbleMapFl {
     this.shapeData = shapeData;
     this.caseData = caseData;
     this.newsData = newsData
+    
     const counties = topojson.feature(this.shapeData, this.shapeData.objects['places']).features
 
     $('.bubble-map__stat--wrapper--fl').addClass('is-animating');
@@ -207,7 +208,7 @@ class BubbleMapFl {
     } else if (el === '.bubble-map__stat--travel-fl') {
       var counterEnd = {var: this.caseData[this.unformatSlider()].totalTravel};
     } else if (el === '.bubble-map__stat--total-fl') {
-      var counterEnd = {var: +this.caseData[this.unformatSlider()].totalLocal + +this.caseData[this.unformatSlider()].totalTravel};
+      var counterEnd = {var: +this.caseData[this.unformatSlider()].totalLocal + +this.caseData[this.unformatSlider()].totalTravel + +this.caseData[this.unformatSlider()].undetermined};
     } else if (el === '.bubble-map__stat--pregnant-fl') {
       var counterEnd = {var: this.caseData[this.unformatSlider()].pregnant};
     } else if (el === '.bubble-map__stat--non-resident-fl') {
