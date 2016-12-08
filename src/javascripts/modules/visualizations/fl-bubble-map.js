@@ -5,6 +5,7 @@ import { TweenLite } from 'gsap';
 import numeral from 'numeral';
 import noUiSlider from 'no-ui-slider';
 import moment from 'moment';
+import { setSectionHeights } from '../utilities/sections';
 
 class BubbleMapFl {
   constructor(el, dataUrl, shapeUrl, feedUrl) {
@@ -36,6 +37,8 @@ class BubbleMapFl {
         .attr('height', this.height)
         .attr('class', 'bubble-map__svg-fl')
         .append('g');
+
+    console.log(this.height);
 
     this.loadData();
     this.resizeBubbleMap();
@@ -69,7 +72,7 @@ class BubbleMapFl {
     this.shapeData = shapeData;
     this.caseData = caseData;
     this.newsData = newsData
-    
+
     const counties = topojson.feature(this.shapeData, this.shapeData.objects['places']).features
 
     $('.bubble-map__stat--wrapper--fl').addClass('is-animating');

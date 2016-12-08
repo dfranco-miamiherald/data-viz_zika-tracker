@@ -61,7 +61,7 @@ class BubbleMapUS {
 
     this.shapeData = shapeData;
     this.caseData = caseData;
-    const states = topojson.feature(this.shapeData, this.shapeData.objects['states']).features
+    const states = topojson.feature(this.shapeData, this.shapeData.objects['states']).features;
 
     $('.bubble-map__stat--wrapper--us').addClass('is-animating');
     $('#section-2 .tabs').addClass('is-animating');

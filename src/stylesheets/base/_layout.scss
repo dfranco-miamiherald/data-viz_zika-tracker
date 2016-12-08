@@ -6,6 +6,7 @@ section[role=main] {
 
 section.panel {
   margin: 0.25em;
+  height: 100vh;
 
   @include media($medium-screen-up) {
     margin: 1em;
