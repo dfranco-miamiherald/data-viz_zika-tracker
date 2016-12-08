@@ -24,7 +24,7 @@ class BubbleMapFl {
       '.bubble-map__stat--travel-fl',
       '.bubble-map__stat--total-fl',
       '.bubble-map__stat--pregnant-fl',
-      '.bubble-map__stat--non-resident-fl',
+      '.bubble-map__stat--undetermined-fl',
       '.bubble-map__stat--unknown-fl'
     ];
     this.newsFeedWrapper = $('#newsFeedOuter');
@@ -214,9 +214,9 @@ class BubbleMapFl {
       var counterEnd = {var: +this.caseData[this.unformatSlider()].totalLocal + +this.caseData[this.unformatSlider()].totalTravel + +this.caseData[this.unformatSlider()].undetermined};
     } else if (el === '.bubble-map__stat--pregnant-fl') {
       var counterEnd = {var: this.caseData[this.unformatSlider()].pregnant};
-    } else if (el === '.bubble-map__stat--non-resident-fl') {
-      var counterEnd = {var: this.caseData[this.unformatSlider()]['non-resident']};
     } else if (el === '.bubble-map__stat--unknown-fl') {
+      var counterEnd = {var: this.caseData[this.unformatSlider()].unknown};
+    } else if (el === '.bubble-map__stat--undetermined-fl') {
       var counterEnd = {var: this.caseData[this.unformatSlider()].undetermined ? this.caseData[this.unformatSlider()].undetermined : 0};
     }
 
