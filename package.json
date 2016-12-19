@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "A starting point for data visualization projects for the Miami Herald",
   "engines": {
-    "node": ">=0.12.0 ~5.9.0",
+    "node": ">=0.12.0 ~5.12.0",
     "npm": ">=2.14.12 ~3.7.3"
   },
   "homepage": "https://github.com/MiamiHerald/data-viz_starter",
