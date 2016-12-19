@@ -54,6 +54,7 @@
     border: 1.5px solid $white;
     max-width: em(300);
     text-align: center;
+    z-index: 2;
 
     &.is-active {
       opacity: 1;
