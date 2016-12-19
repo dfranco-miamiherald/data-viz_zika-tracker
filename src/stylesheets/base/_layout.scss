@@ -5,12 +5,12 @@ section[role=main] {
 }
 
 section.panel {
-  margin: 0.25em;
+  margin: 0.75rem;
   border: none;
   border-radius: 0;
   box-shadow: none;
 
   @include media($medium-screen-up) {
-    margin: 1em;
+    margin: 1rem;
   }
 }
