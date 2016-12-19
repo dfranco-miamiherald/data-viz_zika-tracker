@@ -84,10 +84,14 @@
     &--wrapper {
       @include span-columns(6 of 12);
       @include omega(2n);
-      margin-bottom: 2rem;
+      margin-bottom: 0.5rem;
       opacity: 0;
       transform: translateY(40px);
       transition: transform 0.5s ease-in-out;
+
+      @include media($medium-screen-up) {
+        margin-bottom: 2rem;
+      }
 
       &--us {
         @include span-columns(12 of 12);

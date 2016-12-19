@@ -12,11 +12,11 @@
   }
 
   &--select {
-    @include position(absolute, 42% null null 44%);
+    @include position(absolute, 54% null null 35%);
   }
 
   &--filter {
-    @include position(absolute, 10% 7% null null);
+    @include position(absolute, 17% 2% null null);
   }
 
   @include media($medium-screen-up) {

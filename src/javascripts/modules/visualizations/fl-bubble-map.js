@@ -38,8 +38,6 @@ class BubbleMapFl {
         .attr('class', 'bubble-map__svg-fl')
         .append('g');
 
-    console.log(this.height);
-
     this.loadData();
     this.resizeBubbleMap();
     $(window).on('resize', this.resizeBubbleMap.bind(this));
@@ -55,6 +53,7 @@ class BubbleMapFl {
 
       TweenLite.set(chart, { scale: this.width / this.mapWidth });
       d3.select('.bubble-map__svg-fl').attr('height', this.height);
+      this.resizeBubbles();
     });
   }
 
@@ -97,9 +96,16 @@ class BubbleMapFl {
         .attr('d', this.path);
 
     this.max = this.caseData[0].totalTravel;
-    this.radius = d3.scaleSqrt()
-        .domain([0, this.max])
-        .range([0, 5]);
+    let query = Modernizr.mq('(min-width: 640px)');
+    if (query) {
+      this.radius = d3.scaleSqrt()
+          .domain([0, this.max])
+          .range([0, 5]);
+    } else {
+      this.radius = d3.scaleSqrt()
+          .domain([0, this.max])
+          .range([0, 2]);
+    }
 
     this.svg.append('g')
         .attr('class', 'bubble-map__bubble')
