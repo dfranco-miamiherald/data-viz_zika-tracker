@@ -1,14 +1,11 @@
 .territories {
   &__territory {
-    margin: 0 2rem 2rem 2rem;
+    margin-bottom: 2rem;
     text-align: center;
-    border-bottom: solid 2px black;
     @include media($medium-screen-up) {
-      margin: 0 0 2rem 0;
+      border-right: solid 2px black;
       text-align: left;
       @include span-columns(3 of 12);
-      border-right: solid 2px black;
-      border-bottom: none;
       &:last-child {
         border-right: none;
       }
@@ -16,8 +13,12 @@
 
     &--heading {
       font-size: em(21);
-      margin-bottom: 1rem;
+      margin: 0 2rem 1rem 2rem;
+      padding-bottom: 1rem;
+      border-bottom: solid 2px black;
       @include media($medium-screen-up) {
+        border-bottom: none;
+        margin: 0 0 2rem 0;
         font-size: em(24);
       }
       text-transform: uppercase;
