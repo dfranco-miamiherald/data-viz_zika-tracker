@@ -43,7 +43,7 @@
     position: absolute;
     pointer-events: none;
     padding: 0.5em 1em;
-    font-size: rem(16);
+    font-size: rem(16) !important;
     color: $white;
     background-color: rgba($black, 0.8);
     border: em(1) solid $black;
@@ -69,7 +69,7 @@
     }
     font-family: $heading-font-family-script;
     font-weight: bold;
-    color: $black;
+    color: $silver-surfer;
 
     &--heading {
       font-size: em(21);
