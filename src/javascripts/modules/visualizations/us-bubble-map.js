@@ -97,7 +97,7 @@ class BubbleMapUS {
         .data(topojson.feature(this.shapeData, this.shapeData.objects['states']).features
           .sort((a, b) => {
             if (this.caseData[this.caseData.length - 1].states[b.id] && this.caseData[this.caseData.length - 1].states[a.id]) {
-              return this.caseData[this.caseData.length - 1].states[b.id][this.dataColumn] - this.caseData[this.caseData.length - 1].states[a.id][this.dataColumn]
+              return this.caseData[this.caseData.length - 1].states[b.id][this.dataColumn] - this.caseData[this.caseData.length - 1].states[a.id][this.dataColumn];
             }
           }))
       .enter().append('circle')
@@ -117,28 +117,28 @@ class BubbleMapUS {
               if (this.dataColumnPpm === 'perMillion') {
                 if (this.dataColumn === 'total') {
                   if (this.caseData[this.unformatSlider()].states[d.id][this.dataColumn] > 1) {
-                    return `${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id].perMillionTotal} cases per million`
+                    return `${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id].perMillionTotal} cases per million`;
                   } else {
-                    return `${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id].perMillionTotal} case per million`
+                    return `${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id].perMillionTotal} case per million`;
                   }
                 } else if (this.dataColumn === 'local') {
                   if (this.caseData[this.unformatSlider()].states[d.id][this.dataColumn] > 1) {
-                    return `${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id].perMillionLocal} cases per million`
+                    return `${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id].perMillionLocal} cases per million`;
                   } else {
-                    return `${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id].perMillionLocal} case per million`
+                    return `${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id].perMillionLocal} case per million`;
                   }
                 } else if (this.dataColumn === 'travel') {
                   if (this.caseData[this.unformatSlider()].states[d.id][this.dataColumn] > 1) {
-                    return `${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id].perMillionTravel} cases per million`
+                    return `${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id].perMillionTravel} cases per million`;
                   } else {
-                    return `${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id].perMillionTravel} case per million`
+                    return `${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id].perMillionTravel} case per million`;
                   }
                 }
               } else {
                 if (this.caseData[this.unformatSlider()].states[d.id][this.dataColumn] > 1) {
-                  return `${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id][this.dataColumn]} cases`
+                  return `${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id][this.dataColumn]} cases`;
                 } else {
-                  return `${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id][this.dataColumn]} case`
+                  return `${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id][this.dataColumn]} case`;
                 }
               }
             });

@@ -70,9 +70,9 @@ class BubbleMapFl {
 
     this.shapeData = shapeData;
     this.caseData = caseData;
-    this.newsData = newsData
+    this.newsData = newsData;
 
-    const counties = topojson.feature(this.shapeData, this.shapeData.objects['places']).features
+    const counties = topojson.feature(this.shapeData, this.shapeData.objects['places']).features;
 
     $('.bubble-map__stat--wrapper--fl').addClass('is-animating');
     this.drawSlider();
@@ -196,7 +196,7 @@ class BubbleMapFl {
             return this.radius(this.caseData[this.unformatSlider()].counties[d.id][this.dataColumn]);
           }
         });
-    this.max = this.caseData[this.unformatSlider()].totalTravel
+    this.max = this.caseData[this.unformatSlider()].totalTravel;
   }
 
   switchTabs() {

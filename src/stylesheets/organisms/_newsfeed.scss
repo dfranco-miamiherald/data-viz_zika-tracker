@@ -12,7 +12,7 @@
       text-align: center;
       @include media($large-screen-up) {
         font-size: em(30);
-      };
+      }
       display: none;
       text-decoration: none;
       color: $black;
