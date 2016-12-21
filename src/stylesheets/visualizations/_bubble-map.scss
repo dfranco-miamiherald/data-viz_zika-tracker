@@ -22,7 +22,7 @@
 
   &__county,
   &__state {
-    fill: transparentize($black, 0.8);
+    fill: transparentize($slated-blue, 0.8);
     stroke: $white;
     stroke-linejoin: round;
     stroke-linecap: round;
@@ -30,12 +30,12 @@
   }
 
   &__bubble {
-    fill-opacity: 0.5;
+    fill: transparentize($lawn-gnome, 0.8);
     stroke: $white;
     stroke-width: 1.5px;
 
     & :hover {
-      stroke: $black;
+      stroke: $slated-blue;
     }
   }
 
