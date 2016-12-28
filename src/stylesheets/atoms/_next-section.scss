@@ -2,9 +2,45 @@
   margin: 2rem 0;
   text-align: center;
 
-  a {
+  a.anchor {
     color: $black;
     transition: color 0.3s linear;
+    position: relative;
+
+    &__adjacent {
+      margin-right: 3em;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    &__us:before {
+      content: 'United States';
+      @include position(absolute, -30px null null 50%);
+      display: inline-table;
+      transform: translateX(-50%);
+      font-family: $heading-font-family-script;
+      font-weight: bold;
+    }
+
+    &__fl:before {
+      content: 'Florida';
+      @include position(absolute, -30px null null 50%);
+      display: inline-table;
+      transform: translateX(-50%);
+      font-family: $heading-font-family-script;
+      font-weight: bold;
+    }
+
+    &__terr:before {
+      content: 'Territories';
+      @include position(absolute, -30px null null 50%);
+      display: inline-table;
+      transform: translateX(-50%);
+      font-family: $heading-font-family-script;
+      font-weight: bold;
+    }
 
     &:hover {
       color: $lawn-gnome;
