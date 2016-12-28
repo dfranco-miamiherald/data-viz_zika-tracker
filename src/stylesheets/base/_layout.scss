@@ -1,16 +1,15 @@
 // let parent container go full width
 section[role=main] {
   width: 100% !important;
-  padding: 0;
-}
-
-section.panel {
-  margin: 0.4rem;
-  border: none;
-  border-radius: 0;
-  box-shadow: none;
+  padding: 0.4rem;
 
   @include media($medium-screen-up) {
     margin: 1rem;
   }
+}
+
+section.panel {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
 }
