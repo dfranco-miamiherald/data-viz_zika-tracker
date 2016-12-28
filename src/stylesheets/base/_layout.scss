@@ -6,6 +6,10 @@ section[role=main] {
   @include media($medium-screen-up) {
     padding: 1em;
   }
+
+  .row {
+    margin: 0;
+  }
 }
 
 section.panel {
