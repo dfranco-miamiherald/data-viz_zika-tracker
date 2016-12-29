@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import * as d3 from 'd3';
 import * as topojson from 'topojson';
-import { TweenLite } from 'gsap';
+import { TweenLite, TweenMax } from 'gsap';
 import numeral from 'numeral';
 import noUiSlider from 'no-ui-slider';
 import moment from 'moment';
@@ -211,18 +211,20 @@ class BubbleMapFl {
 
   setTotals(el) {
     var counterStart = {var: $(el).text()};
+    var counterEnd = null;
+
     if (el === '.bubble-map__stat--local-fl') {
-      var counterEnd = {var: this.caseData[this.unformatSlider()].totalLocal};
+      counterEnd = {var: this.caseData[this.unformatSlider()].totalLocal};
     } else if (el === '.bubble-map__stat--travel-fl') {
-      var counterEnd = {var: this.caseData[this.unformatSlider()].totalTravel};
+      counterEnd = {var: this.caseData[this.unformatSlider()].totalTravel};
     } else if (el === '.bubble-map__stat--total-fl') {
-      var counterEnd = {var: +this.caseData[this.unformatSlider()].totalLocal + +this.caseData[this.unformatSlider()].totalTravel + +this.caseData[this.unformatSlider()].undetermined};
+      counterEnd = {var: +this.caseData[this.unformatSlider()].totalLocal + (+this.caseData[this.unformatSlider()].totalTravel) + (+this.caseData[this.unformatSlider()].undetermined)};
     } else if (el === '.bubble-map__stat--pregnant-fl') {
-      var counterEnd = {var: this.caseData[this.unformatSlider()].pregnant};
+      counterEnd = {var: this.caseData[this.unformatSlider()].pregnant};
     } else if (el === '.bubble-map__stat--unknown-fl') {
-      var counterEnd = {var: this.caseData[this.unformatSlider()].unknown};
+      counterEnd = {var: this.caseData[this.unformatSlider()].unknown};
     } else if (el === '.bubble-map__stat--undetermined-fl') {
-      var counterEnd = {var: this.caseData[this.unformatSlider()].undetermined ? this.caseData[this.unformatSlider()].undetermined : 0};
+      counterEnd = {var: this.caseData[this.unformatSlider()].undetermined ? this.caseData[this.unformatSlider()].undetermined : 0};
     }
 
     TweenMax.to(counterStart, 0.3, {var: counterEnd.var, onUpdate: () => {

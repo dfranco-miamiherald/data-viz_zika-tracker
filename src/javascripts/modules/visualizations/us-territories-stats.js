@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import * as d3 from 'd3';
-import { TweenLite } from 'gsap';
+import { TweenMax } from 'gsap';
 import numeral from 'numeral';
 import noUiSlider from 'no-ui-slider';
 import moment from 'moment';
@@ -54,59 +54,60 @@ class USTerritoriesStats {
   setTotals(el) {
     this.dataColumn = $('.tabs__link--us-territories-100k.is-active').data('number');
 
+    var counterStart = {var: $(el).text()};
+    var counterEnd = null;
+
     if (this.dataColumn === 'total') {
-      var counterStart = {var: $(el).text()};
       if (el === '.territories__stat--local-as') {
-        var counterEnd = {var: this.caseData[this.unformatSlider()].territories['American Samoa'].local};
+        counterEnd = {var: this.caseData[this.unformatSlider()].territories['American Samoa'].local};
       } else if (el === '.territories__stat--travel-as') {
-        var counterEnd = {var: this.caseData[this.unformatSlider()].territories['American Samoa'].travel};
+        counterEnd = {var: this.caseData[this.unformatSlider()].territories['American Samoa'].travel};
       } else if (el === '.territories__stat--total-as') {
-        var counterEnd = {var: this.caseData[this.unformatSlider()].territories['American Samoa'].total};
+        counterEnd = {var: this.caseData[this.unformatSlider()].territories['American Samoa'].total};
       } else if (el === '.territories__stat--local-pr') {
-        var counterEnd = {var: this.caseData[this.unformatSlider()].territories['Puerto Rico'].local};
+        counterEnd = {var: this.caseData[this.unformatSlider()].territories['Puerto Rico'].local};
       } else if (el === '.territories__stat--travel-pr') {
-        var counterEnd = {var: this.caseData[this.unformatSlider()].territories['Puerto Rico'].travel};
+        counterEnd = {var: this.caseData[this.unformatSlider()].territories['Puerto Rico'].travel};
       } else if (el === '.territories__stat--total-pr') {
-        var counterEnd = {var: this.caseData[this.unformatSlider()].territories['Puerto Rico'].total};
+        counterEnd = {var: this.caseData[this.unformatSlider()].territories['Puerto Rico'].total};
       } else if (el === '.territories__stat--local-usvi') {
-        var counterEnd = {var: this.caseData[this.unformatSlider()].territories['United States Virgin Islands'].local};
+        counterEnd = {var: this.caseData[this.unformatSlider()].territories['United States Virgin Islands'].local};
       } else if (el === '.territories__stat--travel-usvi') {
-        var counterEnd = {var: this.caseData[this.unformatSlider()].territories['United States Virgin Islands'].travel};
+        counterEnd = {var: this.caseData[this.unformatSlider()].territories['United States Virgin Islands'].travel};
       } else if (el === '.territories__stat--total-usvi') {
-        var counterEnd = {var: this.caseData[this.unformatSlider()].territories['United States Virgin Islands'].total};
+        counterEnd = {var: this.caseData[this.unformatSlider()].territories['United States Virgin Islands'].total};
       } else if (el === '.territories__stat--local-totals') {
-        var counterEnd = {var: this.caseData[this.unformatSlider()].territoryTotalLocal};
+        counterEnd = {var: this.caseData[this.unformatSlider()].territoryTotalLocal};
       } else if (el === '.territories__stat--travel-totals') {
-        var counterEnd = {var: this.caseData[this.unformatSlider()].territoryTotalTravel};
+        counterEnd = {var: this.caseData[this.unformatSlider()].territoryTotalTravel};
       } else if (el === '.territories__stat--total-totals') {
-        var counterEnd = {var: +this.caseData[this.unformatSlider()].territoryTotalLocal + +this.caseData[this.unformatSlider()].territoryTotalTravel};
+        counterEnd = {var: +this.caseData[this.unformatSlider()].territoryTotalLocal + (+this.caseData[this.unformatSlider()].territoryTotalTravel)};
       }
     } else if (this.dataColumn === 'per100k') {
-      var counterStart = {var: $(el).text()};
       if (el === '.territories__stat--local-as') {
-        var counterEnd = {var: this.caseData[this.unformatSlider()].territories['American Samoa'].per100KLocal};
+        counterEnd = {var: this.caseData[this.unformatSlider()].territories['American Samoa'].per100KLocal};
       } else if (el === '.territories__stat--travel-as') {
-        var counterEnd = {var: this.caseData[this.unformatSlider()].territories['American Samoa'].per100KTravel};
+        counterEnd = {var: this.caseData[this.unformatSlider()].territories['American Samoa'].per100KTravel};
       } else if (el === '.territories__stat--total-as') {
-        var counterEnd = {var: this.caseData[this.unformatSlider()].territories['American Samoa'].per100KTotal};
+        counterEnd = {var: this.caseData[this.unformatSlider()].territories['American Samoa'].per100KTotal};
       } else if (el === '.territories__stat--local-pr') {
-        var counterEnd = {var: this.caseData[this.unformatSlider()].territories['Puerto Rico'].per100KLocal};
+        counterEnd = {var: this.caseData[this.unformatSlider()].territories['Puerto Rico'].per100KLocal};
       } else if (el === '.territories__stat--travel-pr') {
-        var counterEnd = {var: this.caseData[this.unformatSlider()].territories['Puerto Rico'].per100KTravel};
+        counterEnd = {var: this.caseData[this.unformatSlider()].territories['Puerto Rico'].per100KTravel};
       } else if (el === '.territories__stat--total-pr') {
-        var counterEnd = {var: this.caseData[this.unformatSlider()].territories['Puerto Rico'].per100KTotal};
+        counterEnd = {var: this.caseData[this.unformatSlider()].territories['Puerto Rico'].per100KTotal};
       } else if (el === '.territories__stat--local-usvi') {
-        var counterEnd = {var: this.caseData[this.unformatSlider()].territories['United States Virgin Islands'].per100KLocal};
+        counterEnd = {var: this.caseData[this.unformatSlider()].territories['United States Virgin Islands'].per100KLocal};
       } else if (el === '.territories__stat--travel-usvi') {
-        var counterEnd = {var: this.caseData[this.unformatSlider()].territories['United States Virgin Islands'].per100KTravel};
+        counterEnd = {var: this.caseData[this.unformatSlider()].territories['United States Virgin Islands'].per100KTravel};
       } else if (el === '.territories__stat--total-usvi') {
-        var counterEnd = {var: this.caseData[this.unformatSlider()].territories['United States Virgin Islands'].per100KTotal};
+        counterEnd = {var: this.caseData[this.unformatSlider()].territories['United States Virgin Islands'].per100KTotal};
       } else if (el === '.territories__stat--local-totals') {
-        var counterEnd = {var: this.caseData[this.unformatSlider()].per100KTerritoryTotalLocal};
+        counterEnd = {var: this.caseData[this.unformatSlider()].per100KTerritoryTotalLocal};
       } else if (el === '.territories__stat--travel-totals') {
-        var counterEnd = {var: this.caseData[this.unformatSlider()].per100KTerritoryTotalTravel};
+        counterEnd = {var: this.caseData[this.unformatSlider()].per100KTerritoryTotalTravel};
       } else if (el === '.territories__stat--total-totals') {
-        var counterEnd = {var: +this.caseData[this.unformatSlider()].per100KTerritoryTotalLocal + +this.caseData[this.unformatSlider()].per100KTerritoryTotalTravel};
+        counterEnd = {var: +this.caseData[this.unformatSlider()].per100KTerritoryTotalLocal + (+this.caseData[this.unformatSlider()].per100KTerritoryTotalTravel)};
       }
     }
 

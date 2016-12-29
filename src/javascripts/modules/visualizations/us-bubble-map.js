@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import * as d3 from 'd3';
 import * as topojson from 'topojson';
-import { TweenLite } from 'gsap';
+import { TweenMax, TweenLite } from 'gsap';
 import numeral from 'numeral';
 import noUiSlider from 'no-ui-slider';
 import moment from 'moment';
@@ -231,24 +231,24 @@ class BubbleMapUS {
 
   setTotals(el) {
     this.dataColumn100k = $('.tabs__link--us-100k.is-active').data('number');
+    var counterStart = {var: $(el).text()};
+    var counterEnd = null;
 
     if (this.dataColumn100k === 'total') {
-      var counterStart = {var: $(el).text()};
       if (el === '.bubble-map__stat--local-us') {
-        var counterEnd = {var: this.caseData[this.unformatSlider()].stateTotalLocal};
+        counterEnd = {var: this.caseData[this.unformatSlider()].stateTotalLocal};
       } else if (el === '.bubble-map__stat--travel-us') {
-        var counterEnd = {var: this.caseData[this.unformatSlider()].stateTotalTravel};
+        counterEnd = {var: this.caseData[this.unformatSlider()].stateTotalTravel};
       } else if (el === '.bubble-map__stat--total-us') {
-        var counterEnd = {var: +this.caseData[this.unformatSlider()].stateTotalLocal + +this.caseData[this.unformatSlider()].stateTotalTravel};
+        counterEnd = {var: +this.caseData[this.unformatSlider()].stateTotalLocal + (+this.caseData[this.unformatSlider()].stateTotalTravel)};
       }
     } else if (this.dataColumn100k === 'per100k') {
-      var counterStart = {var: $(el).text()};
       if (el === '.bubble-map__stat--local-us') {
-        var counterEnd = {var: this.caseData[this.unformatSlider()].per100KStatesTotalLocal};
+        counterEnd = {var: this.caseData[this.unformatSlider()].per100KStatesTotalLocal};
       } else if (el === '.bubble-map__stat--travel-us') {
-        var counterEnd = {var: this.caseData[this.unformatSlider()].per100KStatesTotalTravel};
+        counterEnd = {var: this.caseData[this.unformatSlider()].per100KStatesTotalTravel};
       } else if (el === '.bubble-map__stat--total-us') {
-        var counterEnd = {var: +this.caseData[this.unformatSlider()].per100KStatesTotalLocal + +this.caseData[this.unformatSlider()].per100KStatesTotalTravel};
+        counterEnd = {var: +this.caseData[this.unformatSlider()].per100KStatesTotalLocal + (+this.caseData[this.unformatSlider()].per100KStatesTotalTravel)};
       }
     }
 
