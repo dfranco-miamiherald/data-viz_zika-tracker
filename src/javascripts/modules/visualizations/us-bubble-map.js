@@ -116,26 +116,26 @@ class BubbleMapUS {
             .html(() => {
               if (this.dataColumn100k === 'per100k') {
                 if (this.dataColumn === 'total') {
-                  if (this.caseData[this.unformatSlider()].states[d.id][this.dataColumn] > 1) {
+                  if (this.caseData[this.unformatSlider()].states[d.id].per100KTotal != 1) {
                     return `${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id].per100KTotal} cases per 100k`;
                   } else {
                     return `${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id].per100KTotal} case per 100k`;
                   }
                 } else if (this.dataColumn === 'local') {
-                  if (this.caseData[this.unformatSlider()].states[d.id][this.dataColumn] > 1) {
+                  if (this.caseData[this.unformatSlider()].states[d.id].per100KLocal != 1) {
                     return `${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id].per100KLocal} cases per 100k`;
                   } else {
                     return `${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id].per100KLocal} case per 100k`;
                   }
                 } else if (this.dataColumn === 'travel') {
-                  if (this.caseData[this.unformatSlider()].states[d.id][this.dataColumn] > 1) {
+                  if (this.caseData[this.unformatSlider()].states[d.id].per100KTravel != 1) {
                     return `${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id].per100KTravel} cases per 100k`;
                   } else {
                     return `${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id].per100KTravel} case per 100k`;
                   }
                 }
               } else {
-                if (this.caseData[this.unformatSlider()].states[d.id][this.dataColumn] > 1) {
+                if (this.caseData[this.unformatSlider()].states[d.id][this.dataColumn] != 1) {
                   return `${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id][this.dataColumn]} cases`;
                 } else {
                   return `${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id][this.dataColumn]} case`;
@@ -244,11 +244,11 @@ class BubbleMapUS {
     } else if (this.dataColumn100k === 'per100k') {
       var counterStart = {var: $(el).text()};
       if (el === '.bubble-map__stat--local-us') {
-        var counterEnd = {var: this.caseData[this.unformatSlider()].perMillionStatesTotalLocal};
+        var counterEnd = {var: this.caseData[this.unformatSlider()].per100KStatesTotalLocal};
       } else if (el === '.bubble-map__stat--travel-us') {
-        var counterEnd = {var: this.caseData[this.unformatSlider()].perMillionStatesTotalTravel};
+        var counterEnd = {var: this.caseData[this.unformatSlider()].per100KStatesTotalTravel};
       } else if (el === '.bubble-map__stat--total-us') {
-        var counterEnd = {var: +this.caseData[this.unformatSlider()].perMillionStatesTotalLocal + +this.caseData[this.unformatSlider()].perMillionStatesTotalTravel};
+        var counterEnd = {var: +this.caseData[this.unformatSlider()].per100KStatesTotalLocal + +this.caseData[this.unformatSlider()].per100KStatesTotalTravel};
       }
     }
 
