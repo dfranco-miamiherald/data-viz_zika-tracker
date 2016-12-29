@@ -102,11 +102,11 @@ class USTerritoriesStats {
       } else if (el === '.territories__stat--total-usvi') {
         var counterEnd = {var: this.caseData[this.unformatSlider()].territories['United States Virgin Islands'].per100KTotal};
       } else if (el === '.territories__stat--local-totals') {
-        var counterEnd = {var: this.caseData[this.unformatSlider()].perMillionTerritoryTotalLocal};
+        var counterEnd = {var: this.caseData[this.unformatSlider()].per100KTerritoryTotalLocal};
       } else if (el === '.territories__stat--travel-totals') {
-        var counterEnd = {var: this.caseData[this.unformatSlider()].perMillionTerritoryTotalTravel};
+        var counterEnd = {var: this.caseData[this.unformatSlider()].per100KTerritoryTotalTravel};
       } else if (el === '.territories__stat--total-totals') {
-        var counterEnd = {var: +this.caseData[this.unformatSlider()].perMillionTerritoryTotalLocal + +this.caseData[this.unformatSlider()].perMillionTerritoryTotalTravel};
+        var counterEnd = {var: +this.caseData[this.unformatSlider()].per100KTerritoryTotalLocal + +this.caseData[this.unformatSlider()].per100KTerritoryTotalTravel};
       }
     }
 
