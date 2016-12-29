@@ -1,6 +1,4 @@
-import $ from 'jquery';
 import ScrollMagic from 'scrollmagic';
-import { TweenLite } from 'gsap';
 import 'imports?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap';
 import 'imports?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators';
 import { loadBubbleMapUS } from '../visualizations/us-bubble-map';
@@ -15,6 +13,6 @@ const loadWaypoints = () => {
     })
     .addTo(controller)
     .addIndicators();
-}
+};
 
-export { loadWaypoints }
+export { loadWaypoints };

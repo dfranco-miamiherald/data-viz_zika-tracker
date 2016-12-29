@@ -5,6 +5,6 @@ const loadVideos = () => {
   $video.on('canplaythrough', function() {
      this.play();
   });
-}
+};
 
-export { loadVideos }
+export { loadVideos };

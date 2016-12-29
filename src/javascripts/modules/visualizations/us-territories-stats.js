@@ -7,7 +7,7 @@ import moment from 'moment';
 
 class USTerritoriesStats {
   constructor() {
-    this.dataUrl = 'http://media.miamiherald.com/static/media/projects/2016/zika-interactive-v2/data/usZika.json'
+    this.dataUrl = 'http://media.miamiherald.com/static/media/projects/2016/zika-interactive-v2/data/usZika.json';
     this.totals = [
       '.territories__stat--local-as',
       '.territories__stat--travel-as',
@@ -167,6 +167,6 @@ class USTerritoriesStats {
 
 const loadUSTerritoriesStats = () => {
   new USTerritoriesStats().render();
-}
+};
 
 export { loadUSTerritoriesStats };

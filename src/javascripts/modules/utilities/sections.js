@@ -25,6 +25,6 @@ const setSectionHeights = () => {
 
     new Section(`#${id}`).render();
   });
-}
+};
 
-export { setSectionHeights }
+export { setSectionHeights };

@@ -5,7 +5,6 @@ import { TweenLite } from 'gsap';
 import numeral from 'numeral';
 import noUiSlider from 'no-ui-slider';
 import moment from 'moment';
-import { setSectionHeights } from '../utilities/sections';
 
 class BubbleMapFl {
   constructor(el, dataUrl, shapeUrl, feedUrl) {
@@ -72,7 +71,7 @@ class BubbleMapFl {
     this.caseData = caseData;
     this.newsData = newsData;
 
-    const counties = topojson.feature(this.shapeData, this.shapeData.objects['places']).features;
+    const counties = topojson.feature(this.shapeData, this.shapeData.objects.places).features;
 
     $('.bubble-map__stat--wrapper--fl').addClass('is-animating');
     this.drawSlider();
@@ -82,7 +81,7 @@ class BubbleMapFl {
     });
 
     this.projection = d3.geoEquirectangular()
-      .fitSize([this.width, this.height], topojson.feature(this.shapeData, this.shapeData.objects['places']));
+      .fitSize([this.width, this.height], topojson.feature(this.shapeData, this.shapeData.objects.places));
 
     this.path = d3.geoPath()
       .projection(this.projection);
@@ -110,10 +109,10 @@ class BubbleMapFl {
     this.svg.append('g')
         .attr('class', 'bubble-map__bubble')
       .selectAll('circle')
-        .data(topojson.feature(this.shapeData, this.shapeData.objects['places']).features
+        .data(topojson.feature(this.shapeData, this.shapeData.objects.places).features
           .sort((a, b) => {
             if (this.caseData[this.caseData.length - 1].counties[b.id] && this.caseData[this.caseData.length - 1].counties[a.id]) {
-              return this.caseData[this.caseData.length - 1].counties[b.id][this.dataColumn] - this.caseData[this.caseData.length - 1].counties[a.id][this.dataColumn]
+              return this.caseData[this.caseData.length - 1].counties[b.id][this.dataColumn] - this.caseData[this.caseData.length - 1].counties[a.id][this.dataColumn];
             }
           }))
       .enter().append('circle')
@@ -124,16 +123,16 @@ class BubbleMapFl {
           }
         })
         .on('mouseover', (d) => {
-          this.mouse = d3.mouse(this.svg.node()).map((d) => parseInt(d))
+          this.mouse = d3.mouse(this.svg.node()).map((d) => parseInt(d));
           this.tooltip
             .classed('is-active', true)
             .style('left', `${this.mouse[0]}px`)
             .style('top', `${this.mouse[1]}px`)
             .html(() => {
               if (this.caseData[this.unformatSlider()].counties[d.id][this.dataColumn] > 1) {
-                return `${d.properties.county}: ${this.caseData[this.unformatSlider()].counties[d.id][this.dataColumn]} cases`
+                return `${d.properties.county}: ${this.caseData[this.unformatSlider()].counties[d.id][this.dataColumn]} cases`;
               } else {
-                return `${d.properties.county}: ${this.caseData[this.unformatSlider()].counties[d.id][this.dataColumn]} case`
+                return `${d.properties.county}: ${this.caseData[this.unformatSlider()].counties[d.id][this.dataColumn]} case`;
               }
             });
         })
@@ -143,14 +142,14 @@ class BubbleMapFl {
         });
 
 
-    this.stepSlider.noUiSlider.on('update', this.resizeBubbles.bind(this))
+    this.stepSlider.noUiSlider.on('update', this.resizeBubbles.bind(this));
     this.stepSlider.noUiSlider.on('update', () => {
       this.totals.forEach(i => {
         this.setTotals(i);
       });
       this.setDate();
       this.updateNewsFeed();
-    })
+    });
     this.switchTabs();
   }
 
@@ -207,7 +206,7 @@ class BubbleMapFl {
       $(event.currentTarget).addClass('is-active');
 
       this.resizeBubbles();
-    })
+    });
   }
 
   setTotals(el) {
@@ -245,7 +244,7 @@ class BubbleMapFl {
     this.newsData.forEach((article, index) => {
       this.newsFeedWrapper.append(
         `<a href="${article.articleUrl}" class="newsfeed__article">${moment(article.datePublished).format('MMM. D, YYYY')}: ${article.articleHeadline}</a>`
-      )
+      );
     });
   }
 
@@ -276,6 +275,6 @@ const loadBubbleMapFl = () => {
 
     new BubbleMapFl(`#${id}`, dataUrl, shapeUrl, feedUrl).render();
   });
-}
+};
 
 export { loadBubbleMapFl };

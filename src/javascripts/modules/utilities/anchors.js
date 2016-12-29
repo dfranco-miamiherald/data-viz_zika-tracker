@@ -15,6 +15,6 @@ const loadAnchors = () => {
       TweenLite.to(window, 0.5, {scrollTo: id});
     });
   });
-}
+};
 
-export { loadAnchors }
+export { loadAnchors };

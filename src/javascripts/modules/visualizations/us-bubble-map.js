@@ -61,7 +61,7 @@ class BubbleMapUS {
 
     this.shapeData = shapeData;
     this.caseData = caseData;
-    const states = topojson.feature(this.shapeData, this.shapeData.objects['states']).features;
+    const states = topojson.feature(this.shapeData, this.shapeData.objects.states).features;
 
     $('.bubble-map__stat--wrapper--us').addClass('is-animating');
     $('#section-2 .tabs').addClass('is-animating');
@@ -73,7 +73,7 @@ class BubbleMapUS {
     });
 
     this.projection = d3.geoAlbersUsa()
-      .fitSize([this.width, this.height], topojson.feature(this.shapeData, this.shapeData.objects['states']));
+      .fitSize([this.width, this.height], topojson.feature(this.shapeData, this.shapeData.objects.states));
 
     this.path = d3.geoPath()
       .projection(this.projection);
@@ -94,7 +94,7 @@ class BubbleMapUS {
     this.svg.append('g')
         .attr('class', 'bubble-map__bubble')
       .selectAll('circle')
-        .data(topojson.feature(this.shapeData, this.shapeData.objects['states']).features
+        .data(topojson.feature(this.shapeData, this.shapeData.objects.states).features
           .sort((a, b) => {
             if (this.caseData[this.caseData.length - 1].states[b.id] && this.caseData[this.caseData.length - 1].states[a.id]) {
               return this.caseData[this.caseData.length - 1].states[b.id][this.dataColumn] - this.caseData[this.caseData.length - 1].states[a.id][this.dataColumn];
@@ -108,7 +108,7 @@ class BubbleMapUS {
           }
         })
         .on('mouseover', (d) => {
-          this.mouse = d3.mouse(this.svg.node()).map((d) => parseInt(d))
+          this.mouse = d3.mouse(this.svg.node()).map((d) => parseInt(d));
           this.tooltip
             .classed('is-active', true)
             .style('left', `${this.mouse[0]}px`)
@@ -149,7 +149,7 @@ class BubbleMapUS {
         });
 
 
-    this.stepSlider.noUiSlider.on('update', this.resizeBubbles.bind(this))
+    this.stepSlider.noUiSlider.on('update', this.resizeBubbles.bind(this));
     this.stepSlider.noUiSlider.on('update', () => {
       this.totals.forEach(i => {
         this.setTotals(i);
@@ -280,6 +280,6 @@ const loadBubbleMapUS = () => {
 
     new BubbleMapUS(`#${id}`, dataUrl, shapeUrl).render();
   });
-}
+};
 
 export { loadBubbleMapUS };
