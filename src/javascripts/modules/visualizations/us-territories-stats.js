@@ -52,7 +52,7 @@ class USTerritoriesStats {
   }
 
   setTotals(el) {
-    this.dataColumn = $('.tabs__link--us-territories-ppm.is-active').data('number');
+    this.dataColumn = $('.tabs__link--us-territories-100k.is-active').data('number');
 
     if (this.dataColumn === 'total') {
       var counterStart = {var: $(el).text()};
@@ -81,26 +81,26 @@ class USTerritoriesStats {
       } else if (el === '.territories__stat--total-totals') {
         var counterEnd = {var: +this.caseData[this.unformatSlider()].territoryTotalLocal + +this.caseData[this.unformatSlider()].territoryTotalTravel};
       }
-    } else if (this.dataColumn === 'perMillion') {
+    } else if (this.dataColumn === 'per100k') {
       var counterStart = {var: $(el).text()};
       if (el === '.territories__stat--local-as') {
-        var counterEnd = {var: this.caseData[this.unformatSlider()].territories['American Samoa'].perMillionLocal};
+        var counterEnd = {var: this.caseData[this.unformatSlider()].territories['American Samoa'].per100KLocal};
       } else if (el === '.territories__stat--travel-as') {
-        var counterEnd = {var: this.caseData[this.unformatSlider()].territories['American Samoa'].perMillionTravel};
+        var counterEnd = {var: this.caseData[this.unformatSlider()].territories['American Samoa'].per100KTravel};
       } else if (el === '.territories__stat--total-as') {
-        var counterEnd = {var: this.caseData[this.unformatSlider()].territories['American Samoa'].perMillionTotal};
+        var counterEnd = {var: this.caseData[this.unformatSlider()].territories['American Samoa'].per100KTotal};
       } else if (el === '.territories__stat--local-pr') {
-        var counterEnd = {var: this.caseData[this.unformatSlider()].territories['Puerto Rico'].perMillionLocal};
+        var counterEnd = {var: this.caseData[this.unformatSlider()].territories['Puerto Rico'].per100KLocal};
       } else if (el === '.territories__stat--travel-pr') {
-        var counterEnd = {var: this.caseData[this.unformatSlider()].territories['Puerto Rico'].perMillionTravel};
+        var counterEnd = {var: this.caseData[this.unformatSlider()].territories['Puerto Rico'].per100KTravel};
       } else if (el === '.territories__stat--total-pr') {
-        var counterEnd = {var: this.caseData[this.unformatSlider()].territories['Puerto Rico'].perMillionTotal};
+        var counterEnd = {var: this.caseData[this.unformatSlider()].territories['Puerto Rico'].per100KTotal};
       } else if (el === '.territories__stat--local-usvi') {
-        var counterEnd = {var: this.caseData[this.unformatSlider()].territories['United States Virgin Islands'].perMillionLocal};
+        var counterEnd = {var: this.caseData[this.unformatSlider()].territories['United States Virgin Islands'].per100KLocal};
       } else if (el === '.territories__stat--travel-usvi') {
-        var counterEnd = {var: this.caseData[this.unformatSlider()].territories['United States Virgin Islands'].perMillionTravel};
+        var counterEnd = {var: this.caseData[this.unformatSlider()].territories['United States Virgin Islands'].per100KTravel};
       } else if (el === '.territories__stat--total-usvi') {
-        var counterEnd = {var: this.caseData[this.unformatSlider()].territories['United States Virgin Islands'].perMillionTotal};
+        var counterEnd = {var: this.caseData[this.unformatSlider()].territories['United States Virgin Islands'].per100KTotal};
       } else if (el === '.territories__stat--local-totals') {
         var counterEnd = {var: this.caseData[this.unformatSlider()].perMillionTerritoryTotalLocal};
       } else if (el === '.territories__stat--travel-totals') {
@@ -144,10 +144,10 @@ class USTerritoriesStats {
   }
 
   switchTabs() {
-    $('.tabs__link--us-territories-ppm').click(() => {
+    $('.tabs__link--us-territories-100k').click(() => {
       event.preventDefault();
 
-      $('.tabs__link--us-territories-ppm').removeClass('is-active');
+      $('.tabs__link--us-territories-100k').removeClass('is-active');
       $(event.currentTarget).addClass('is-active');
 
       this.totals.forEach(i => {
