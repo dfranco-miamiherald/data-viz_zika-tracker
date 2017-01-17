@@ -7,15 +7,16 @@
     }
     @include media($medium-screen-up) {
       &--top {
-        @include span-columns(7 of 12);
+        @include span-columns(12 of 12);
       }
 
       &--interactive {
-        @include span-columns(8 of 12);
+        @include span-columns(7 of 12);
       }
 
       &--stats {
         @include span-columns(4 of 12);
+        @include shift(1);
       }
     }
   }
