@@ -1,7 +1,6 @@
 .territories {
   &__territory {
     margin-bottom: $gutter;
-    text-align: center;
     @include media($medium-screen-up) {
       border-right: solid 3px black;
       text-align: left;
