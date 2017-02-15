@@ -18,7 +18,7 @@
 
     &__us:before {
       content: 'United States';
-      @include position(absolute, -$gutter null null 50%);
+      @include position(absolute, -50px null null 50%);
       display: inline-table;
       transform: translateX(-50%);
       font-family: $heading-font-family-script;
@@ -27,7 +27,7 @@
 
     &__fl:before {
       content: 'Florida';
-      @include position(absolute, -$gutter null null 50%);
+      @include position(absolute, -50px null null 50%);
       display: inline-table;
       transform: translateX(-50%);
       font-family: $heading-font-family-script;
@@ -36,7 +36,7 @@
 
     &__terr:before {
       content: 'Territories';
-      @include position(absolute, -30px null null 50%);
+      @include position(absolute, -50px null null 50%);
       display: inline-table;
       transform: translateX(-50%);
       font-family: $heading-font-family-script;
