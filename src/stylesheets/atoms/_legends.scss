@@ -6,13 +6,13 @@
     max-width: 100%;
   }
 
-  @include size(75px);
+  width: 75px;
   &--bubbles {
     @include position(absolute, null null 5% 5%);
   }
 
   &--select {
-    @include position(absolute, 54% null null 35%);
+    @include position(absolute, 56% null null 38%);
   }
 
   &--filter {
@@ -20,13 +20,13 @@
   }
 
   @include media($medium-screen-up) {
-    @include size(100px);
+    width: 100px;
     &--bubbles {
-      @include position(absolute, null null 10% 5%);
+      @include position(absolute, null null 0% 5%);
     }
 
     &--select {
-      @include position(absolute, 40% null null 44%);
+      @include position(absolute, 48% null null 46%);
     }
 
     &--filter {
@@ -35,17 +35,17 @@
   }
 
   @include media($large-screen-up) {
-    @include size(150px);
+    width: 150px;
     &--bubbles {
-      @include position(absolute, null null 10% 5%);
+      @include position(absolute, null null 0% 5%);
     }
 
     &--select {
-      @include position(absolute, 40% null null 40%);
+      @include position(absolute, 48% null null 37%);
     }
 
     &--filter {
-      @include position(absolute, 10% 0% null null);
+      @include position(absolute, 15% 0% null null);
     }
   }
 }

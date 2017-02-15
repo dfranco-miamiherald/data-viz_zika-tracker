@@ -6,6 +6,7 @@
     color: $black;
     transition: color 0.3s linear;
     position: relative;
+    font-size: $lg;
 
     &__adjacent {
       margin-right: $gutter * 2;
