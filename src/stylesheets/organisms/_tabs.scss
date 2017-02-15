@@ -48,7 +48,7 @@
     padding: 5px;
     @include media($large-screen-up) {
       font-size: $med;
-      padding: $gutter;
+      padding: $gutter / 3;
       border: solid 3px transparentize($black, 0.8);
     }
     background-color: #eff0f2;
