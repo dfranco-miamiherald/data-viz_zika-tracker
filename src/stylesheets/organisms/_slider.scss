@@ -54,15 +54,16 @@
     z-index: 0;
   }
 
-  &__date {
-    font-size: em(24);
-    @include media($medium-screen-up) {
-      font-size: em(46);
-    }
+  &__title {
+    font-size: $xl;
     font-family: $heading-font-family-sans;
     font-weight: bold;
-    margin: 0;
-    margin-bottom: 1rem;
-    text-align: left;
+  }
+
+  &__date {
+    font-size: $lg;
+    font-family: $heading-font-family-sans;
+    font-weight: bold;
+    margin: 0  0 $gutter $gutter;
   }
 }

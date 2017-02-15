@@ -1,9 +1,9 @@
 .territories {
   &__territory {
-    margin-bottom: 2rem;
+    margin-bottom: $gutter;
     text-align: center;
     @include media($medium-screen-up) {
-      border-right: solid 2px black;
+      border-right: solid 3px black;
       text-align: left;
       @include span-columns(3 of 12);
       &:last-child {
@@ -12,14 +12,14 @@
     }
 
     &--heading {
-      font-size: em(21);
-      margin: 0 2rem 1rem 2rem;
-      padding-bottom: 1rem;
-      border-bottom: solid 2px black;
+      font-size: $lg;
+      margin: 0 $gutter ($gutter / 2) $gutter;
+      padding-bottom: $gutter;
+      border-bottom: solid 3px black;
       @include media($medium-screen-up) {
         border-bottom: none;
-        margin: 0 0 2rem 0;
-        font-size: em(24);
+        margin: 0 0 $gutter 0;
+        font-size: $lg;
       }
       text-transform: uppercase;
       font-weight: bold;
@@ -28,10 +28,10 @@
   }
 
   &__stat {
-    font-size: em(32);
-    margin-bottom: 0.5rem;
+    font-size: $xl;
+    margin-bottom: $gutter / 2;
     @include media($large-screen-up) {
-      font-size: em(80);
+      font-size: $xxl;
     }
     font-family: $heading-font-family-script;
     font-weight: bold;
@@ -40,7 +40,7 @@
     &--heading {
       font-family: $heading-font-family-script;
       font-weight: bold;
-      font-size: em(23);
+      font-size: $lg;
       color: $black;
     }
   }

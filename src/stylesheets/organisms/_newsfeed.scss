@@ -1,18 +1,16 @@
 .newsfeed {
   &__heading {
-    text-transform: uppercase;
-    font-family: $heading-font-family-sans;
+    font-size: $lg;
+    font-family: $heading-font-family-script;
     font-weight: bold;
-    margin-bottom: 1rem;
+    margin-bottom: $gutter;
+    text-align: center;
   }
 
   &__wrapper {
     a {
-      font-size: em(21);
+      font-size: $med;
       text-align: center;
-      @include media($large-screen-up) {
-        font-size: em(30);
-      }
       display: none;
       text-decoration: none;
       color: $black;

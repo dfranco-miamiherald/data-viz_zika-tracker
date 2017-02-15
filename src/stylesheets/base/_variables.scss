@@ -1,6 +1,6 @@
-$heading-font-family-script: 'McClatchy Slab', Georgia, Times, 'Times New Roman', serif;
-$heading-font-family-sans: 'McClatchy Sans', Georgia, Times, 'Times New Roman', serif;
-$body-font-family: 'McClatchy Sans', Georgia, Times, 'Times New Roman', serif;
+$heading-font-family-script: 'McClatchy Slab', Georgia, Times, 'Times New Roman', serif !important;
+$heading-font-family-sans: 'McClatchy Sans', Georgia, Times, 'Times New Roman', serif !important;
+$body-font-family: 'McClatchy Sans', Georgia, Times, 'Times New Roman', serif !important;
 
 $white: #FFFFFF;
 $black: #000000;
@@ -11,3 +11,9 @@ $silver-surfer: #8AD2B7;
 $ultralight-beam: #FFE066;
 $lawn-gnome: #F25F5C;
 $slated-blue: #28587B;
+
+$sm: 16px !important;
+$med: 18px !important;
+$lg: 22px !important;
+$xl: 44px !important;
+$xxl: 80px !important;

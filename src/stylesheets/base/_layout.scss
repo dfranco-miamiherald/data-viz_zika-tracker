@@ -1,10 +1,10 @@
 // let parent container go full width
 section[role=main] {
   width: 100% !important;
-  padding: 0.4em;
+  padding: $gutter / 2;
 
   @include media($medium-screen-up) {
-    padding: 1em;
+    padding: $gutter;
   }
 
   .row {
