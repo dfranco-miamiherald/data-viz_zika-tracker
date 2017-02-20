@@ -1,6 +1,10 @@
 .bubble-map {
   position: relative;
 
+  &__svg-fl {
+    overflow: visible !important;
+  }
+
   &__wrapper {
     &--interactive {
       position: relative;
