@@ -46,6 +46,8 @@
   a {
     font-size: $sm;
     padding: 5px;
+    font-family: $lyon;
+    
     @include media($large-screen-up) {
       font-size: $lg;
       padding: $gutter / 3;
