@@ -17,3 +17,6 @@ loadAnchors();
 
 import { loadVideos } from './modules/utilities/video';
 loadVideos();
+
+import { loadSticky } from './modules/utilities/sticky';
+loadSticky();
