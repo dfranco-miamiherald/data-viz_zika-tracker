@@ -1,4 +1,7 @@
 .next-section {
+  @include media($medium-screen-up) {
+    display: none;
+  }
   margin: $gutter 0;
   text-align: center;
 

@@ -3,9 +3,10 @@
     margin-bottom: $gutter;
     text-align: center;
     @include media($medium-screen-up) {
-      text-align: left;
-      @include span-columns(3 of 12);
       border-right: solid 3px $black;
+      float: left;
+      display: block;
+      width: 25%;
       &:last-child {
         @include reset-display;
         border-right: none;

@@ -19,7 +19,7 @@
         @include span-columns(4 of 8);
         &:last-child {
           @include reset-display;
-          margin-bottom: $gutter * 2;
+          margin-bottom: $gutter / 2;
         }
       }
     }
@@ -32,7 +32,7 @@
         @include span-columns(4 of 8);
         &:last-child {
           @include reset-display;
-          margin-bottom: $gutter * 2;
+          margin-bottom: $gutter / 2;
         }
       }
     }
