@@ -1,11 +1,13 @@
 .territories {
   &__territory {
     margin-bottom: $gutter;
+    text-align: center;
     @include media($medium-screen-up) {
-      border-right: solid 3px black;
       text-align: left;
       @include span-columns(3 of 12);
+      border-right: solid 3px $black;
       &:last-child {
+        @include reset-display;
         border-right: none;
       }
     }

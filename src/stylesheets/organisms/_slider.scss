@@ -10,7 +10,7 @@
 
   @include media($medium-screen-up) {
     &--territories {
-      @include span-columns(6 of 12);
+      @include span-columns(6 of 8);
     }
 
     &--maps {
@@ -23,7 +23,7 @@
   &__controls {
     @include media($medium-screen-up) {
       &--territories {
-        @include span-columns(2 of 12);
+        @include span-columns(2 of 8);
       }
 
       &--maps {
@@ -55,7 +55,10 @@
   }
 
   &__title {
-    font-size: $xl;
+    font-size: $lg;
+    @include media($medium-screen-up) {
+      font-size: $xl;
+    }
     font-family: $heading-font-family-sans;
     font-weight: bold;
   }
@@ -64,6 +67,10 @@
     font-size: $lg;
     font-family: $heading-font-family-sans;
     font-weight: bold;
-    margin: 0  0 $gutter $gutter;
+    margin: 0  0 $gutter ($gutter / 2);
+
+    @include media($medium-screen-up) {
+      margin: 0  0 $gutter $gutter;
+    }
   }
 }
