@@ -38,7 +38,11 @@ const loadSticky = () => {
           $thisSticky.addClass("fixed");
 
           if ($nextSticky.length > 0 && $thisSticky.offset().top >= $nextStickyPosition) {
-            $thisSticky.addClass("absolute").css("top", $nextStickyPosition);
+            var $topHeight = $('.masthead-container').outerHeight(true) + $('.container').first().outerHeight(true) + 30;
+            $thisSticky.addClass("absolute").css("top", $nextStickyPosition - $topHeight);
+
+            // FOR DEV
+            // $thisSticky.addClass("absolute").css("top", $nextStickyPosition);
           }
         } else {
           var $prevSticky = $stickies.eq(i - 1);
