@@ -2,14 +2,14 @@
   @include media($medium-screen-up) {
     display: none;
   }
-  margin: $gutter 0;
+  margin: ($gutter / 2) 0;
   text-align: center;
 
   a.anchor {
     color: $black;
     transition: color 0.3s linear;
     position: relative;
-    font-size: $lg;
+    font-size: $sm;
 
     &__adjacent {
       margin-right: $gutter * 2;
@@ -21,7 +21,7 @@
 
     &__us:before {
       content: 'United States';
-      @include position(absolute, -50px null null 50%);
+      @include position(absolute, -15px null null 50%);
       display: inline-table;
       transform: translateX(-50%);
       font-family: $heading-font-family-script;
@@ -30,7 +30,7 @@
 
     &__fl:before {
       content: 'Florida';
-      @include position(absolute, -50px null null 50%);
+      @include position(absolute, -15px null null 50%);
       display: inline-table;
       transform: translateX(-50%);
       font-family: $heading-font-family-script;
@@ -39,7 +39,7 @@
 
     &__terr:before {
       content: 'Territories';
-      @include position(absolute, -50px null null 50%);
+      @include position(absolute, -15px null null 50%);
       display: inline-table;
       transform: translateX(-50%);
       font-family: $heading-font-family-script;

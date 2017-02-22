@@ -42,6 +42,11 @@
   li {
     cursor: pointer;
     display: inline-block;
+    margin-bottom: $gutter / 3;
+    
+    @include media($medium-screen-up) {
+      margin-bottom: none;
+    }
 	}
 
   a {
@@ -54,7 +59,7 @@
       padding: $gutter / 3;
       border: solid 3px transparentize($black, 0.8);
     }
-    
+
     background-color: #eff0f2;
     color: $black;
     font-weight: bold;

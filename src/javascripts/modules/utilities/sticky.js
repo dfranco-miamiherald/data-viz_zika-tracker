@@ -4,13 +4,13 @@ const loadSticky = () => {
   var stickyHeaders = (function() {
 
     var $window = $(window),
-      $stickies;
+        $stickies;
 
     var load = function(stickies) {
 
       if (typeof stickies === "object" && stickies.length > 0) {
         $stickies = stickies.each(function() {
-          var $thisSticky = $(this).wrap('<div class="followWrap" />');
+          var $thisSticky = $(this).wrap('<div class="followWrap neat-container" />');
           $thisSticky
               .data('originalPosition', $thisSticky.offset().top)
               .data('originalHeight', $thisSticky.outerHeight())
@@ -29,11 +29,11 @@ const loadSticky = () => {
       $stickies.each(function(i) {
 
         var $thisSticky = $(this),
-          $stickyPosition = $thisSticky.data('originalPosition');
+            $stickyPosition = $thisSticky.data('originalPosition');
 
         if ($stickyPosition <= $window.scrollTop()) {
           var $nextSticky = $stickies.eq(i + 1),
-            $nextStickyPosition = $nextSticky.data('originalPosition') - $thisSticky.data('originalHeight');
+              $nextStickyPosition = $nextSticky.data('originalPosition') - $thisSticky.data('originalHeight');
 
           $thisSticky.addClass("fixed");
         } else {

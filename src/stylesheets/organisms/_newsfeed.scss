@@ -8,6 +8,12 @@
   }
 
   &__wrapper {
+    margin-bottom: 40px;
+
+    @include media($medium-screen-up) {
+      margin-bottom: none;
+    }
+    
     a {
       font-size: $med;
       text-align: center;
