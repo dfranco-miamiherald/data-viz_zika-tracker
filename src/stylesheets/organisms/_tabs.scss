@@ -26,13 +26,14 @@
   }
 
   &--per-million-territories {
+    margin-top: $gutter;
+
     @include media($medium-screen-up) {
       @include span-columns(4 of 12);
       li {
         @include span-columns(4 of 8);
         &:last-child {
           @include reset-display;
-          margin-bottom: $gutter / 2;
         }
       }
     }
@@ -46,13 +47,14 @@
   a {
     font-size: $sm;
     padding: 5px;
-    font-family: $lyon;
-    
+    font-family: $heading-font-family-sans;
+
     @include media($large-screen-up) {
       font-size: $lg;
       padding: $gutter / 3;
       border: solid 3px transparentize($black, 0.8);
     }
+    
     background-color: #eff0f2;
     color: $black;
     font-weight: bold;

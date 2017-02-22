@@ -9,6 +9,12 @@
     &--interactive {
       position: relative;
     }
+
+    &--interactive,
+    &--stats {
+      margin-top: $gutter;
+    }
+    
     @include media($medium-screen-up) {
       &--top {
         @include span-columns(12 of 12);
