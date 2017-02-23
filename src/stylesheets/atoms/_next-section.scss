@@ -1,6 +1,14 @@
 .next-section {
+  &--desktop{
+    @include position(absolute, null null 5px 50%);
+  }
+  
   @include media($medium-screen-up) {
     display: none;
+
+    &--desktop {
+      display: block;
+    }
   }
   margin: ($gutter / 2) 0;
   text-align: center;
@@ -17,6 +25,16 @@
       &:last-child {
         margin-right: 0;
       }
+    }
+
+    &__intro:before {
+      content: 'Get started';
+      width: 100px;
+      @include position(absolute, -20px null null 50%);
+      display: inline-table;
+      transform: translateX(-50%);
+      font-family: $heading-font-family-script;
+      font-weight: bold;
     }
 
     &__us:before {

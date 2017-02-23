@@ -1,0 +1,20 @@
+.intro {
+  position: relative;
+
+  &__wrapper {
+    @include position(absolute, 50% null null 50%);
+    transform: translate(-50%, -50%);
+  }
+
+  &__heading {
+    font-family: $heading-font-family-script;
+    font-weight: bold;
+    font-size: $xxl;
+    color: $white;
+    text-align: center;
+
+    @include media($medium-screen-up) {
+      font-size: 80px;
+    }
+  }
+}
