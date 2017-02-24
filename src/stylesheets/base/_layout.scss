@@ -12,8 +12,12 @@ section[role=main] {
   }
 }
 
-section.panel {
-  border: none;
-  border-radius: 0;
-  box-shadow: none;
+section {
+  margin-top: $gutter;
+  padding-left: $gutter + 10;
+  padding-right: $gutter + 10;
+
+  &#section-0 {
+    margin-top: 0;
+  }
 }

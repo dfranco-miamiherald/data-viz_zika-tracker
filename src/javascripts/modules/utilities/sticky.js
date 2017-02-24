@@ -10,7 +10,7 @@ const loadSticky = () => {
 
       if (typeof stickies === "object" && stickies.length > 0) {
         $stickies = stickies.each(function() {
-          var $thisSticky = $(this).wrap('<div class="followWrap neat-container" />');
+          var $thisSticky = $(this).wrap('<div class="followWrap" />');
           $thisSticky
               .data('originalPosition', $thisSticky.offset().top)
               .data('originalHeight', $thisSticky.outerHeight())
