@@ -17,3 +17,10 @@
 .followMeBar.fixed.absolute {
 	position: absolute;
 }
+
+.sticky {
+  &__wrapper {
+    padding-left: $gutter;
+    padding-right: $gutter;
+  }
+}
