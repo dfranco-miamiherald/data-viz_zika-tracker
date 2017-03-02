@@ -23,6 +23,12 @@ section {
   }
 }
 
+.section-heading {
+  font-size: $lg;
+  font-family: $heading-font-family-script;
+  font-weight: bold;
+}
+
 body,
 html {
   font-size: 17px;
