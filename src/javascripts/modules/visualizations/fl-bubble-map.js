@@ -240,9 +240,9 @@ class BubbleMapFl {
 
   setDate() {
     if (moment(this.caseData[this.unformatSlider()].date).format('MMMM').length > 5) {
-      $('#js-date-us').html(moment(this.caseData[this.unformatSlider()].date).format('MMM. D, YYYY'));
+      $('#js-date-fl').html(moment(this.caseData[this.unformatSlider()].date).format('MMM. D, YYYY'));
     } else {
-      $('#js-date-us').html(moment(this.caseData[this.unformatSlider()].date).format('MMMM D, YYYY'));
+      $('#js-date-fl').html(moment(this.caseData[this.unformatSlider()].date).format('MMMM D, YYYY'));
     }
   }
 

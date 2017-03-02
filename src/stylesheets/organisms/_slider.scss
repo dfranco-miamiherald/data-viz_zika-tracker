@@ -28,9 +28,10 @@
     .js-step-up {
       cursor: pointer;
       transition: color 0.3s linear;
+      color: $lawn-gnome;
 
       &:hover {
-        color: $lawn-gnome;
+        color: $black;
       }
     }
 
