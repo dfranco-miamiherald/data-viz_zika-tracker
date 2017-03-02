@@ -14,7 +14,7 @@
     &--stats {
       margin-top: $gutter;
     }
-    
+
     @include media($medium-screen-up) {
       &--top {
         @include span-columns(12 of 12);
@@ -53,8 +53,8 @@
   &__tooltip {
     position: absolute;
     pointer-events: none;
-    padding: ($gutter / 2) $gutter;
-    font-size: $sm;
+    padding: 10px 5px;
+    font-size: 12px;
     color: $white;
     background-color: rgba($black, 0.8);
     border: 3px solid $black;

@@ -126,9 +126,9 @@ class BubbleMapFl {
           this.mouse = d3.mouse(this.svg.node()).map((d) => parseInt(d));
           this.tooltip
             .classed('is-active', true)
-            .style('left', `${this.mouse[0]}px`)
-            .style('top', `${this.mouse[1]}px`)
-            .html(() => {
+            .style('left', `${this.mouse[0] + 20}px`)
+            .style('top', `${this.mouse[1] - 20}px`)
+            .html(() =>  {
               if (this.caseData[this.unformatSlider()].counties[d.id][this.dataColumn] > 1) {
                 return `${d.properties.county}: ${this.caseData[this.unformatSlider()].counties[d.id][this.dataColumn]} cases`;
               } else {
@@ -239,7 +239,11 @@ class BubbleMapFl {
   }
 
   setDate() {
-    $('#js-date-fl').html(moment(this.caseData[this.unformatSlider()].date).format('MMM. D, YYYY'));
+    if (moment(this.caseData[this.unformatSlider()].date).format('MMMM').length > 5) {
+      $('#js-date-us').html(moment(this.caseData[this.unformatSlider()].date).format('MMM. D, YYYY'));
+    } else {
+      $('#js-date-us').html(moment(this.caseData[this.unformatSlider()].date).format('MMMM D, YYYY'));
+    }
   }
 
   setNewsFeed() {

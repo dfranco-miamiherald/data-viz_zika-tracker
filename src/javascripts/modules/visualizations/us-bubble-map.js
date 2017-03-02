@@ -111,8 +111,8 @@ class BubbleMapUS {
           this.mouse = d3.mouse(this.svg.node()).map((d) => parseInt(d));
           this.tooltip
             .classed('is-active', true)
-            .style('left', `${this.mouse[0]}px`)
-            .style('top', `${this.mouse[1]}px`)
+            .style('left', `${this.mouse[0] + 20}px`)
+            .style('top', `${this.mouse[1] + 20}px`)
             .html(() => {
               if (this.dataColumn100k === 'per100k') {
                 if (this.dataColumn === 'total') {
@@ -264,7 +264,11 @@ class BubbleMapUS {
   }
 
   setDate() {
-    $('#js-date-us').html(moment(this.caseData[this.unformatSlider()].date).format('MMM. D, YYYY'));
+    if (moment(this.caseData[this.unformatSlider()].date).format('MMMM').length > 5) {
+      $('#js-date-us').html(moment(this.caseData[this.unformatSlider()].date).format('MMM. D, YYYY'));
+    } else {
+      $('#js-date-us').html(moment(this.caseData[this.unformatSlider()].date).format('MMMM D, YYYY'));
+    }
   }
 
 }
