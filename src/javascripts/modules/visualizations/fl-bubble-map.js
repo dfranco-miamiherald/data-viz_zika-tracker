@@ -249,7 +249,7 @@ class BubbleMapFl {
   setNewsFeed() {
     this.newsData.forEach((article, index) => {
       this.newsFeedWrapper.append(
-        `<a href="${article.articleUrl}" class="newsfeed__article">${moment(article.datePublished).format('MMM. D, YYYY')}: ${article.articleHeadline}</a>`
+        `<a href="${article.articleUrl}" target="_blank" class="newsfeed__article">${moment(article.datePublished).format('MMM. D, YYYY')}: ${article.articleHeadline}</a>`
       );
     });
   }

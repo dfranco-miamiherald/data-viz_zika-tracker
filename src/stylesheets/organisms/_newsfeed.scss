@@ -3,7 +3,7 @@
     font-size: $lg;
     font-family: $heading-font-family-script;
     font-weight: bold;
-    margin-bottom: $gutter;
+    margin-bottom: $gutter / 2;
     text-align: center;
   }
 
@@ -13,18 +13,19 @@
     @include media($medium-screen-up) {
       margin-bottom: none;
     }
-    
+
     a {
       font-size: $med;
       text-align: center;
       display: none;
       text-decoration: none;
-      color: $black;
+      color: $lawn-gnome;
       font-family: $heading-font-family-script;
       font-weight: bold;
+      text-decoration: underline;
 
       &:hover {
-        text-decoration: underline;
+        color: $black;
       }
 
       &.is-active {
