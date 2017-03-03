@@ -1,3 +1,7 @@
 .neat-container {
   @include outer-container(100%);
 }
+
+.neat-container-sm {
+  @include outer-container();
+}
