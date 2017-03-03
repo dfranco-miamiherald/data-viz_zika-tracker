@@ -11,9 +11,6 @@ import { loadUSTerritoriesStats } from './modules/visualizations/us-territories-
 loadUSTerritoriesStats();
 
 // UTILITIES
-import { loadAnchors } from './modules/utilities/anchors';
-loadAnchors();
-
 import { loadVideos } from './modules/utilities/video';
 loadVideos();
 

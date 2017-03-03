@@ -2,13 +2,12 @@
   background-color: $white;
 	position: relative;
 	z-index: 1;
+  height: 82px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 
-  padding-top: 5px;
-  padding-bottom: 5px;
-
-  @include media($medium-screen-up) {
-    padding-top: $gutter / 2;
-    padding-bottom: $gutter / 2;
+  &.is-hidden {
+    display: none;
   }
 }
 .followMeBar.fixed {

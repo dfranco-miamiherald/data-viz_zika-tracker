@@ -1,0 +1,17 @@
+.share-link {
+  display: inline-block;
+  margin-right: $gutter / 3;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  img {
+    width: 40px;
+    text-align: center;
+  }
+}
+
+.share-wrapper {
+  margin-bottom: $gutter / 2;
+}
