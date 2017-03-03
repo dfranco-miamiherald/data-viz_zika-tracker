@@ -1,7 +1,8 @@
 .bubble-map {
   position: relative;
 
-  &__svg-fl {
+  &__svg-fl,
+  &__svg-us {
     overflow: visible !important;
   }
 
