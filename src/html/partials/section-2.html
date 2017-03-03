@@ -6,9 +6,9 @@
     <div class="neat-row">
       <div class="slider slider--maps" id="js-slider-us"></div>
       <div class="slider__controls slider__controls--maps">
-        <i class="fa fa-play-circle fa-2x js-play js-play--us" aria-hidden="true"></i>
-        <i class="fa fa-chevron-circle-left fa-2x js-step-down js-step-down--us" aria-hidden="true"></i>
-        <i class="fa fa-chevron-circle-right fa-2x js-step-up js-step-up--us" aria-hidden="true"></i>
+        <i class="fa fa-play-circle js-play js-play--us" aria-hidden="true"></i>
+        <i class="fa fa-chevron-circle-left js-step-down js-step-down--us" aria-hidden="true"></i>
+        <i class="fa fa-chevron-circle-right js-step-up js-step-up--us" aria-hidden="true"></i>
       </div>
     </div>
   </div>
@@ -19,9 +19,10 @@
       <div class="neat-row">
         <div class="bubble-map__controls">
           <div class="neat-row tabs">
-            <li><a class="tabs__link tabs__link--us is-active" data-case="total" href="#">Travel + Local</a></li>
-            <li><a class="tabs__link tabs__link--us" data-case="local" href="#">Local Only</a></li>
-            <li><a class="tabs__link tabs__link--us" data-case="travel" href="#">Travel Only</a></li>
+            <li><a class="tabs__link tabs__link--us is-active" data-case="total" href="#">Local +<br>Travel</a></li>
+            <li><a class="tabs__link tabs__link--us" data-case="local" href="#">Local<br>Only</a></li>
+            <li><a class="tabs__link tabs__link--us" data-case="travel" href="#">Travel<br>Only</a></li>
+            <li><a class="tabs__link tabs__link--us" data-case="travel" href="#">Blood<br>Donors</a></li>
           </div>
         </div>
       </div>
@@ -38,7 +39,7 @@
         <li><a class="tabs__link tabs__link--us-100k" data-number="per100k" href="#">Per 100k</a></li>
       </div>
       <div class="bubble-map__stat--wrapper bubble-map__stat--wrapper--us">
-        <div class="bubble-map__stat--heading">All Zika cases</div>
+        <div class="bubble-map__stat--heading">Local + Travel</div>
         <div class="bubble-map__stat bubble-map__stat--total-us">0</div>
       </div>
       <div class="bubble-map__stat--wrapper bubble-map__stat--wrapper--us">
@@ -49,12 +50,10 @@
         <div class="bubble-map__stat--heading">Travel-related</div>
         <div class="bubble-map__stat bubble-map__stat--travel-us">0</div>
       </div>
-    </div>
-  </div>
-  <div class="next-section">
-    <div class="neat-row">
-      <a href="#section-3" class="js-scrollTo anchor anchor__adjacent anchor__terr"><i class="fa fa-chevron-down" aria-hidden="true"></i></a>
-      <a href="#section-1" class="js-scrollTo anchor anchor__adjacent anchor__fl"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+      <div class="bubble-map__stat--wrapper bubble-map__stat--wrapper--us">
+        <div class="bubble-map__stat--heading">Blood Donors</div>
+        <div class="bubble-map__stat bubble-map__stat--travel-us">0</div>
+      </div>
     </div>
   </div>
 </section>

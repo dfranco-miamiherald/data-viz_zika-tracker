@@ -3,7 +3,7 @@
     margin-bottom: $gutter;
     text-align: center;
     @include media($medium-screen-up) {
-      border-right: solid 3px $black;
+      border-right: solid 1px $grey;
       float: left;
       display: block;
       width: 25%;
@@ -17,7 +17,7 @@
       font-size: $lg;
       margin: 0 $gutter ($gutter / 2) $gutter;
       padding-bottom: $gutter;
-      border-bottom: solid 3px black;
+      border-bottom: solid 1px $grey;
       @include media($medium-screen-up) {
         border-bottom: none;
         margin: 0 0 $gutter 0;

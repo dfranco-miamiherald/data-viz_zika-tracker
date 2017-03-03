@@ -14,22 +14,35 @@ section[role=main] {
 }
 
 section {
-  margin-top: $gutter;
-  padding-left: $gutter + 10;
-  padding-right: $gutter + 10;
+  margin-top: $gutter * 2;
+  padding: 0 0;
+  margin-bottom: $gutter;
+
+  @include media($medium-screen-up) {
+    padding-left: $gutter + 10;
+    padding-right: $gutter + 10;
+    margin-bottom: $gutter * 2;
+  }
 
   &#section-0 {
     margin-top: 0;
   }
 }
 
-.section-heading {
-  font-size: $lg;
+.section__heading {
+  font-size: 40px;
   font-family: $heading-font-family-script;
   font-weight: bold;
+  line-height: 1.1;
+
+  &--wrapper {
+    margin-bottom: $gutter * 2;
+  }
 }
 
 body,
 html {
-  font-size: 17px;
+  font-size: $lg;
+  line-height: 1.5;
+  font-family: $lyon;
 }

@@ -34,8 +34,12 @@ const loadSticky = () => {
         if ($stickyPosition <= $window.scrollTop()) {
           var $nextSticky = $stickies.eq(i + 1),
               $nextStickyPosition = $nextSticky.data('originalPosition') - $thisSticky.data('originalHeight');
-          
+
           $thisSticky.addClass("fixed");
+
+          if ($nextSticky.length > 0 && $thisSticky.offset().top >= $nextStickyPosition) {
+            $thisSticky.addClass("absolute").css("top", $nextStickyPosition);
+          }
         } else {
           var $prevSticky = $stickies.eq(i - 1);
 

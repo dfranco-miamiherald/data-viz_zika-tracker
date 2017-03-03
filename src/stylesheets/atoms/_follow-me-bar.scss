@@ -2,9 +2,14 @@
   background-color: $white;
 	position: relative;
 	z-index: 1;
-  padding-top: $gutter / 2;
-  padding-bottom: $gutter / 2;
-  border-bottom: solid $black 3px;
+
+  padding-top: 5px;
+  padding-bottom: 5px;
+
+  @include media($medium-screen-up) {
+    padding-top: $gutter / 2;
+    padding-bottom: $gutter / 2;
+  }
 }
 .followMeBar.fixed {
 	position: fixed;
@@ -12,6 +17,7 @@
 	z-index: 999999;
   box-sizing: border-box;
   width: 100%;
+  border-bottom: solid $grey 1px;
 }
 
 .followMeBar.fixed.absolute {
@@ -20,7 +26,12 @@
 
 .sticky {
   &__wrapper {
-    padding-left: 40px;
-    padding-right: 40px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    @include media($medium-screen-up) {
+      padding-left: 40px;
+      padding-right: 40px;
+    }
   }
 }

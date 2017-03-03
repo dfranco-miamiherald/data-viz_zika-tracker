@@ -10,11 +10,6 @@
       position: relative;
     }
 
-    &--interactive,
-    &--stats {
-      margin-top: $gutter;
-    }
-
     @include media($medium-screen-up) {
       &--top {
         @include span-columns(12 of 12);
@@ -81,6 +76,7 @@
     font-family: $heading-font-family-script;
     font-weight: bold;
     color: $silver-surfer;
+    line-height: 1.2;
 
     &--heading {
       font-size: $lg;
@@ -88,6 +84,7 @@
       font-family: $heading-font-family-script;
       font-weight: bold;
       color: $black;
+      line-height: 1;
     }
 
     &--wrapper {

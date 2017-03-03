@@ -3,7 +3,6 @@
     font-size: $lg;
     font-family: $heading-font-family-script;
     font-weight: bold;
-    margin-bottom: $gutter / 2;
     text-align: center;
   }
 
@@ -19,18 +18,27 @@
       text-align: center;
       display: none;
       text-decoration: none;
-      color: $lawn-gnome;
+      color: $black;
       font-family: $heading-font-family-script;
       font-weight: bold;
-      text-decoration: underline;
 
       &:hover {
         color: $black;
+        text-decoration: underline;
       }
 
       &.is-active {
         display: block;
       }
+
+      & span.newsfeed__date {
+        font-size: $sm;
+        font-family: $heading-font-family-sans;
+      }
     }
+  }
+
+  .fa.fa-arrow-circle-right {
+    color: $lawn-gnome;
   }
 }
