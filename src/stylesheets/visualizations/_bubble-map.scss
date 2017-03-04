@@ -3,7 +3,9 @@
 
   &__svg-fl,
   &__svg-us {
-    overflow: visible !important;
+    g {
+      transform: matrix(1, 0, 0, 1, 0, 0);  
+    }
   }
 
   &__wrapper {

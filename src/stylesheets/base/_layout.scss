@@ -22,7 +22,7 @@ section[role=main] {
 
 section {
   margin-top: $gutter * 2;
-  padding: 0 0;
+  padding: 10px 0;
   margin-bottom: $gutter;
 
   @include media($medium-screen-up) {
