@@ -12,7 +12,7 @@ class BubbleMapFl {
     this.dataUrl = dataUrl;
     this.shapeUrl = shapeUrl;
     this.newsUrl = feedUrl;
-    this.aspectRatio = 0.5;
+    this.aspectRatio = 0.667;
     this.margin = {top: 0, right: 0, bottom: 0, left: 0};
     this.width = $(this.el).width() - this.margin.left - this.margin.right;
     this.height = Math.ceil(this.aspectRatio * (this.width - this.margin.top - this.margin.bottom));
