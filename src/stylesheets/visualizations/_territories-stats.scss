@@ -16,10 +16,11 @@
     &--heading {
       font-size: $lg;
       margin: 0 $gutter ($gutter / 2) $gutter;
-      padding-bottom: $gutter;
-      border-bottom: solid 1px $grey;
+      padding: $gutter 0;
+      border-top: solid 1px $grey;
       @include media($medium-screen-up) {
-        border-bottom: none;
+        padding: 0;
+        border-top: none;
         margin: 0 0 $gutter 0;
         font-size: $lg;
       }

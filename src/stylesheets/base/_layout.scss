@@ -21,6 +21,7 @@ section[role=main] {
 }
 
 section {
+  padding: 0 15px;
   margin-top: $gutter * 2;
   margin-bottom: $gutter;
 
@@ -40,6 +41,7 @@ section {
   font-family: $heading-font-family-script;
   font-weight: bold;
   line-height: 1.1;
+  margin-bottom: $gutter;
 
   &--wrapper {
     margin-bottom: $gutter * 2;

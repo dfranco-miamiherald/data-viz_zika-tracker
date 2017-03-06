@@ -12,10 +12,9 @@ class BubbleMapFl {
     this.dataUrl = dataUrl;
     this.shapeUrl = shapeUrl;
     this.newsUrl = feedUrl;
-    this.aspectRatio = 0.667;
-    this.margin = {top: 0, right: 0, bottom: 0, left: 0};
-    this.width = $(this.el).width() - this.margin.left - this.margin.right;
-    this.height = Math.ceil(this.aspectRatio * (this.width - this.margin.top - this.margin.bottom));
+    this.aspectRatio = 0.6663;
+    this.width = $(this.el).width();
+    this.height = Math.ceil(this.aspectRatio * this.width);
     this.mapWidth = this.width;
     this.dataColumn = 'total';
     this.totals = [
@@ -38,8 +37,9 @@ class BubbleMapFl {
         .append('g');
 
     this.loadData();
-    this.resizeBubbleMap();
+
     $(window).on('resize', this.resizeBubbleMap.bind(this));
+    $(window).trigger('resize');
   }
 
 
@@ -47,8 +47,8 @@ class BubbleMapFl {
     window.requestAnimationFrame(() => {
       const chart = $(this.el).find(`g`).first();
 
-      this.width = $(this.el).width() - this.margin.left - this.margin.right;
-      this.height = Math.ceil(this.aspectRatio * (this.width - this.margin.top - this.margin.bottom));
+      this.width = $(this.el).width();
+      this.height = Math.ceil(this.aspectRatio * this.width);
 
       TweenLite.set(chart, { scale: this.width / this.mapWidth });
       d3.select('.bubble-map__svg-fl').attr('height', this.height);
