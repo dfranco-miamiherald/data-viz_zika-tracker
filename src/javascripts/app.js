@@ -19,3 +19,6 @@ loadSticky();
 
 import { loadShare } from './modules/utilities/share';
 loadShare();
+
+import { loadScroll } from './modules/utilities/scroll';
+loadScroll();
