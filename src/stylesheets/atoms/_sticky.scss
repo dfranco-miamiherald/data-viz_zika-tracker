@@ -1,0 +1,41 @@
+// .followMeBar {
+//
+// 	position: relative;
+// 	z-index: 1;
+//   height: 82px;
+//   padding-top: 10px;
+//   padding-bottom: 10px;
+//
+//   &.is-hidden {
+//     display: none;
+//   }
+// }
+// .followMeBar.fixed {
+// 	position: fixed;
+// 	top: 0;
+//
+//   box-sizing: border-box;
+//   width: 100%;
+//
+// }
+//
+// .followMeBar.fixed.absolute {
+// 	position: absolute;
+// }
+
+.sticky {
+  z-index: 999999;
+  background-color: $white;
+  border-bottom: solid $grey 1px;
+  margin-bottom: $gutter + 10px;
+  padding-top: $gutter / 3;
+
+  &__wrapper {
+    background-color: $white;
+    margin-bottom: $gutter;
+
+    @include media($medium-screen-up) {
+      margin-bottom: $gutter;
+    }
+  }
+}

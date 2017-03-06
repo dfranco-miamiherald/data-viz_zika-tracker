@@ -1,6 +1,8 @@
 import $ from 'jquery';
 import { TweenLite, TweenMax } from 'gsap';
 import ScrollMagic from 'scrollmagic';
+import 'imports?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap';
+import 'imports?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators';
 
 const loadSticky = () => {
   // var stickyHeaders = (function() {
@@ -60,9 +62,13 @@ const loadSticky = () => {
   // });
   var controller = new ScrollMagic.Controller();
 
-  var scene = new ScrollMagic.Scene({triggerElement: "section-1"})
-  	.setPin("#pin2")
-  	.addIndicators({name: "2 (duration: 0)"}) // add indicators (requires plugin)
+  var scene = new ScrollMagic.Scene({
+      triggerElement: '#section-1',
+      duration: $('#section-1').outerHeight(),
+      triggerHook: 'onLeave'
+    })
+  	.setPin('#section-1-sticky', { pushFollowers: false })
+  	.addIndicators({name: '1'}) // add indicators (requires plugin)
   	.addTo(controller);
 };
 
