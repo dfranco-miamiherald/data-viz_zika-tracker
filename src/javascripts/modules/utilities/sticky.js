@@ -60,7 +60,7 @@ const loadSticky = () => {
   // });
   var controller = new ScrollMagic.Controller();
 
-  var scene = new ScrollMagic.Scene({triggerElement: "#pin2"})
+  var scene = new ScrollMagic.Scene({triggerElement: "section-1"})
   	.setPin("#pin2")
   	.addIndicators({name: "2 (duration: 0)"}) // add indicators (requires plugin)
   	.addTo(controller);
