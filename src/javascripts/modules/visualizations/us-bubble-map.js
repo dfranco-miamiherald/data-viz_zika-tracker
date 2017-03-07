@@ -19,7 +19,8 @@ class BubbleMapUS {
     this.totals = [
       '.bubble-map__stat--local-us',
       '.bubble-map__stat--travel-us',
-      '.bubble-map__stat--total-us'
+      '.bubble-map__stat--total-us',
+      '.bubble-map__stat--donor-us'
     ];
   }
 
@@ -264,7 +265,7 @@ class BubbleMapUS {
         counterEnd = {var: this.caseData[this.unformatSlider()].statesTotalTravel};
       } else if (el === '.bubble-map__stat--total-us') {
         counterEnd = {var: this.caseData[this.unformatSlider()].statesTotal};
-      } else if (el === '.bubble-map__stat--total-donor') {
+      } else if (el === '.bubble-map__stat--donor-us') {
         counterEnd = {var: this.caseData[this.unformatSlider()].statesTotalDonor};
       }
     } else if (this.dataColumnPerMil === 'perMil') {
