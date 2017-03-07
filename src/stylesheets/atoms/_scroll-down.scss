@@ -106,14 +106,14 @@ transition: all 250ms ease-in-out;
 }
 .text-wrapper__show {
 	/*opacity: 1;*/
-	top:350px;
+	top: 350px;
 	transition: opacity 250ms ease-in-out, transform 250ms;
 	/*-moz-transition: opacity .25s ease-in-out;*/
 	-webkit-transition: opacity 250ms ease-in-out, -webkit-transform 250ms;
 }
 @media screen and (max-width: 1400px) {
 	.text-wrapper__show {
-		top:300px;
+		top: 300px;
 	}
 }
 

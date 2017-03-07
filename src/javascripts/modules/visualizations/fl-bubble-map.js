@@ -249,12 +249,21 @@ class BubbleMapFl {
 
   setNewsFeed() {
     this.newsData.forEach((article, index) => {
-      this.newsFeedWrapper.append(
-        `<a href="${article.articleUrl}" target="_blank" class="newsfeed__article">
+      if (moment(article.datePublished).format('MMMM').length > 5) {
+        this.newsFeedWrapper.append(
+          `<a href="${article.articleUrl}" target="_blank" class="newsfeed__article">
             ${article.articleHeadline} <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
             <br><span class="newsfeed__date">${moment(article.datePublished).format('MMM. D, YYYY')}</span>
           </a>`
-      );
+        );
+      } else {
+        this.newsFeedWrapper.append(
+          `<a href="${article.articleUrl}" target="_blank" class="newsfeed__article">
+            ${article.articleHeadline} <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+            <br><span class="newsfeed__date">${moment(article.datePublished).format('MMMM D, YYYY')}</span>
+          </a>`
+        );
+      }
     });
   }
 
