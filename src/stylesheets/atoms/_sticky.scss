@@ -7,10 +7,6 @@
 
   &__wrapper {
     background-color: $white;
-    margin-bottom: $gutter;
-
-    @include media($medium-screen-up) {
-      margin-bottom: $gutter;
-    }
+    margin-bottom: 5px;
   }
 }
