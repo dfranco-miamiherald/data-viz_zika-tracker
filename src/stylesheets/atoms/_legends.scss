@@ -6,14 +6,14 @@
     max-width: 100%;
   }
 
-  width: 75px;
+  width: 100px;
   z-index: -1;
   &--bubbles {
     @include position(absolute, null null 5% 5%);
   }
 
   &--select {
-    @include position(absolute, 56% null null 38%);
+    @include position(absolute, 45% null null 25%);
   }
 
   &--filter {
@@ -21,13 +21,13 @@
   }
 
   @include media($medium-screen-up) {
-    width: 100px;
+    width: 125px;
     &--bubbles {
       @include position(absolute, null null 0% 5%);
     }
 
     &--select {
-      @include position(absolute, 28% null null 46%);
+      @include position(absolute, 48% null null 25%);
     }
 
     &--filter {
@@ -42,7 +42,7 @@
     }
 
     &--select {
-      @include position(absolute, 28% null null 37%);
+      @include position(absolute, 48% null null 25%);
     }
 
     &--filter {
