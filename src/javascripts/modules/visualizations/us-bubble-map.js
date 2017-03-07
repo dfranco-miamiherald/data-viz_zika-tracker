@@ -113,7 +113,7 @@ class BubbleMapUS {
           this.mouse = d3.mouse(this.svg.node()).map((d) => parseInt(d));
           this.tooltip
             .classed('is-active', true)
-            .style('left', `${this.mouse[0] - 20}px`)
+            .style('left', `${this.mouse[0] - 40}px`)
             .style('top', `${this.mouse[1] - 20}px`)
             .html(() => {
               if (this.dataColumnPerMil === 'perMil') {
