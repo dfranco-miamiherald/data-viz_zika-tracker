@@ -34,7 +34,8 @@ class BubbleMapFl {
         .attr('width', '100%')
         .attr('height', this.height)
         .attr('class', 'bubble-map__svg-fl')
-        .append('g');
+        .append('g')
+        .attr('class', 'g-first');
 
     this.loadData();
 
@@ -50,7 +51,8 @@ class BubbleMapFl {
       this.width = $(this.el).width();
       this.height = Math.ceil(this.aspectRatio * this.width);
 
-      TweenLite.set(chart, { scale: this.width / this.mapWidth });
+      // TweenLite.set(chart, { scale: this.width / this.mapWidth });
+      d3.selectAll(".g-first").attr("transform", `scale(${this.width / this.mapWidth})`);
       d3.select('.bubble-map__svg-fl').attr('height', this.height);
       this.resizeBubbles();
     });
