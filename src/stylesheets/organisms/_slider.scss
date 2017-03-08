@@ -8,15 +8,13 @@
     }
   }
 
-  // @include media($medium-screen-up) {
-    &--territories {
-      @include span-columns(6 of 8);
-    }
+  &--territories {
+    @include span-columns(6 of 8);
+  }
 
-    &--maps {
-      @include span-columns(6 of 8);
-    }
-  // }
+  &--maps {
+    @include span-columns(6 of 8);
+  }
 
   &__controls {
     text-align: center;
@@ -35,21 +33,15 @@
       }
     }
 
-    // @include media($medium-screen-up) {
-      &--territories {
-        @include span-columns(2 of 8);
-      }
+    &--territories {
+      @include span-columns(2 of 8);
+    }
 
-      &--maps {
-        @include span-columns(2 of 8);
-      }
-      margin-top: -5px;
-      text-align: center;
-    // }
-  }
-
-  .noUi-base {
-    z-index: 0;
+    &--maps {
+      @include span-columns(2 of 8);
+    }
+    margin-top: -5px;
+    text-align: center;
   }
 
   &__title {
@@ -68,5 +60,14 @@
     @include media($medium-screen-up) {
       margin: 0  0 $gutter $gutter;
     }
+  }
+
+  .noUi-base {
+    z-index: 0;
+  }
+
+  .noUi-handle-lower {
+    background-color: $lawn-gnome;
+    box-shadow: none;
   }
 }

@@ -45,7 +45,7 @@ class BubbleMapUS {
       this.width = $(this.el).width();
       this.height = Math.ceil(this.aspectRatio * this.width);
 
-      TweenLite.set(chart, { scale: (this.width / this.mapWidth) * 0.9 });
+      TweenLite.set(chart, { scale: (this.width / this.mapWidth) * 0.8 });
       d3.select('.bubble-map__svg-us').attr('height', this.height);
       this.resizeBubbles();
     });
