@@ -5,6 +5,9 @@ import { TweenMax, TweenLite } from 'gsap';
 import numeral from 'numeral';
 import noUiSlider from 'no-ui-slider';
 import moment from 'moment';
+import ScrollMagic from 'scrollmagic';
+import 'imports?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap';
+import 'imports?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators';
 
 class BubbleMapUS {
   constructor(el, dataUrl, shapeUrl) {
@@ -114,8 +117,8 @@ class BubbleMapUS {
           this.mouse = d3.mouse(this.svg.node()).map((d) => parseInt(d));
           this.tooltip
             .classed('is-active', true)
-            .style('left', `${this.mouse[0] - 40}px`)
-            .style('top', `${this.mouse[1] - 20}px`)
+            .style('left', `${(this.mouse[0] - 40) * 0.8}px`)
+            .style('top', `${(this.mouse[1] - 20) * 0.8}px`)
             .html(() => {
               if (this.dataColumnPerMil === 'perMil') {
                 if (this.dataColumn === 'total') {
@@ -176,9 +179,9 @@ class BubbleMapUS {
 
   drawSlider () {
     this.stepSlider = $('#js-slider-us')[0];
-    let slider = noUiSlider .create(this.stepSlider, {
+    let slider = noUiSlider.create(this.stepSlider, {
       animate: true,
-      animationDuration: 3000,
+      animationDuration: 6000,
       start: 0,
       step: 1,
       range: {
@@ -187,7 +190,19 @@ class BubbleMapUS {
       }
     });
 
-    $(() => this.stepSlider.noUiSlider.set(this.caseData.length - 1));
+    var controller = new ScrollMagic.Controller();
+
+    var scene = new ScrollMagic.Scene({
+        triggerElement: '#section-2',
+        duration: $('#section-2').outerHeight(),
+        triggerHook: 'onLeave'
+      })
+    	.setPin('#section-2-sticky', { pushFollowers: false })
+      .on('enter', (event) => {
+        this.stepSlider.noUiSlider.set(this.caseData.length - 1);
+      })
+    	.addTo(controller);
+    // $(() => this.stepSlider.noUiSlider.set(this.caseData.length - 1));
 
     $('.js-play--us').click(() => {
       this.stepSlider.noUiSlider.set(this.caseData.length - 1);

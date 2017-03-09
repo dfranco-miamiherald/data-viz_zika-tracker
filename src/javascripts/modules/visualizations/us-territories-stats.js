@@ -4,6 +4,9 @@ import { TweenMax } from 'gsap';
 import numeral from 'numeral';
 import noUiSlider from 'no-ui-slider';
 import moment from 'moment';
+import ScrollMagic from 'scrollmagic';
+import 'imports?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap';
+import 'imports?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators';
 
 class USTerritoriesStats {
   constructor() {
@@ -111,7 +114,18 @@ class USTerritoriesStats {
       }
     });
 
-    $(() => this.stepSlider.noUiSlider.set(this.caseData.length - 1));
+    var controller = new ScrollMagic.Controller();
+
+    var scene = new ScrollMagic.Scene({
+        triggerElement: '#section-3',
+        duration: $('#section-3').outerHeight(),
+        triggerHook: 'onLeave'
+      })
+    	.setPin('#section-3-sticky', { pushFollowers: false })
+      .on('enter', (event) => {
+        this.stepSlider.noUiSlider.set(this.caseData.length - 1);
+      })
+    	.addTo(controller);
 
     $('.js-play--territories').click(() => {
       this.stepSlider.noUiSlider.set(this.caseData.length - 1);

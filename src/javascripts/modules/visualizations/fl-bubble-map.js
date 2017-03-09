@@ -5,6 +5,9 @@ import { TweenLite, TweenMax } from 'gsap';
 import numeral from 'numeral';
 import noUiSlider from 'no-ui-slider';
 import moment from 'moment';
+import ScrollMagic from 'scrollmagic';
+import 'imports?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap';
+import 'imports?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators';
 
 class BubbleMapFl {
   constructor(el, dataUrl, shapeUrl, feedUrl) {
@@ -30,7 +33,8 @@ class BubbleMapFl {
   }
 
   render() {
-    this.svg = d3.select(this.el).append('svg')
+    this.svg = d3.select(this.el)
+        .append('svg')
         .attr('width', '100%')
         .attr('height', this.height)
         .attr('class', 'bubble-map__svg-fl')
@@ -127,8 +131,8 @@ class BubbleMapFl {
           this.mouse = d3.mouse(this.svg.node()).map((d) => parseInt(d));
           this.tooltip
             .classed('is-active', true)
-            .style('left', `${this.mouse[0] - 10}px`)
-            .style('top', `${this.mouse[1] - 20}px`)
+            .style('left', `${(this.mouse[0] - 20) * 0.8}px`)
+            .style('top', `${(this.mouse[1] + 20) * 0.8}px`)
             .html(() =>  {
               if (this.caseData[this.unformatSlider()].counties[d.id][this.dataColumn] > 1) {
                 return `${d.properties.county}: ${this.caseData[this.unformatSlider()].counties[d.id][this.dataColumn]} cases`;
@@ -163,13 +167,28 @@ class BubbleMapFl {
   drawSlider () {
     this.stepSlider = $('#js-slider-fl')[0];
     let slider = noUiSlider.create(this.stepSlider, {
-      start: this.caseData.length - 1,
+      animate: true,
+      animationDuration: 6000,
+      start: 0,
       step: 1,
       range: {
         'min': [ 0 ],
         'max': [ this.caseData.length - 1 ]
       }
     });
+
+    var controller = new ScrollMagic.Controller();
+
+    var scene = new ScrollMagic.Scene({
+        triggerElement: '#section-1',
+        duration: $('#section-1').outerHeight(),
+        triggerHook: 'onLeave'
+      })
+    	.setPin('#section-1-sticky', { pushFollowers: false })
+      .on('enter', (event) => {
+        this.stepSlider.noUiSlider.set(this.caseData.length - 1);
+      })
+    	.addTo(controller);
 
     $('.js-play--fl').click(() => {
       this.stepSlider.noUiSlider.set(this.caseData.length - 1);
@@ -278,6 +297,10 @@ class BubbleMapFl {
     $('.newsfeed__article').removeClass('is-active');
     let article = $('.newsfeed__article')[articlePosition];
     $(article).addClass('is-active');
+
+  }
+
+  setScrollMagic() {
 
   }
 }
