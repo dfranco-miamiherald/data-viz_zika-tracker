@@ -7,9 +7,9 @@ const loadScroll = () => {
     var y = $(this).scrollTop();
     var fadeHeight = $('#section-0').offset().top;
       if (y > fadeHeight + 50) {
-  			$('#headline-container').addClass('text-wrapper__hidden').removeClass('text-wrapper__show');
+  			$('#headline-container').addClass('headline-wrapper__hidden').removeClass('headline-wrapper__show');
   		} else {
-  			$('#headline-container').addClass('text-wrapper__show').removeClass('text-wrapper__hidden');
+  			$('#headline-container').addClass('headline-wrapper__show').removeClass('headline-wrapper__hidden');
   		}
   });
 
