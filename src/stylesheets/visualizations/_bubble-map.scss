@@ -74,9 +74,23 @@
     text-align: center;
     z-index: 2;
     line-height: 14px;
+    display: none;
 
     &.is-active {
       opacity: 1;
+    }
+
+    @include media($medium-screen-up) {
+      display: block;
+    }
+  }
+
+  &__tooltip-mobile {
+    font-family: $lyon;
+    display: block;
+
+    @include media($medium-screen-up) {
+      display: none;
     }
   }
 

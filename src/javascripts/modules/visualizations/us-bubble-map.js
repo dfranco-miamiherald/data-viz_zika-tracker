@@ -154,10 +154,47 @@ class BubbleMapUS {
                 }
               }
             });
+
+            var $usMobileTooltip = $('.bubble-map__tooltip-mobile--us');
+            if (this.dataColumnPerMil === 'perMil') {
+              if (this.dataColumn === 'total') {
+                if (this.caseData[this.unformatSlider()].states[d.id].perMillionTotal != 1) {
+                  $usMobileTooltip.html(`${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id].perMillionTotal} cases per million`);
+                } else {
+                  $usMobileTooltip.html(`${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id].perMillionTotal} case per million`);
+                }
+              } else if (this.dataColumn === 'local') {
+                if (this.caseData[this.unformatSlider()].states[d.id].perMillionLocal != 1) {
+                  $usMobileTooltip.html(`${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id].perMillionLocal} cases per million`);
+                } else {
+                  $usMobileTooltip.html(`${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id].perMillionLocal} case per million`);
+                }
+              } else if (this.dataColumn === 'travel') {
+                if (this.caseData[this.unformatSlider()].states[d.id].perMillionTravel != 1) {
+                  $usMobileTooltip.html(`${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id].perMillionTravel} cases per million`);
+                } else {
+                  $usMobileTooltip.html(`${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id].perMillionTravel} case per million`);
+                }
+              } else if (this.dataColumn === 'donor') {
+                if (this.caseData[this.unformatSlider()].states[d.id].perMillionDonor != 1) {
+                  $usMobileTooltip.html(`${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id].perMillionDonor} cases per million`);
+                } else {
+                  $usMobileTooltip.html(`${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id].perMillionDonor} case per million`);
+                }
+              }
+            } else {
+              if (this.caseData[this.unformatSlider()].states[d.id][this.dataColumn] != 1) {
+                $usMobileTooltip.html(`${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id][this.dataColumn]} cases`);
+              } else {
+                $usMobileTooltip.html(`${d.properties.name}: ${this.caseData[this.unformatSlider()].states[d.id][this.dataColumn]} case`);
+              }
+            }
         })
         .on('mouseout', (d) => {
           this.tooltip
             .classed('is-active', false);
+
+          $('.bubble-map__tooltip-mobile--us').html('&nbsp');
         });
 
 

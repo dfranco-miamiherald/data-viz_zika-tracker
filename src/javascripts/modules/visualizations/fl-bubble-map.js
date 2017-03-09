@@ -140,10 +140,18 @@ class BubbleMapFl {
                 return `${d.properties.county}: ${this.caseData[this.unformatSlider()].counties[d.id][this.dataColumn]} case`;
               }
             });
+
+            if (this.caseData[this.unformatSlider()].counties[d.id][this.dataColumn] > 1) {
+              $('.bubble-map__tooltip-mobile--fl').html(`${d.properties.county}: ${this.caseData[this.unformatSlider()].counties[d.id][this.dataColumn]} cases`);
+            } else {
+              $('.bubble-map__tooltip-mobile--fl').html(`${d.properties.county}: ${this.caseData[this.unformatSlider()].counties[d.id][this.dataColumn]} case`);
+            }
         })
         .on('mouseout', (d) => {
           this.tooltip
             .classed('is-active', false);
+
+          $('.bubble-map__tooltip-mobile--fl').html('&nbsp');
         });
 
 
