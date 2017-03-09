@@ -88,6 +88,8 @@
   &__tooltip-mobile {
     font-family: $lyon;
     display: block;
+    margin: 12px 0 10px;
+    font-size: 12px;
 
     @include media($medium-screen-up) {
       display: none;
