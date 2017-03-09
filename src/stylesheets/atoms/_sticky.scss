@@ -4,6 +4,7 @@
   border-bottom: solid $grey 1px;
   margin-bottom: $gutter + 10px;
   padding-top: $gutter / 3;
+  transform: translate3d(0, 0, 0);
 
   &__wrapper {
     background-color: $white;
