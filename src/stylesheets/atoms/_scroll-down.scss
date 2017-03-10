@@ -77,6 +77,10 @@
 
 	&__show {
 		top: 33%;
+
+		@include media($medium-screen-up) {
+			top: 50%;
+		}
 		transition: opacity 250ms ease-in-out, transform 250ms;
 	}
 
