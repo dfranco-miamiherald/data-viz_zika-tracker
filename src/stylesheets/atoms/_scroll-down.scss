@@ -9,10 +9,10 @@
 }
 
 .scroll-down-absolute {
-	position:absolute !important;
-	bottom:100px;
-	left:0;
-	right:0;
+	position: absolute !important;
+	bottom: 100px;
+	left: 0;
+	right: 0;
 	top: auto !important;
 }
 
@@ -73,20 +73,18 @@
   color: $white;
   text-align: center;
 	transition: all 250ms ease-in-out;
-	position: relative;
-
-	@include media($medium-screen-up) {
-		position: fixed;
-	}
+	position: absolute;
 
 	&__show {
 		top: 50%;
-		transform: translateY(-50%);
+
+		@include media($medium-screen-up) {
+			top: 25%;
+		}
 		transition: opacity 250ms ease-in-out, transform 250ms;
 	}
 
 	&__hidden {
 		top: -100%;
-		transform: none;
 	}
 }
