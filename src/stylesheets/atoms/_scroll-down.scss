@@ -60,7 +60,7 @@
   line-height: 1.05em;
 
 	@include media($medium-screen-up) {
-		font-size: 6vw;
+		font-size: 6vw !important;
 	  line-height: 1.05em;
 	}
 }
