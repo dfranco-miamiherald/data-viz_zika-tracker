@@ -73,14 +73,10 @@
   color: $white;
   text-align: center;
 	transition: all 250ms ease-in-out;
-	position: absolute;
+	position: fixed;
 
 	&__show {
-		top: 50%;
-
-		@include media($medium-screen-up) {
-			top: 25%;
-		}
+		top: 33%;
 		transition: opacity 250ms ease-in-out, transform 250ms;
 	}
 
