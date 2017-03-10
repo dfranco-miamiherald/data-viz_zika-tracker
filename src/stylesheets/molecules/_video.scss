@@ -1,7 +1,19 @@
-.fullscreen-bg__video {
+.fullscreen-bg {
+  &__video {
     @include position(absolute, 0 null null 0);
     @include size(100% auto);
     z-index: -100;
+    
+    &::-webkit-media-controls-start-playback-button {
+      display: none!important;
+      -webkit-appearance: none;
+    }
+  }
+
+  &__image {
+    display: none;
+    background: url('http://media.miamiherald.com/static/media/projects/2016/zika-interactive-v2/site/images/zika-poster.jpg') no-repeat center center fixed;
+  }
 }
 
 @media (min-aspect-ratio: 16/9) {
