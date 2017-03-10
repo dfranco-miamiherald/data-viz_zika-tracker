@@ -1,6 +1,11 @@
 .bubble-map {
   position: relative;
 
+  margin-bottom: $gutter;
+  @include media($medium-screen-up) {
+    margin-bottom: 0;
+  }
+
   &:before {
     content: '';
     display: block;
@@ -88,8 +93,9 @@
   &__tooltip-mobile {
     font-family: $lyon;
     display: block;
-    margin: 12px 0 10px;
-    font-size: 12px;
+    margin: ($gutter / 2) 0 ($gutter / 2);
+    font-size: $sm;
+    text-align: center;
 
     @include media($medium-screen-up) {
       display: none;

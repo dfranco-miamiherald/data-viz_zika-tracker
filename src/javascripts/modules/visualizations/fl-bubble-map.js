@@ -33,11 +33,19 @@ class BubbleMapFl {
   }
 
   render() {
+    this.zoom = d3.zoom()
+      .scaleExtent([1, 8])
+      .on('zoom', () => {
+        this.svg.attr('transform', d3.event.transform);
+        $('.legend').addClass('is-hidden');
+      });
+
     this.svg = d3.select(this.el)
         .append('svg')
         .attr('width', '100%')
         .attr('height', this.height)
         .attr('class', 'bubble-map__svg-fl')
+        .call(this.zoom)
         .append('g');
 
     this.loadData();
@@ -54,7 +62,6 @@ class BubbleMapFl {
       this.width = $(this.el).width();
       this.height = Math.ceil(this.aspectRatio * this.width);
 
-      TweenLite.set(chart, { scale: (this.width / this.mapWidth) * 0.8 });
       d3.select('.bubble-map__svg-fl').attr('height', this.height);
 
       this.resizeBubbles();
@@ -131,8 +138,8 @@ class BubbleMapFl {
           this.mouse = d3.mouse(this.svg.node()).map((d) => parseInt(d));
           this.tooltip
             .classed('is-active', true)
-            .style('left', `${(this.mouse[0] - 20) * 0.8}px`)
-            .style('top', `${(this.mouse[1] + 20) * 0.8}px`)
+            .style('left', `${(this.mouse[0])}px`)
+            .style('top', `${(this.mouse[1])}px`)
             .html(() =>  {
               if (this.caseData[this.unformatSlider()].counties[d.id][this.dataColumn] > 1) {
                 return `${d.properties.county}: ${this.caseData[this.unformatSlider()].counties[d.id][this.dataColumn]} cases`;
@@ -151,7 +158,7 @@ class BubbleMapFl {
           this.tooltip
             .classed('is-active', false);
 
-          $('.bubble-map__tooltip-mobile--fl').html('&nbsp');
+          $('.bubble-map__tooltip-mobile--fl').html('Select a county');
         });
 
 
@@ -230,6 +237,7 @@ class BubbleMapFl {
     $('.tabs__link--fl').click(() => {
       event.preventDefault();
 
+      this.zoom.scaleTo(this.svg, 1);
       $('.tabs__link--fl').removeClass('is-active');
       $(event.currentTarget).addClass('is-active');
 

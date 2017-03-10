@@ -28,10 +28,17 @@ class BubbleMapUS {
   }
 
   render() {
+    this.zoom = d3.zoom()
+      .scaleExtent([1, 8])
+      .on('zoom', () => {
+        this.svg.attr('transform', d3.event.transform);
+      });
+
     this.svg = d3.select(this.el).append('svg')
         .attr('width', '100%')
         .attr('height', this.height)
         .attr('class', 'bubble-map__svg-us')
+        .call(this.zoom)
         .append('g');
 
     this.loadData();
@@ -48,7 +55,6 @@ class BubbleMapUS {
       this.width = $(this.el).width();
       this.height = Math.ceil(this.aspectRatio * this.width);
 
-      TweenLite.set(chart, { scale: (this.width / this.mapWidth) * 0.8 });
       d3.select('.bubble-map__svg-us').attr('height', this.height);
       this.resizeBubbles();
     });
@@ -117,8 +123,8 @@ class BubbleMapUS {
           this.mouse = d3.mouse(this.svg.node()).map((d) => parseInt(d));
           this.tooltip
             .classed('is-active', true)
-            .style('left', `${(this.mouse[0] - 40) * 0.8}px`)
-            .style('top', `${(this.mouse[1] - 20) * 0.8}px`)
+            .style('left', `${(this.mouse[0])}px`)
+            .style('top', `${(this.mouse[1])}px`)
             .html(() => {
               if (this.dataColumnPerMil === 'perMil') {
                 if (this.dataColumn === 'total') {
@@ -239,7 +245,6 @@ class BubbleMapUS {
         this.stepSlider.noUiSlider.set(this.caseData.length - 1);
       })
     	.addTo(controller);
-    // $(() => this.stepSlider.noUiSlider.set(this.caseData.length - 1));
 
     $('.js-play--us').click(() => {
       this.stepSlider.noUiSlider.set(this.caseData.length - 1);
@@ -285,6 +290,7 @@ class BubbleMapUS {
     $('.tabs__link--us').click(() => {
       event.preventDefault();
 
+      this.zoom.scaleTo(this.svg, 1);
       $('.tabs__link--us').removeClass('is-active');
       $(event.currentTarget).addClass('is-active');
 

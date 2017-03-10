@@ -1,6 +1,12 @@
 .legend {
   display: inline-block;
   z-index: 1;
+  opacity: 1;
+  transition: opacity 0.3s linear;
+
+  &.is-hidden {
+    opacity: 0;
+  }
 
   img {
     max-width: 100%;
