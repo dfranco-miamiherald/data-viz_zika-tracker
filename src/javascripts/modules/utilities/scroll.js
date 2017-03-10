@@ -7,9 +7,9 @@ const loadScroll = () => {
     var y = $(this).scrollTop();
     var fadeHeight = $('#section-0').offset().top;
       if (y > fadeHeight + 50) {
-  			$('#headline-container').addClass('headline-wrapper__hidden').removeClass('headline-wrapper__show');
+  			$('#headline-container-zika').addClass('headline-wrapper-zika__hidden').removeClass('headline-wrapper-zika__show');
   		} else {
-  			$('#headline-container').addClass('headline-wrapper__show').removeClass('headline-wrapper__hidden');
+  			$('#headline-container-zika').addClass('headline-wrapper-zika__show').removeClass('headline-wrapper-zika__hidden');
   		}
   });
 
