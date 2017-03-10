@@ -1,10 +1,11 @@
 import $ from 'jquery';
+import isMobile from 'ismobilejs';
 
 const loadVideos = () => {
-  let $video = $('#vid');
-  $video.on('canplaythrough', function() {
-     this.play();
-  });
+  if (isMobile.apple.phone || isMobile.android.phone) {
+    $('video *').hide();
+    $('video img').show();
+  }
 
   // Override the main container padding
   $('.container[role="main"], .container[role="main"] .col-sm-12').css({
