@@ -56,11 +56,11 @@
   font-family: $heading-font-family-script;
 	font-weight: 600;
 	text-shadow: 1px 1px 0 rgba(250,250,250,.5), 2px 2px 0 rgba(250,250,250,.5), 3px 3px 0 rgba(250,250,250,.5);
-	font-size: $xl;
+	font-size: 44px;
   line-height: 1.05em;
 
 	@include media($medium-screen-up) {
-		font-size: 6vw !important;
+		font-size: 6vw;
 	  line-height: 1.05em;
 	}
 }
