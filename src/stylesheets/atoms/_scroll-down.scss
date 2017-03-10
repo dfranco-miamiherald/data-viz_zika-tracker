@@ -55,19 +55,14 @@
 	color: $slated-blue;
   font-family: $heading-font-family-script;
 	font-weight: 600;
-	font-size: 6vw;
-  line-height: 1.05em;
 	text-shadow: 1px 1px 0 rgba(250,250,250,.5), 2px 2px 0 rgba(250,250,250,.5), 3px 3px 0 rgba(250,250,250,.5);
-}
+	font-size: $xl;
+  line-height: 1.05em;
 
-.big-hed-two {
-	color: #fff;
-  font-family: $heading-font-family-sans;
-	font-weight: 600;
-  font-size: 30px;
-	letter-spacing: 1px;
-	max-width: 800px;
-
+	@include media($medium-screen-up) {
+		font-size: 6vw;
+	  line-height: 1.05em;
+	}
 }
 
 .headline-wrapper-zika {
@@ -86,10 +81,12 @@
 
 	&__show {
 		top: 50%;
+		transform: translateY(-50%);
 		transition: opacity 250ms ease-in-out, transform 250ms;
 	}
 
 	&__hidden {
 		top: -100%;
+		transform: none;
 	}
 }
