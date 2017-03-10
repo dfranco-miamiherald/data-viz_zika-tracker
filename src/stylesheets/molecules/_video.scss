@@ -3,10 +3,10 @@
     @include position(absolute, 0 null null 0);
     @include size(100% auto);
     z-index: -100;
-    
+
     &::-webkit-media-controls-start-playback-button {
-      display: none!important;
-      -webkit-appearance: none;
+      display: none !important;
+      -webkit-appearance: none !important;
     }
   }
 
