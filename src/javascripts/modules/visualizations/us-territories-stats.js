@@ -118,7 +118,7 @@ class USTerritoriesStats {
 
     var scene = new ScrollMagic.Scene({
         triggerElement: '#section-3',
-        duration: $('#section-3').outerHeight(),
+        duration: $('#section-3').outerHeight() - 20,
         triggerHook: 'onLeave'
       })
     	.setPin('#section-3-sticky', { pushFollowers: false })

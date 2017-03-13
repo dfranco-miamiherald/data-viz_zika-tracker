@@ -9,11 +9,19 @@
   }
 
   &--territories {
-    @include span-columns(6 of 8);
+    @include span-columns(5.5 of 8);
+
+    @include media($medium-screen-up) {
+      @include span-columns(6 of 8);
+    }
   }
 
   &--maps {
-    @include span-columns(6 of 8);
+    @include span-columns(5.5 of 8);
+
+    @include media($medium-screen-up) {
+      @include span-columns(6 of 8);
+    }
   }
 
   &__controls {
@@ -35,10 +43,22 @@
 
     &--territories {
       @include span-columns(2 of 8);
+      @include shift(0.5);
+
+      @include media($medium-screen-up) {
+        @include span-columns(2 of 8);
+        @include shift(0);
+      }
     }
 
     &--maps {
       @include span-columns(2 of 8);
+      @include shift(0.5);
+
+      @include media($medium-screen-up) {
+        @include span-columns(2 of 8);
+        @include shift(0);
+      }
     }
     margin-top: -5px;
     text-align: center;

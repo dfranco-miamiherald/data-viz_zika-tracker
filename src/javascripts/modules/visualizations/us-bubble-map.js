@@ -237,7 +237,7 @@ class BubbleMapUS {
 
     var scene = new ScrollMagic.Scene({
         triggerElement: '#section-2',
-        duration: $('#section-2').outerHeight(),
+        duration: $('#section-2').outerHeight() - 20,
         triggerHook: 'onLeave'
       })
     	.setPin('#section-2-sticky', { pushFollowers: false })

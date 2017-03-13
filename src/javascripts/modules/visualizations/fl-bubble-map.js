@@ -196,7 +196,7 @@ class BubbleMapFl {
 
     var scene = new ScrollMagic.Scene({
         triggerElement: '#section-1',
-        duration: $('#section-1').outerHeight(),
+        duration: $('#section-1').outerHeight() - 20,
         triggerHook: 'onLeave'
       })
     	.setPin('#section-1-sticky', { pushFollowers: false })
@@ -313,11 +313,6 @@ class BubbleMapFl {
     $('.newsfeed__article').removeClass('is-active');
     let article = $('.newsfeed__article')[articlePosition];
     $(article).addClass('is-active');
-
-  }
-
-  setScrollMagic() {
-
   }
 }
 
