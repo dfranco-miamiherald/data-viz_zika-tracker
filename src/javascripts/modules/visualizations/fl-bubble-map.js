@@ -36,8 +36,28 @@ class BubbleMapFl {
     this.zoom = d3.zoom()
       .scaleExtent([1, 8])
       .on('zoom', () => {
-        this.svg.attr('transform', d3.event.transform);
         $('.legend').addClass('is-hidden');
+
+        var t = [d3.event.transform.x, d3.event.transform.y];
+        var s = d3.event.transform.k;
+
+        var h = this.height / 4;
+
+        t[0] = Math.min(
+          (this.width / this.height)  * (s - 1),
+          Math.max(this.width * (1 - s), t[0] )
+        );
+
+        t[1] = Math.min(
+          h * (s - 1) + h * s,
+          Math.max(this.height * (1 - s) - h * s, t[1])
+        );
+
+        //zoom.translateBy(t);
+        this.svg.attr("transform", "translate(" + t + ")scale(" + s + ")");
+
+        //adjust the country hover stroke width based on zoom level
+        // d3.selectAll(".country").style("stroke-width", 1.5 / s);
       });
 
     this.svg = d3.select(this.el)
