@@ -53,11 +53,7 @@ class BubbleMapFl {
           Math.max(this.height * (1 - s) - h * s, t[1])
         );
 
-        //zoom.translateBy(t);
         this.svg.attr("transform", "translate(" + t + ")scale(" + s + ")");
-
-        //adjust the country hover stroke width based on zoom level
-        // d3.selectAll(".country").style("stroke-width", 1.5 / s);
       });
 
     this.svg = d3.select(this.el)
