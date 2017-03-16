@@ -93,5 +93,7 @@
     "webpack-hot-middleware": "2.10.0"
   },
   "license": "MIT",
-  "dependencies": {}
+  "dependencies": {
+    "svg-pan-zoom": "github:ariutta/svg-pan-zoom"
+  }
 }
