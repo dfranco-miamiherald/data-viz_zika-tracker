@@ -46,18 +46,13 @@ class BubbleMapUS {
           Math.max(this.height * (1 - s) - h * s, t[1])
         );
 
-        //zoom.translateBy(t);
         this.svg.attr("transform", "translate(" + t + ")scale(" + s + ")");
-
-        //adjust the country hover stroke width based on zoom level
-        // d3.selectAll(".country").style("stroke-width", 1.5 / s);
       });
 
     this.svg = d3.select(this.el).append('svg')
         .attr('width', '100%')
         .attr('height', this.height)
         .attr('class', 'bubble-map__svg-us')
-        .call(this.zoom)
         .append('g');
 
     this.loadData();
@@ -75,7 +70,13 @@ class BubbleMapUS {
       this.height = Math.ceil(this.aspectRatio * this.width);
 
       d3.select('.bubble-map__svg-us').attr('height', this.height);
+
       this.resizeBubbles();
+
+      var query = Modernizr.mq('(max-width: 768px)');
+      if (query) {
+        this.svg.call(this.zoom);
+      }
     });
   }
 

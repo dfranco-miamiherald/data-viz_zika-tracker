@@ -61,18 +61,23 @@ class BubbleMapFl {
         .attr('width', '100%')
         .attr('height', this.height)
         .attr('class', 'bubble-map__svg-fl')
-        .call(this.zoom)
         .append('g');
 
     this.loadData();
 
     $(window).on('resize', this.resizeBubbleMap.bind(this));
+    $(window).on('load', this.resizeBubbleMap.bind(this));
     $(window).trigger('resize');
   }
 
 
   resizeBubbleMap() {
     window.requestAnimationFrame(() => {
+      var query = Modernizr.mq('(max-width: 768px)');
+      if (query) {
+        this.svg.call(this.zoom);
+      }
+      
       const chart = $(this.el).find(`g`).first();
 
       this.width = $(this.el).width();
