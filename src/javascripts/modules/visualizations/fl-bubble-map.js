@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import _ from 'lodash';
 import * as d3 from 'd3';
 import * as topojson from 'topojson';
 import { TweenLite, TweenMax } from 'gsap';
@@ -30,30 +31,15 @@ class BubbleMapFl {
     ];
     this.newsFeedWrapper = $('#newsFeedOuter');
     this.articleFound = false;
+    this.scrolling;
   }
 
   render() {
     this.zoom = d3.zoom()
       .scaleExtent([1, 8])
       .on('zoom', () => {
+        this.svg.attr('transform', d3.event.transform);
         $('.legend').addClass('is-hidden');
-
-        var t = [d3.event.transform.x, d3.event.transform.y];
-        var s = d3.event.transform.k;
-
-        var h = this.height / 4;
-
-        t[0] = Math.min(
-          (this.width / this.height)  * (s - 1),
-          Math.max(this.width * (1 - s), t[0] )
-        );
-
-        t[1] = Math.min(
-          h * (s - 1) + h * s,
-          Math.max(this.height * (1 - s) - h * s, t[1])
-        );
-
-        this.svg.attr("transform", "translate(" + t + ")scale(" + s + ")");
       });
 
     this.svg = d3.select(this.el)
@@ -61,23 +47,20 @@ class BubbleMapFl {
         .attr('width', '100%')
         .attr('height', this.height)
         .attr('class', 'bubble-map__svg-fl')
+        .call(this.zoom)
         .append('g');
 
     this.loadData();
 
     $(window).on('resize', this.resizeBubbleMap.bind(this));
-    $(window).on('load', this.resizeBubbleMap.bind(this));
     $(window).trigger('resize');
+    $(window).on('load', this.resizeBubbleMap.bind(this));
   }
 
 
   resizeBubbleMap() {
     window.requestAnimationFrame(() => {
-      var query = Modernizr.mq('(max-width: 768px)');
-      if (query) {
-        this.svg.call(this.zoom);
-      }
-      
+
       const chart = $(this.el).find(`g`).first();
 
       this.width = $(this.el).width();

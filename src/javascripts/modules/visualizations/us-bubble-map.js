@@ -31,28 +31,14 @@ class BubbleMapUS {
     this.zoom = d3.zoom()
       .scaleExtent([1, 8])
       .on('zoom', () => {
-        var t = [d3.event.transform.x, d3.event.transform.y];
-        var s = d3.event.transform.k;
-
-        var h = this.height / 4;
-
-        t[0] = Math.min(
-          (this.width / this.height)  * (s - 1),
-          Math.max(this.width * (1 - s), t[0] )
-        );
-
-        t[1] = Math.min(
-          h * (s - 1) + h * s,
-          Math.max(this.height * (1 - s) - h * s, t[1])
-        );
-
-        this.svg.attr("transform", "translate(" + t + ")scale(" + s + ")");
+        this.svg.attr('transform', d3.event.transform);
       });
 
     this.svg = d3.select(this.el).append('svg')
         .attr('width', '100%')
         .attr('height', this.height)
         .attr('class', 'bubble-map__svg-us')
+        .call(this.zoom)
         .append('g');
 
     this.loadData();
@@ -72,11 +58,6 @@ class BubbleMapUS {
       d3.select('.bubble-map__svg-us').attr('height', this.height);
 
       this.resizeBubbles();
-
-      var query = Modernizr.mq('(max-width: 768px)');
-      if (query) {
-        this.svg.call(this.zoom);
-      }
     });
   }
 

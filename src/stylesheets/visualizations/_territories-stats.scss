@@ -41,10 +41,12 @@
     color: $silver-surfer;
 
     &--heading {
+      font-size: $lg;
+      text-align: center;
       font-family: $heading-font-family-script;
       font-weight: bold;
-      font-size: $lg;
       color: $black;
+      line-height: 1.3;
     }
   }
 }
