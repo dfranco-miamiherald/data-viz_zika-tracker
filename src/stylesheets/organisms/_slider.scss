@@ -47,12 +47,13 @@
     .js-play { left: 53%; }
     .js-step-down { left: 45%; }
     .js-step-up { left: 55%; }
-    .js-reset { left: 49%; }
+    .js-reset { left: 51%; }
 
     .awesome-icon-wrapper {
       background-color: $lawn-gnome;
       border-radius: 50%;
-      padding: 5px 15px;
+      padding: 0px 12px;
+      font-size: 14px;
       position: relative;
       margin-right: 3px;
 
