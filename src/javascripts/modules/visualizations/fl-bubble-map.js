@@ -49,6 +49,9 @@ class BubbleMapFl {
         .attr('class', 'bubble-map__svg-fl')
         .call(this.zoom)
         .on("wheel.zoom", null)
+        .on("dragstart.zoom", function() {
+          console.log('foo');
+        })
         .append('g');
 
     this.loadData();
