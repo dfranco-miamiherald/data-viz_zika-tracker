@@ -136,6 +136,9 @@ class USTerritoriesStats {
     $('.js-step-up--territories').click(() => {
       this.stepSlider.noUiSlider.set(this.unformatSlider() + 1);
     });
+    $('.js-reset--territories').click(() => {
+      this.stepSlider.noUiSlider.set(0);
+    });
   }
 
   switchTabs() {

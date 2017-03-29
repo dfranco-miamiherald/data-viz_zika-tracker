@@ -1,5 +1,4 @@
 import $ from 'jquery';
-import _ from 'lodash';
 import * as d3 from 'd3';
 import * as topojson from 'topojson';
 import { TweenLite, TweenMax } from 'gsap';
@@ -218,6 +217,9 @@ class BubbleMapFl {
     });
     $('.js-step-up--fl').click(() => {
       this.stepSlider.noUiSlider.set(this.unformatSlider() + 1);
+    });
+    $('.js-reset--fl').click(() => {
+      this.stepSlider.noUiSlider.set(0);
     });
 
     this.setNewsFeed();

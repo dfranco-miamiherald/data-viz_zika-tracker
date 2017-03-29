@@ -258,6 +258,9 @@ class BubbleMapUS {
     $('.js-step-up--us').click(() => {
       this.stepSlider.noUiSlider.set(this.unformatSlider() + 1);
     });
+    $('.js-reset--us').click(() => {
+      this.stepSlider.noUiSlider.set(0);
+    });
   }
 
   resizeBubbles() {

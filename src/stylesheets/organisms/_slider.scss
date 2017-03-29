@@ -31,13 +31,35 @@
 
     .js-play,
     .js-step-down,
-    .js-step-up {
+    .js-step-up,
+    .js-reset {
       cursor: pointer;
       transition: color 0.3s linear;
-      color: $lawn-gnome;
+      color: $white;
+      @include position(absolute, 50% null null null);
+      transform: translate(-50%, -50%);
 
       &:hover {
-        color: $black;
+        color: $white;
+      }
+    }
+
+    .js-play { left: 53%; }
+    .js-step-down { left: 45%; }
+    .js-step-up { left: 55%; }
+    .js-reset { left: 49%; }
+
+    .awesome-icon-wrapper {
+      background-color: $lawn-gnome;
+      border-radius: 50%;
+      padding: 5px 15px;
+      position: relative;
+      margin-right: 3px;
+
+      transition: background-color 0.3s linear;
+
+      &:hover {
+        background-color: $black;
       }
     }
 
