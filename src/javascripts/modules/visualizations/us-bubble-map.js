@@ -40,6 +40,7 @@ class BubbleMapUS {
         .attr('class', 'bubble-map__svg-us')
         .call(this.zoom)
         .on("wheel.zoom", null)
+        .on("touchmove.zoom", null)
         .append('g');
 
     this.loadData();
