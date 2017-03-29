@@ -39,6 +39,7 @@ class BubbleMapUS {
         .attr('height', this.height)
         .attr('class', 'bubble-map__svg-us')
         .call(this.zoom)
+        .on("wheel.zoom", null)
         .append('g');
 
     this.loadData();

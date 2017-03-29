@@ -48,13 +48,13 @@ class BubbleMapFl {
         .attr('height', this.height)
         .attr('class', 'bubble-map__svg-fl')
         .call(this.zoom)
+        .on("wheel.zoom", null)
         .append('g');
 
     this.loadData();
 
     $(window).on('resize', this.resizeBubbleMap.bind(this));
     $(window).trigger('resize');
-    $(window).on('load', this.resizeBubbleMap.bind(this));
   }
 
 
