@@ -205,7 +205,7 @@ class BubbleMapUS {
           this.tooltip
             .classed('is-active', false);
 
-          $('.bubble-map__tooltip-mobile--us').html('&nbsp');
+          $('.bubble-map__tooltip-mobile--us').html('Select a state');
         });
 
 

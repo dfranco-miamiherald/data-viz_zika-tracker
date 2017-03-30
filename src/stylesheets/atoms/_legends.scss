@@ -23,7 +23,7 @@
   }
 
   &--filter {
-    @include position(absolute, 17% 2% null null);
+    @include position(absolute, 10% 0% null null);
   }
 
   @include media($medium-screen-up) {

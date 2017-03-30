@@ -91,11 +91,23 @@
   }
 
   &__tooltip-mobile {
-    font-family: $lyon;
     display: block;
-    margin: ($gutter / 2) 0 ($gutter / 2);
-    font-size: $sm;
+    margin: 0 auto;
+    margin-bottom: 15px;
     text-align: center;
+    pointer-events: none;
+    padding: 5px 10px;
+    font-size: $sm;
+    color: $white;
+    background-color: rgba($black, 0.8);
+    border: 3px solid $black;
+    border-radius: 5px;
+    font-family: $heading-font-family-script;
+    border: 1.5px solid $white;
+    max-width: 200px;
+    text-align: center;
+    z-index: 2;
+    line-height: 14px;
 
     @include media($medium-screen-up) {
       display: none;

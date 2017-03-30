@@ -9,7 +9,7 @@
   }
 
   &--territories {
-    @include span-columns(5.5 of 8);
+    @include span-columns(5 of 8);
 
     @include media($medium-screen-up) {
       @include span-columns(6 of 8);
@@ -17,7 +17,7 @@
   }
 
   &--maps {
-    @include span-columns(5.5 of 8);
+    @include span-columns(5 of 8);
 
     @include media($medium-screen-up) {
       @include span-columns(6 of 8);
@@ -27,7 +27,6 @@
   &__controls {
     text-align: center;
     padding-left: 0;
-    margin-top: 10px;
 
     .js-play,
     .js-step-down,
@@ -65,7 +64,7 @@
     }
 
     &--territories {
-      @include span-columns(2.5 of 8);
+      @include span-columns(3 of 8);
 
       @include media($medium-screen-up) {
         @include span-columns(2 of 8);
@@ -73,13 +72,13 @@
     }
 
     &--maps {
-      @include span-columns(2.5 of 8);
+      @include span-columns(3 of 8);
 
       @include media($medium-screen-up) {
         @include span-columns(2 of 8);
       }
     }
-    margin-top: -5px;
+
     text-align: center;
   }
 
@@ -90,13 +89,14 @@
   }
 
   &__date {
-    font-size: $lg;
+    font-size: $med;
     font-family: $heading-font-family-sans;
     font-weight: bold;
     color: $grey;
     margin: 0  0 $gutter ($gutter / 2);
 
     @include media($medium-screen-up) {
+      font-size: $lg;
       margin: 0  0 $gutter $gutter;
     }
   }
