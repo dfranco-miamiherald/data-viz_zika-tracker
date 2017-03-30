@@ -27,6 +27,7 @@
   &__controls {
     text-align: center;
     padding-left: 0;
+    margin-top: -5px;
 
     .js-play,
     .js-step-down,
@@ -110,9 +111,14 @@
     box-shadow: none;
   }
 
+  .noUi-stacking .noUi-handle {
+    z-index: 999999;
+  }
+
   .noUi-handle {
     width: 30px;
-
+    cursor: pointer;
+    
     &:before {
       left: 10px
     }

@@ -188,8 +188,6 @@ class BubbleMapFl {
   drawSlider () {
     this.stepSlider = $('#js-slider-fl')[0];
     let slider = noUiSlider.create(this.stepSlider, {
-      animate: true,
-      animationDuration: 6000,
       start: 0,
       step: 1,
       range: {

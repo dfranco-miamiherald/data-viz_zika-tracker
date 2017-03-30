@@ -104,8 +104,6 @@ class USTerritoriesStats {
   drawSlider() {
     this.stepSlider = $('#js-slider-us-territories')[0];
     let slider = noUiSlider .create(this.stepSlider, {
-      animate: true,
-      animationDuration: 3000,
       start: 0,
       step: 1,
       range: {
