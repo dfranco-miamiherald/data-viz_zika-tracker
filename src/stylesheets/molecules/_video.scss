@@ -1,18 +1,17 @@
 .fullscreen-bg {
+  @include position(absolute, 0 0 0 0);
+  overflow: hidden;
+  z-index: -100;
+
   &__video {
     @include position(absolute, 0 null null 0);
-    @include size(100% auto);
+    @include size(100% 100%);
     z-index: -100;
 
     &::-webkit-media-controls-start-playback-button {
       display: none !important;
       -webkit-appearance: none !important;
     }
-  }
-
-  &__image {
-    display: none;
-    background: url('http://media.miamiherald.com/static/media/projects/2016/zika-interactive-v2/site/images/zika-poster.jpg') no-repeat center center fixed;
   }
 }
 
@@ -27,6 +26,16 @@
   .fullscreen-bg__video {
     width: 300%;
     left: -100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .fullscreen-bg {
+    background: url('http://media.miamiherald.com/static/media/projects/2016/zika-interactive-v2/site/images/zika-poster.jpg') center center / cover no-repeat;
+  }
+
+  .fullscreen-bg__video {
+    display: none;
   }
 }
 
