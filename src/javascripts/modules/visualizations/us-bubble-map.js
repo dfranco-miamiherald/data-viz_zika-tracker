@@ -41,6 +41,7 @@ class BubbleMapUS {
         .call(this.zoom)
         .on("wheel.zoom", null)
         .on("touchmove.zoom", null)
+        .on("dblclick.zoom", null)
         .append('g');
 
     this.loadData();
