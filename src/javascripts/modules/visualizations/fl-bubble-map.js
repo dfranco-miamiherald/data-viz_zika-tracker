@@ -50,6 +50,7 @@ class BubbleMapFl {
         .on("wheel.zoom", null)
         .on("touchmove.zoom", null)
         .on("dblclick.zoom", null)
+        .on("touchstart.zoom", null)
         .append('g');
 
     this.loadData();
