@@ -20,10 +20,6 @@ const loadScroll = () => {
       }
     );
   });
-
-  document.addEventListener('gesturestart', function (e) {
-    e.preventDefault();
-  });
 };
 
 export { loadScroll };
