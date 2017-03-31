@@ -13,7 +13,9 @@ const loadScroll = () => {
   		}
   });
 
-  $('#intro-scroll-down').click(() => {
+  $('#intro-scroll-down').click(function (e) {
+    e.preventDefault();
+    
     $.scrollTo($('#section-1-intro'),
       {
         duration: 800
