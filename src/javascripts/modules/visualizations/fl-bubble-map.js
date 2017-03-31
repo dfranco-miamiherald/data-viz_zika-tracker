@@ -163,8 +163,6 @@ class BubbleMapFl {
         .on('mouseout', (d) => {
           this.tooltip
             .classed('is-active', false);
-
-          $('.bubble-map__tooltip-mobile--fl').html('Select a county');
         });
 
 

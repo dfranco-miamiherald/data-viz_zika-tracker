@@ -204,8 +204,6 @@ class BubbleMapUS {
         .on('mouseout', (d) => {
           this.tooltip
             .classed('is-active', false);
-
-          $('.bubble-map__tooltip-mobile--us').html('Select a state');
         });
 
 
