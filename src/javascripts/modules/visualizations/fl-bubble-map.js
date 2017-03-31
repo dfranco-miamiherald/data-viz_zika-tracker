@@ -259,7 +259,7 @@ class BubbleMapFl {
     } else if (el === '.bubble-map__stat--travel-fl') {
       counterEnd = {var: this.caseData[this.unformatSlider()].totalTravel};
     } else if (el === '.bubble-map__stat--total-fl') {
-      counterEnd = {var: +this.caseData[this.unformatSlider()].totalLocal + (+this.caseData[this.unformatSlider()].totalTravel) + (+this.caseData[this.unformatSlider()].undetermined)};
+      counterEnd = {var: this.caseData[this.unformatSlider()].totalCases};
     } else if (el === '.bubble-map__stat--pregnant-fl') {
       counterEnd = {var: this.caseData[this.unformatSlider()].pregnant};
     } else if (el === '.bubble-map__stat--unknown-fl') {
