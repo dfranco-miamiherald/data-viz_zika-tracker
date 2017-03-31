@@ -61,7 +61,10 @@
 	}
 
 	&__show {
-		top: 50%;
+		top: 60%;
+		@include media($medium-screen-up) {
+			top: 67%;
+		}
 		transform: translateY(-50%);
 
 		transition: opacity 250ms ease-in-out, transform 250ms;
