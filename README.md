@@ -17,8 +17,8 @@ Extra additions include:
 - [pym.js](http://blog.apps.npr.org/pym.js/)
 
 ```
-git clone https://github.com/MiamiHerald/data-viz_starter.git MyApp
-cd MyApp
+git clone https://github.com/MiamiHerald/data-viz_zika-tracker.git zika-tracker
+cd zika-tracker
 npm install
 ```
 
