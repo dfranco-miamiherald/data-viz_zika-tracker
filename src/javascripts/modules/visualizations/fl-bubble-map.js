@@ -239,12 +239,12 @@ class BubbleMapFl {
   }
 
   switchTabs() {
-    $('.tabs__link--fl').click(() => {
-      event.preventDefault();
+    $('.tabs__link--fl').click((e) => {
+      e.preventDefault();
 
       this.zoom.scaleTo(this.svg, 1);
       $('.tabs__link--fl').removeClass('is-active');
-      $(event.currentTarget).addClass('is-active');
+      $(e.currentTarget).addClass('is-active');
 
       this.resizeBubbles();
     });
