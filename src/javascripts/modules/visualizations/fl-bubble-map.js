@@ -129,9 +129,7 @@ class BubbleMapFl {
       .selectAll('circle')
         .data(topojson.feature(this.shapeData, this.shapeData.objects.places).features
           .sort((a, b) => {
-            if (this.caseData[this.caseData.length - 1].counties[b.id] && this.caseData[this.caseData.length - 1].counties[a.id]) {
-              return this.caseData[this.caseData.length - 1].counties[b.id][this.dataColumn] - this.caseData[this.caseData.length - 1].counties[a.id][this.dataColumn];
-            }
+            return this.caseData[this.caseData.length - 1].counties[b.id][this.dataColumn] - this.caseData[this.caseData.length - 1].counties[a.id][this.dataColumn];
           }))
       .enter().append('circle')
         .attr('transform', (d) => `translate(${this.path.centroid(d)})`)
