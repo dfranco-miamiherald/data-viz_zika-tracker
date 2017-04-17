@@ -1,3 +1,4 @@
+// external libraries
 import $ from 'jquery';
 import * as d3 from 'd3';
 import * as topojson from 'topojson';
@@ -10,12 +11,13 @@ import 'imports?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/anima
 import 'imports?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators';
 
 class BubbleMapFl {
+  // constructor method to setup variables to be used in the vizualization
   constructor(el, dataUrl, shapeUrl, feedUrl) {
     this.el = el;
     this.dataUrl = dataUrl;
     this.shapeUrl = shapeUrl;
     this.newsUrl = feedUrl;
-    this.aspectRatio = 0.6663;
+    this.aspectRatio = 0.6663; // rectangular (2/3) map aspectRatio
     this.width = $(this.el).width();
     this.height = Math.ceil(this.aspectRatio * this.width);
     this.mapWidth = this.width;
@@ -34,6 +36,7 @@ class BubbleMapFl {
   }
 
   render() {
+    // initialize the zoom level for the map
     this.zoom = d3.zoom()
       .scaleExtent([1, 8])
       .on('zoom', () => {
@@ -41,13 +44,14 @@ class BubbleMapFl {
         $('.legend').addClass('is-hidden');
       });
 
+    // render the SVG
     this.svg = d3.select(this.el)
         .append('svg')
         .attr('width', '100%')
         .attr('height', this.height)
         .attr('class', 'bubble-map__svg-fl')
         .call(this.zoom)
-        .on("wheel.zoom", null)
+        .on("wheel.zoom", null) // disable certain click/touch events
         .on("touchmove.zoom", null)
         .on("dblclick.zoom", null)
         .on("touchstart.zoom", null)
@@ -62,7 +66,8 @@ class BubbleMapFl {
 
   resizeBubbleMap() {
     window.requestAnimationFrame(() => {
-
+      // responsive logic to resize map and maintain aspect ratio and height
+      // when window is resized
       const chart = $(this.el).find(`g`).first();
 
       this.width = $(this.el).width();
@@ -75,6 +80,7 @@ class BubbleMapFl {
   }
 
   loadData() {
+    // load the shapeData, the bubble map data (this.dataUrl), and the newsfeed data
     d3.queue()
       .defer(d3.json, this.shapeUrl)
       .defer(d3.json, this.dataUrl)
@@ -85,6 +91,8 @@ class BubbleMapFl {
   drawMap(error, shapeData, caseData, newsData) {
     if (error) throw error;
 
+    // set the shapeData, caseData and newsData to lexical this variables
+    // so that they can be used outside of the drawMap function
     this.shapeData = shapeData;
     this.caseData = caseData;
     this.newsData = newsData;
@@ -98,12 +106,14 @@ class BubbleMapFl {
       this.setTotals(i);
     });
 
+    // fit the projection of the map to the size of the shape data
     this.projection = d3.geoEquirectangular()
       .fitSize([this.width, this.height], topojson.feature(this.shapeData, this.shapeData.objects.places));
 
     this.path = d3.geoPath()
       .projection(this.projection);
 
+    // draw the boundary paths for the counties
     this.svg.append('g')
         .attr('class', 'bubble-map__counties')
       .selectAll('path')
@@ -112,6 +122,7 @@ class BubbleMapFl {
         .attr('class', 'bubble-map__county')
         .attr('d', this.path);
 
+    // change the radii based on the screensize using the Modernizr.mq
     this.max = this.caseData[0].totalTravel;
     let query = Modernizr.mq('(min-width: 640px)');
     if (query) {
@@ -124,6 +135,7 @@ class BubbleMapFl {
           .range([0, 2]);
     }
 
+    // draw the bubbles on the map the map
     this.svg.append('g')
         .attr('class', 'bubble-map__bubble')
       .selectAll('circle')
@@ -138,6 +150,7 @@ class BubbleMapFl {
             return this.radius(this.caseData[this.unformatSlider()].counties[d.id][this.dataColumn]);
           }
         })
+        // set hover state (mouseover / mouseout) for bubbles
         .on('mouseover', (d) => {
           this.mouse = d3.mouse(this.svg.node()).map((d) => parseInt(d));
           this.tooltip
@@ -163,7 +176,8 @@ class BubbleMapFl {
             .classed('is-active', false);
         });
 
-
+    // call the resizeBubbles function when the noUiSlider updates,
+    // also call the setTotals function to animate the numbers
     this.stepSlider.noUiSlider.on('update', this.resizeBubbles.bind(this));
     this.stepSlider.noUiSlider.on('update', () => {
       this.totals.forEach(i => {
@@ -182,6 +196,7 @@ class BubbleMapFl {
   }
 
   drawSlider () {
+    // initialize the noUiSlider
     this.stepSlider = $('#js-slider-fl')[0];
     let slider = noUiSlider.create(this.stepSlider, {
       start: 0,
@@ -192,8 +207,9 @@ class BubbleMapFl {
       }
     });
 
+    // initialize the ScrollMagic controller and create a new Scene
+    // which will set a pin on the sticky nav onEnter and onLeave
     var controller = new ScrollMagic.Controller();
-
     var scene = new ScrollMagic.Scene({
         triggerElement: '#section-1',
         duration: $('#section-1').outerHeight() - 20,
@@ -205,6 +221,7 @@ class BubbleMapFl {
       })
     	.addTo(controller);
 
+    // create click functions for slider controls
     $('.js-play--fl').click(() => {
       this.stepSlider.noUiSlider.set(this.caseData.length - 1);
     });
@@ -222,6 +239,8 @@ class BubbleMapFl {
   }
 
   resizeBubbles() {
+    // when resizeBubbles is called, data is grabbed from the active tab
+    // and used to render the radii of the bubbles based on the position of the slider
     this.dataColumn = $('.tabs__link--fl.is-active').data('case');
 
     this.svg
@@ -237,6 +256,7 @@ class BubbleMapFl {
   }
 
   switchTabs() {
+    // when switching between tabs, zoom back out and toggle the is-active classes
     $('.tabs__link--fl').click((e) => {
       e.preventDefault();
 
@@ -249,6 +269,9 @@ class BubbleMapFl {
   }
 
   setTotals(el) {
+    // when set totals is called a counter varible is initialized.
+    // depending on which element is passed to setTotals (and what position the silder is currently at),
+    // a different counterEnd variable is set
     var counterStart = {var: $(el).text()};
     var counterEnd = null;
 
@@ -266,6 +289,7 @@ class BubbleMapFl {
       counterEnd = {var: this.caseData[this.unformatSlider()].undetermined ? this.caseData[this.unformatSlider()].undetermined : 0};
     }
 
+    // Use the TweenMax library to animate between counterStart and counterEnd
     TweenMax.to(counterStart, 0.3, {var: counterEnd.var, onUpdate: () => {
         $(el).text(Math.ceil(counterStart.var));
       },
@@ -274,10 +298,12 @@ class BubbleMapFl {
   }
 
   unformatSlider() {
+    // utility function that uses the numeral JS library to get the current position of the slider
     return numeral().unformat(this.stepSlider.noUiSlider.get());
   }
 
   setDate() {
+    // utility function that uses the moment library to set the format of the date properly
     if (moment(this.caseData[this.unformatSlider()].date).format('MMMM').length > 5) {
       $('#js-date-fl').html(moment(this.caseData[this.unformatSlider()].date).format('MMM. D, YYYY'));
     } else {
@@ -286,6 +312,8 @@ class BubbleMapFl {
   }
 
   setNewsFeed() {
+    // for each article in the newsData append an anchor link with a formatted date
+    // to this.newsFeedWrapper
     this.newsData.forEach((article, index) => {
       if (moment(article.datePublished).format('MMMM').length > 5) {
         this.newsFeedWrapper.append(
@@ -306,6 +334,9 @@ class BubbleMapFl {
   }
 
   updateNewsFeed() {
+    // when updateNewsFeed is called, the slider position is checked,
+    // if the date of the article is the same or before the current date,
+    // set that to the current active newsfeed article
     let articlePosition = 0;
     let sliderDate = moment(this.caseData[this.unformatSlider()].date, 'YYYY-M-D');
     this.newsData.forEach((article, index) => {
@@ -322,6 +353,7 @@ class BubbleMapFl {
 const loadBubbleMapFl = () => {
   const $bubbleMap = $('.js-bubble-map-fl');
 
+  // for each element with the js-bubble-map-fl class create extract the data attributes
   $bubbleMap.each((index) => {
     const $this = $bubbleMap.eq(index);
     const id = $this.attr('id');
@@ -329,6 +361,7 @@ const loadBubbleMapFl = () => {
     const shapeUrl = $this.data('shape');
     const feedUrl = $this.data('feed');
 
+    // create a new BubbleMapFl class with the URL variables and call the render function
     new BubbleMapFl(`#${id}`, dataUrl, shapeUrl, feedUrl).render();
   });
 };
