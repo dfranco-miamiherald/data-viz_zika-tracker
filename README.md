@@ -1,8 +1,8 @@
-# Data-Viz: Starter
+# Miami Herald Zika Tracker
 
 ## About
 
-This template will serve as a starting point for embedded data visualization projects for the Miami Herald.
+Visualizing the and tracking Zika cases in the state of Florida, the US and it's territories
 
 ## Installation
 
