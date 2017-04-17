@@ -1,3 +1,4 @@
+// external libraries
 import $ from 'jquery';
 import * as d3 from 'd3';
 import * as topojson from 'topojson';
@@ -10,10 +11,11 @@ import 'imports?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/anima
 import 'imports?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators';
 
 class BubbleMapUS {
+  // constructor method to setup variables to be used in the vizualization
   constructor(el, dataUrl, shapeUrl) {
     this.el = el;
     this.dataUrl = dataUrl;
-    this.aspectRatio = 0.6663;
+    this.aspectRatio = 0.6663; // rectangular (2/3) map aspectRatio
     this.width = $(this.el).width();
     this.height = Math.ceil(this.aspectRatio * this.width);
     this.mapWidth = this.width;
@@ -28,18 +30,20 @@ class BubbleMapUS {
   }
 
   render() {
+    // initialize the zoom level for the map
     this.zoom = d3.zoom()
       .scaleExtent([1, 8])
       .on('zoom', () => {
         this.svg.attr('transform', d3.event.transform);
       });
 
+    // render the SVG
     this.svg = d3.select(this.el).append('svg')
         .attr('width', '100%')
         .attr('height', this.height)
         .attr('class', 'bubble-map__svg-us')
         .call(this.zoom)
-        .on("wheel.zoom", null)
+        .on("wheel.zoom", null) // disable certain click/touch events
         .on("touchmove.zoom", null)
         .on("dblclick.zoom", null)
         .on("touchstart.zoom", null)
@@ -54,6 +58,8 @@ class BubbleMapUS {
 
   resizeBubbleMap() {
     window.requestAnimationFrame(() => {
+      // responsive logic to resize map and maintain aspect ratio and height
+      // when window is resized
       const chart = $(this.el).find(`g`).first();
 
       this.width = $(this.el).width();
@@ -66,6 +72,7 @@ class BubbleMapUS {
   }
 
   loadData() {
+    // load the shapeData and the bubble map data (this.dataUrl)
     d3.queue()
       .defer(d3.json, this.shapeUrl)
       .defer(d3.json, this.dataUrl)
@@ -75,6 +82,8 @@ class BubbleMapUS {
   drawMap(error, shapeData, caseData) {
     if (error) throw error;
 
+    // set the shapeData, caseData and newsData to lexical this variables
+    // so that they can be used outside of the drawMap function
     this.shapeData = shapeData;
     this.caseData = caseData;
     const states = topojson.feature(this.shapeData, this.shapeData.objects.states).features;
@@ -88,12 +97,14 @@ class BubbleMapUS {
       this.setTotals(i);
     });
 
+    // fit the projection of the map to the size of the shape data
     this.projection = d3.geoAlbersUsa()
       .fitSize([this.width, this.height], topojson.feature(this.shapeData, this.shapeData.objects.states));
 
     this.path = d3.geoPath()
       .projection(this.projection);
 
+    // draw the boundary paths for the counties
     this.svg.append('g')
         .attr('class', 'bubble-map__states')
       .selectAll('path')
@@ -108,6 +119,7 @@ class BubbleMapUS {
         .domain([0, this.max])
         .range([0, 100]);
 
+    // draw the bubbles on the map the map
     this.svg.append('g')
         .attr('class', 'bubble-map__bubble')
       .selectAll('circle')
@@ -124,6 +136,7 @@ class BubbleMapUS {
             return this.radius(this.caseData[this.unformatSlider()].states[d.id][this.dataColumn]);
           }
         })
+        // set hover state (mouseover / mouseout) for bubbles
         .on('mouseover', (d) => {
           this.mouse = d3.mouse(this.svg.node()).map((d) => parseInt(d));
           this.tooltip
@@ -206,7 +219,8 @@ class BubbleMapUS {
             .classed('is-active', false);
         });
 
-
+    // call the resizeBubbles function when the noUiSlider updates,
+    // also call the setTotals function to animate the numbers
     this.stepSlider.noUiSlider.on('update', this.resizeBubbles.bind(this));
     this.stepSlider.noUiSlider.on('update', () => {
       this.totals.forEach(i => {
@@ -224,6 +238,7 @@ class BubbleMapUS {
   }
 
   drawSlider () {
+    // initialize the noUiSlider
     this.stepSlider = $('#js-slider-us')[0];
     let slider = noUiSlider.create(this.stepSlider, {
       start: 0,
@@ -234,8 +249,9 @@ class BubbleMapUS {
       }
     });
 
+    // initialize the ScrollMagic controller and create a new Scene
+    // which will set a pin on the sticky nav onEnter and onLeave
     var controller = new ScrollMagic.Controller();
-
     var scene = new ScrollMagic.Scene({
         triggerElement: '#section-2',
         duration: $('#section-2').outerHeight() - 20,
@@ -247,6 +263,7 @@ class BubbleMapUS {
       })
     	.addTo(controller);
 
+    // create click functions for slider controls
     $('.js-play--us').click(() => {
       this.stepSlider.noUiSlider.set(this.caseData.length - 1);
     });
@@ -262,6 +279,8 @@ class BubbleMapUS {
   }
 
   resizeBubbles() {
+    // when resizeBubbles is called, data is grabbed from the active tab
+    // and used to render the radii of the bubbles based on the position of the slider
     this.dataColumn = $('.tabs__link--us.is-active').data('case');
     this.dataColumnPerMil = $('.tabs__link--us-mil.is-active').data('number');
 
@@ -291,6 +310,7 @@ class BubbleMapUS {
   }
 
   switchTabs() {
+    // when switching between tabs, zoom back out and toggle the is-active classes
     $('.tabs__link--us').click((e) => {
       e.preventDefault();
 
@@ -316,6 +336,9 @@ class BubbleMapUS {
   }
 
   setTotals(el) {
+    // when set totals is called a counter varible is initialized.
+    // depending on which element is passed to setTotals (and what position the silder is currently at AND wheter perMil or total is selected),
+    // a different counterEnd variable is set
     this.dataColumnPerMil = $('.tabs__link--us-mil.is-active').data('number');
     var counterStart = {var: $(el).text()};
     var counterEnd = null;
@@ -342,6 +365,7 @@ class BubbleMapUS {
       }
     }
 
+    // Use the TweenMax library to animate between counterStart and counterEnd
     TweenMax.to(counterStart, 0.3, {var: counterEnd.var, onUpdate: () => {
         $(el).html(Math.ceil(counterStart.var));
       },
@@ -350,10 +374,12 @@ class BubbleMapUS {
   }
 
   unformatSlider() {
+    // utility function that uses the numeral JS library to get the current position of the slider
     return numeral().unformat(this.stepSlider.noUiSlider.get());
   }
 
   setDate() {
+    // utility function that uses the moment library to set the format of the date properly
     if (moment(this.caseData[this.unformatSlider()].date).format('MMMM').length > 5) {
       $('#js-date-us').html(moment(this.caseData[this.unformatSlider()].date).format('MMM. D, YYYY'));
     } else {
