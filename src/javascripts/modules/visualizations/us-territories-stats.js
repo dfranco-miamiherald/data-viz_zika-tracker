@@ -1,3 +1,4 @@
+// external libraries
 import $ from 'jquery';
 import * as d3 from 'd3';
 import { TweenMax } from 'gsap';
@@ -9,6 +10,7 @@ import 'imports?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/anima
 import 'imports?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators';
 
 class USTerritoriesStats {
+  // constructor method to setup variables to be used in the vizualization
   constructor() {
     this.dataUrl = 'http://pubsys.miamiherald.com/static/media/projects/2016/zika-interactive-v2/data/usZika_tmp.json';
     this.totals = [
@@ -28,6 +30,7 @@ class USTerritoriesStats {
   }
 
   loadData() {
+    // territory data (this.dataUrl)
     d3.queue()
       .defer(d3.json, this.dataUrl)
       .await(this.loadStats.bind(this));
@@ -36,6 +39,8 @@ class USTerritoriesStats {
   loadStats(error, caseData) {
     if (error) throw error;
 
+    // set the territory data to lexical this variables
+    // so that they can be used outside of the loadStats function
     this.caseData = caseData;
     this.drawSlider();
     this.totals.forEach(i => {
@@ -51,6 +56,9 @@ class USTerritoriesStats {
   }
 
   setTotals(el) {
+    // when set totals is called a counter varible is initialized.
+    // depending on which element is passed to setTotals (and what position the silder is currently at AND wheter perMil or total is selected),
+    // a different counterEnd variable is set
     this.dataColumn = $('.tabs__link--us-territories-mil.is-active').data('number');
 
     var counterStart = {var: $(el).text()};
@@ -102,6 +110,7 @@ class USTerritoriesStats {
   }
 
   drawSlider() {
+    // initialize the noUiSlider
     this.stepSlider = $('#js-slider-us-territories')[0];
     let slider = noUiSlider .create(this.stepSlider, {
       start: 0,
@@ -112,8 +121,9 @@ class USTerritoriesStats {
       }
     });
 
+    // initialize the ScrollMagic controller and create a new Scene
+    // which will set a pin on the sticky nav onEnter and onLeave
     var controller = new ScrollMagic.Controller();
-
     var scene = new ScrollMagic.Scene({
         triggerElement: '#section-3',
         duration: $('#section-3').outerHeight() - 20,
@@ -125,6 +135,7 @@ class USTerritoriesStats {
       })
     	.addTo(controller);
 
+    // create click functions for slider controls
     $('.js-play--territories').click(() => {
       this.stepSlider.noUiSlider.set(this.caseData.length - 1);
     });
@@ -140,6 +151,7 @@ class USTerritoriesStats {
   }
 
   switchTabs() {
+    // when switching between tabs, zoom back out and toggle the is-active classes
     $('.tabs__link--us-territories-mil').click(() => {
       event.preventDefault();
 
@@ -152,16 +164,19 @@ class USTerritoriesStats {
     });
   }
 
-  setDate() {
-    $('#js-date-us-territories').html(moment(this.caseData[this.unformatSlider()].date).format('MMM. D, YYYY'));
+  unformatSlider() {
+    // utility function that uses the numeral JS library to get the current position of the slider
+    return numeral().unformat(this.stepSlider.noUiSlider.get());
   }
 
-  unformatSlider() {
-    return numeral().unformat(this.stepSlider.noUiSlider.get());
+  setDate() {
+    // utility function that uses the moment library to set the format of the date properly
+    $('#js-date-us-territories').html(moment(this.caseData[this.unformatSlider()].date).format('MMM. D, YYYY'));
   }
 }
 
 const loadUSTerritoriesStats = () => {
+  // create a new USTerritoriesStats class and call the render function
   new USTerritoriesStats().render();
 };
 

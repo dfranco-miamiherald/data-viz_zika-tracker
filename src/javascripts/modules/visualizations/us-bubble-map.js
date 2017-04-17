@@ -82,7 +82,7 @@ class BubbleMapUS {
   drawMap(error, shapeData, caseData) {
     if (error) throw error;
 
-    // set the shapeData, caseData and newsData to lexical this variables
+    // set the shapeData and caseData to lexical this variables
     // so that they can be used outside of the drawMap function
     this.shapeData = shapeData;
     this.caseData = caseData;
