@@ -13,8 +13,13 @@ const loadShare = () => {
   function openPopup(e) {
     e.preventDefault();
 
+    // get the text located inside any anchor with the .js-share class
+    // if the anchor does not have any text leave it blank
     text = $(this).data('share') ? $(this).data('share') : '';
 
+    // open a new window with the URL from the anchor href,
+    // encode the text,
+    // size and position with the width, height, winHeight variables.
     window.open(this.href + encodeURIComponent(text), 'intent', windowOptions + ',width=' + width +
     ',height=' + height + ',left=' + winLeft + ',top=' + winTop);
   }

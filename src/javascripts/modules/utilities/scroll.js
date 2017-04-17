@@ -13,9 +13,10 @@ const loadScroll = () => {
   		}
   });
 
+  // click to scroll to section 1
   $('#intro-scroll-down').click(function (e) {
     e.preventDefault();
-    
+
     $.scrollTo($('#section-1-intro'),
       {
         duration: 800
