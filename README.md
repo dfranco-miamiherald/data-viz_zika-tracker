@@ -34,6 +34,12 @@ To remove git and add your own repo run `rm -rf .git && git init`
 
 Your browser should open with [http://localhost:3000](http://localhost:3000), browsersync should be active and you should be ready to go :rocket:.
 
+## How to upload index.html to content studio
+
+* Go to `public` after running `npm run production`
+
+* Copy the contents of `index.html` from `<!-- START COPY -->` through `<!-- STOP COPY -->` 
+
 ### Help
 
 email: cwilliams at miamiherald dot com :thumbsup:
