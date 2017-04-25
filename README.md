@@ -38,7 +38,9 @@ Your browser should open with [http://localhost:3000](http://localhost:3000), br
 
 * Go to `public` after running `npm run production`
 
-* Copy the contents of `index.html` from `<!-- START COPY -->` through `<!-- STOP COPY -->` 
+* Copy the contents of `index.html` from `<!-- START COPY -->` through `<!-- STOP COPY -->`
+
+* Paste the contents in Content Studio inside `<!-- PASTE BELOW -->` through `<!-- PASTE ABOVE -->`
 
 ### Help
 
