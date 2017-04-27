@@ -12,7 +12,7 @@ import 'imports?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/debug
 class USTerritoriesStats {
   // constructor method to setup variables to be used in the vizualization
   constructor() {
-    this.dataUrl = 'http://pubsys.miamiherald.com/static/media/projects/2016/zika-interactive-v2/data/usZika_tmp.json';
+    this.dataUrl = 'http://pubsys.miamiherald.com/static/media/projects/2016/zika-interactive-v2/data/usZika.json';
     this.totals = [
       '.territories__stat--donor-as',
       '.territories__stat--total-as',
